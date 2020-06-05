@@ -1,0 +1,19 @@
+Source: /usr/x86_64-pc-linux-musl/lib/python3.7/site-packages/pkg_resources/__init__.py
+Upstream: /usr/x86_64-pc-linux-musl/lib/python3.7/site-packages/pkg_resources/__init__.py
+Reason: _dlopen doesn't work with static python
+
+diff -ru Python-3.4.3.orig/Lib/ctypes/__init.py Python-3.4.3/Lib/ctypes/__init__.py
+--- Python-3.4.3.orig/Lib/ctypes/__init__.py	2019-03-25 20:21:05.000000000 +0000
++++ Python-3.4.3/Lib/ctypes/__init__.py	2019-06-28 16:16:06.654903636 +0000
+@@ -441,7 +441,10 @@
+ elif _sys.platform == "cygwin":
+     pythonapi = PyDLL("libpython%d.%d.dll" % _sys.version_info[:2])
+ else:
+-    pythonapi = PyDLL(None)
++    try:
++        pythonapi = PyDLL(None)
++    except OSError:
++        pythonapi = None
+ 
+ 
+ if _os.name == "nt":

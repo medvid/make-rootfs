@@ -1,0 +1,12 @@
+diff -Nru a/clang/lib/Driver/ToolChains/CommonArgs.cpp b/clang/lib/Driver/ToolChains/CommonArgs.cpp
+--- a/clang/lib/Driver/ToolChains/CommonArgs.cpp
++++ b/clang/lib/Driver/ToolChains/CommonArgs.cpp
+@@ -1212,7 +1212,7 @@
+     if (LGT == LibGccType::StaticLibGcc)
+       CmdArgs.push_back("-l:libunwind.a");
+     else
+-      CmdArgs.push_back("-l:libunwind.so");
++      CmdArgs.push_back("-lunwind");
+     break;
+   }
+ 

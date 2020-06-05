@@ -1,0 +1,21 @@
+diff -Nru a/libcxx/src/locale.cpp b/libcxx/src/locale.cpp
+--- a/libcxx/src/locale.cpp
++++ b/libcxx/src/locale.cpp
+@@ -1019,7 +1019,7 @@
+     return low;
+ }
+ 
+-#if defined(__EMSCRIPTEN__)
++#if defined(__EMSCRIPTEN__) || defined(__linux)
+ extern "C" const unsigned short ** __ctype_b_loc();
+ extern "C" const int ** __ctype_tolower_loc();
+ extern "C" const int ** __ctype_toupper_loc();
+@@ -1126,6 +1126,8 @@
+     return _ctype_ + 1;
+ #elif defined(_AIX)
+     return (const unsigned int *)__lc_ctype_ptr->obj->mask;
++#elif defined(__linux__)
++    return (const unsigned long *)*__ctype_b_loc();
+ #else
+     // Platform not supported: abort so the person doing the port knows what to
+     // fix

@@ -1,0 +1,52 @@
+# Docker
+# Build a Docker image
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+#trigger:
+#- master
+
+#pr:
+#  - master
+
+resources:
+  containers:
+  - container: rootfs
+    image: vmmedvid/make-rootfs:latest
+
+variables:
+  tag: '$(Build.BuildId)'
+
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:
+  - job: Build
+    displayName: Build
+    timeoutInMinutes: 360
+    pool:
+      vmImage: 'ubuntu-18.04'
+    steps:
+    - task: Docker@2
+      displayName: Build Docker image
+      inputs:
+        command: build
+        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+        tags: |
+          $(tag)
+
+- stage: Install
+  displayName: Install rootfs
+  jobs:
+  - job: armv7
+    displayName: armv7
+    timeoutInMinutes: 360
+    pool:
+      vmImage: 'ubuntu-18.04'
+    container: rootfs
+    steps:
+    - task: CmdLine@2
+      displayName: Install armv7-linux-musleabihf
+      inputs:
+        script: |
+          install -d -m 0777 /tmp
+          make install TARGET=armv7-linux-musleabihf

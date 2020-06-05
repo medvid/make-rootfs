@@ -1,0 +1,31 @@
+From 37d92e87bc33f4900bcfa914b57bda4ef9ee5108 Mon Sep 17 00:00:00 2001
+From: Joachim Nilsson <troglobit@gmail.com>
+Date: Sat, 25 Apr 2020 11:29:32 +0200
+Subject: [PATCH] sig.c: Skip unknown signals, e.g. musl libc does not define
+ SIGCLD
+
+Signed-off-by: Joachim Nilsson <troglobit@gmail.com>
+---
+ src/sig.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/sig.c b/src/sig.c
+index 5a06450..2876f67 100644
+--- a/src/sig.c
++++ b/src/sig.c
+@@ -142,9 +142,15 @@ static struct sigmap {
+ 	{ SIGPWR,    "SIGPWR"    },
+ 
+ 	/* Archaic names for compatibility.  */
++#ifdef SIGIO
+ 	{ SIGIO,     "SIGIO"     },
++#endif
++#ifdef SIGIOT
+ 	{ SIGIOT,    "SIGIOT"    },
++#endif
++#ifdef SIGCLD
+ 	{ SIGCLD,    "SIGCLD"    },
++#endif
+ };
+ 
+ void mdadm_wait(void);

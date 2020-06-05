@@ -1,0 +1,21 @@
+Subject: [PATCH] [libcxx] remove unused import from merge_archives.py
+
+---
+ libcxx/utils/merge_archives.py | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/libcxx/utils/merge_archives.py b/libcxx/utils/merge_archives.py
+index 4c31854d2b7..a02eb7bb4c7 100755
+--- a/libcxx/utils/merge_archives.py
++++ b/libcxx/utils/merge_archives.py
+@@ -8,7 +8,6 @@
+ #===----------------------------------------------------------------------===##
+ 
+ from argparse import ArgumentParser
+-from ctypes.util import find_library
+ import distutils.spawn
+ import glob
+ import tempfile
+-- 
+2.17.1
+

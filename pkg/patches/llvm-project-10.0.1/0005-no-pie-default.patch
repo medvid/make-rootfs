@@ -1,0 +1,12 @@
+diff -Nru a/clang/lib/Driver/ToolChains/Linux.cpp b/clang/lib/Driver/ToolChains/Linux.cpp
+--- a/clang/lib/Driver/ToolChains/Linux.cpp
++++ b/clang/lib/Driver/ToolChains/Linux.cpp
+@@ -918,7 +918,7 @@
+ 
+ bool Linux::isPIEDefault() const {
+   return (getTriple().isAndroid() && !getTriple().isAndroidVersionLT(16)) ||
+-          getTriple().isMusl() || getSanitizerArgs().requiresPIE();
++          getSanitizerArgs().requiresPIE();
+ }
+ 
+ bool Linux::isNoExecStackDefault() const {
