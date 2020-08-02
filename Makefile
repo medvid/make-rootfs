@@ -38,10 +38,13 @@ OUT_DIR := $(ROOT_DIR)/out/$(TARGET)
 RMRF_PATHS := /usr/lib/*.la \
 	/usr/lib/charset.alias \
 	/usr/share/aclocal \
+	/usr/share/bash-completion \
+	/usr/share/emacs \
 	/usr/share/doc \
 	/usr/share/gtk-doc \
 	/usr/share/info \
-	/usr/share/man
+	/usr/share/man \
+	/usr/share/vim
 
 # Configure LLVM/Clang build environment
 export AR := llvm-ar
