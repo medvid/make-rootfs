@@ -1,6 +1,9 @@
 # Customize ?= variables
 -include config.mk
 
+# Ensure the '| tee' logging recipes return failures
+SHELL := $(shell which bash) -o pipefail
+
 # Set the host toolchain triple
 HOST ?= x86_64-linux-musl
 
