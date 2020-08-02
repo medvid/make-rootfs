@@ -3,18 +3,23 @@ pkg_repo := https://git.savannah.gnu.org/git/freetype/freetype2.git
 pkg_site := https://download.savannah.gnu.org/releases/freetype
 pkg_deps := zlib libpng
 
-pkg_configure := $(pkg_srcdir)/configure \
-	--build=$(HOST) \
-	--host=$(TARGET) \
-	--prefix=/usr \
-	--disable-shared \
-	--without-pic \
-	--with-zlib \
-	--without-bzip2 \
-	--with-png \
-	--without-harfbuzz \
-	--without-brotli
+# TODO: figure out circular dependency on harfbuzz
+pkg_configure := cmake -G Ninja $(pkg_srcdir) \
+	-DCMAKE_BUILD_TYPE:STRING=Release \
+	-DCMAKE_INSTALL_PREFIX:PATH=/usr \
+	-DCMAKE_INSTALL_LIBDIR:STRING=lib \
+	-DCMAKE_SYSROOT=$(OUT_DIR) \
+	-DBUILD_SHARED_LIBS:BOOL=OFF \
+	-DBUILD_STATIC_LIBS:BOOL=ON \
+	-DFT_WITH_ZLIB:BOOL=ON \
+	-DFT_WITH_BZIP2:BOOL=OFF \
+	-DFT_WITH_PNG:BOOL=ON \
+	-DFT_WITH_HARFBUZZ:BOOL=OFF \
+	-DFT_WITH_BROTLI:BOOL=OFF \
+	-DCMAKE_DISABLE_FIND_PACKAGE_BZip2:BOOL=TRUE \
+	-DCMAKE_DISABLE_FIND_PACKAGE_HarfBuzz:BOOL=TRUE \
+	-DCMAKE_DISABLE_FIND_PACKAGE_BrotliDec:BOOL=TRUE
 
-pkg_build := make CCexe="$(CC) $(HOST_CFLAGS)"
+pkg_build := ninja -v
 
-pkg_install := make install DESTDIR=$(OUT_DIR)
+pkg_install := DESTDIR=$(OUT_DIR) ninja -v install
