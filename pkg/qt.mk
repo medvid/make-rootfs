@@ -1,6 +1,6 @@
 pkg_ver  := 5.15.0
-pkg_site  := https://download.qt.io/archive/qt/$(basename $(pkg_ver))/$(pkg_ver)/single
-pkg_dir  := qt-everywhere-src
+pkg_site := https://download.qt.io/archive/qt/$(basename $(pkg_ver))/$(pkg_ver)/single
+pkg_base := qt-everywhere-src
 pkg_deps := zlib libpng freetype pcre harfbuzz
 
 # https://doc.qt.io/qt-5.15/configure-options.html

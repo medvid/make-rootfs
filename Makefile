@@ -140,6 +140,7 @@ $(1)_ver := $$(pkg_ver)
 $(1)_site := $$(pkg_site)
 $(1)_repo := $$(pkg_repo)
 $(1)_url := $$(pkg_url)
+$(1)_base := $$(pkg_base)
 $(1)_dir := $$(pkg_dir)
 $(1)_deps := $$(pkg_deps)
 $(1)_copy := $$(pkg_copy)
@@ -163,9 +164,14 @@ ifeq ($$($(1)_install),)
 $(1)_install := true
 endif
 
-# Check if the pkg_dir was not set in .mk
+# Check if the pkg_base variable was not set in .mk
+ifeq ($$($(1)_base),)
+$(1)_base := $(1)
+endif
+
+# Check if the pkg_dir variable was not set in .mk
 ifeq ($$($(1)_dir),)
-$(1)_dir := $(1)
+$(1)_dir := $$($(1)_base)-$$($(1)_ver)
 endif
 
 # Add standard build dependencies (BASE_PKGS)
@@ -177,21 +183,21 @@ endif
 ifeq ($$($(1)_copy),)
 $(1)_mkobjdir := mkdir -p $(OBJ_DIR)/obj_$(1)
 else
-$(1)_mkobjdir := rm -rf $(OBJ_DIR)/obj_$(1) && cp -rvsL $(ROOT_DIR)/$(SRC_DIR)/$$($(1)_dir)-$$($(1)_ver) $(OBJ_DIR)/obj_$(1)
+$(1)_mkobjdir := rm -rf $(OBJ_DIR)/obj_$(1) && cp -rvsL $(ROOT_DIR)/$(SRC_DIR)/$$($(1)_dir) $(OBJ_DIR)/obj_$(1)
 endif
 
 # Check if the package defines explicit download URL
 ifeq ($$($(1)_url),)
-$$(patsubst %.sha256sum,%,$$(wildcard $(SRC_DIR)/$$($(1)_dir)-*)): DL_SITE = $$($(1)_site)
+$$(patsubst %.sha256sum,%,$$(wildcard $(SRC_DIR)/$$($(1)_dir).*)): DL_SITE = $$($(1)_site)
 else
-$$(patsubst %.sha256sum,%,$$(wildcard $(SRC_DIR)/$$($(1)_dir)-*)): DL_URL = $$($(1)_url)
+$$(patsubst %.sha256sum,%,$$(wildcard $(SRC_DIR)/$$($(1)_dir).*)): DL_URL = $$($(1)_url)
 endif
 
 # Include the package source directory in the 'fetch' target
-fetch: | $(SRC_DIR)/$$($(1)_dir)-$$($(1)_ver)
+fetch: | $(SRC_DIR)/$$($(1)_dir)
 
 # Create symbolic link to source directory
-$(OBJ_DIR)/src_$(1): $(SRC_DIR)/$$($(1)_dir)-$$($(1)_ver) | $(OBJ_DIR) $(LOG_DIR)
+$(OBJ_DIR)/src_$(1): $(SRC_DIR)/$$($(1)_dir) | $(OBJ_DIR) $(LOG_DIR)
 	ln -sfvT ../../$$< $$@
 
 # Create the package build directory
@@ -239,6 +245,7 @@ pkg_ver :=
 pkg_site :=
 pkg_repo :=
 pkg_url :=
+pkg_base :=
 pkg_dir :=
 pkg_deps :=
 pkg_copy :=

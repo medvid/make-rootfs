@@ -1,7 +1,7 @@
 pkg_ver  := 10.0.1
 pkg_repo := https://github.com/llvm/llvm-project
 pkg_site := $(pkg_repo)/releases/download/llvmorg-$(pkg_ver)
-pkg_dir  := llvm-project
+pkg_base := llvm-project
 pkg_deps := linux-headers
 
 # Set the LLVM target arch
