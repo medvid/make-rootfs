@@ -4,6 +4,8 @@ pkg_site := https://ftp.gnu.org/gnu/bash
 
 pkg_configure := $(pkg_srcdir)/configure \
 	CC_FOR_BUILD=$(CC) \
+	CFLAGS_FOR_BUILD="$(HOST_CFLAGS)" \
+	LDFLAGS_FOR_BUILD="$(HOST_LDFLAGS)" \
 	--build=$(HOST) \
 	--host=$(TARGET) \
 	--prefix=/usr \
