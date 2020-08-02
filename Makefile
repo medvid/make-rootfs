@@ -142,8 +142,8 @@ $(1)_repo := $$(pkg_repo)
 $(1)_url := $$(pkg_url)
 $(1)_dir := $$(pkg_dir)
 $(1)_deps := $$(pkg_deps)
+$(1)_copy := $$(pkg_copy)
 $(1)_vars := $$(pkg_vars)
-$(1)_intree := $$(pkg_intree)
 $(1)_prepare := $$(pkg_prepare)
 $(1)_configure := $$(pkg_configure)
 $(1)_build := $$(pkg_build)
@@ -174,10 +174,8 @@ ifneq ($(filter-out $(BASE_PKGS),$(1)),)
 endif
 
 # Check if the obj_$(1) directory needs to contain the source
-ifeq ($$($(1)_intree),)
+ifeq ($$($(1)_copy),)
 $(1)_mkobjdir := mkdir -p $(OBJ_DIR)/obj_$(1)
-else ifeq ($$($(1)_intree),copy)
-$(1)_mkobjdir := rm -rf $(OBJ_DIR)/obj_$(1) && cp -rv $(ROOT_DIR)/$(SRC_DIR)/$$($(1)_dir)-$$($(1)_ver) $(OBJ_DIR)/obj_$(1)
 else
 $(1)_mkobjdir := rm -rf $(OBJ_DIR)/obj_$(1) && cp -rvsL $(ROOT_DIR)/$(SRC_DIR)/$$($(1)_dir)-$$($(1)_ver) $(OBJ_DIR)/obj_$(1)
 endif
@@ -243,8 +241,8 @@ pkg_repo :=
 pkg_url :=
 pkg_dir :=
 pkg_deps :=
+pkg_copy :=
 pkg_vars :=
-pkg_intree :=
 pkg_prepare :=
 pkg_configure :=
 pkg_build :=

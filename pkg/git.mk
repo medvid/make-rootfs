@@ -2,7 +2,7 @@ pkg_ver  := 2.28.0
 pkg_repo := https://github.com/git/git
 pkg_site := https://mirrors.edge.kernel.org/pub/software/scm/git
 pkg_deps := zlib curl libressl
-pkg_intree := true
+pkg_copy := true
 
 # TODO: figure out proper way to set CURL_LDFLAGS
 # TODO: investigate why toybox tar xof - is broken

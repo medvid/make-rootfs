@@ -1,7 +1,7 @@
 pkg_ver  := 5.32.0
 pkg_repo := https://github.com/Perl/perl5
 pkg_site := https://www.cpan.org/src/5.0
-pkg_intree := true
+pkg_copy := true
 
 pkg_configure := $(pkg_srcdir)/Configure \
 	-des \

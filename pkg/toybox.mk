@@ -5,7 +5,7 @@ pkg_deps := libressl
 
 # toybox doesn't support out-of-tree build
 # http://lists.landley.net/pipermail/toybox-landley.net/2017-December/009305.html
-pkg_intree := true
+pkg_copy := true
 
 ifeq ($(STAGE),)
 pkg_vars := HOSTCC="clang -static"

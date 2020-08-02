@@ -1,7 +1,7 @@
 pkg_ver  := 49.2.0
 pkg_repo := https://github.com/pypa/setuptools
 pkg_site := https://files.pythonhosted.org/packages/source/s/setuptools
-pkg_intree := true
+pkg_copy := true
 
 pkg_build := python3 setup.py build
 
