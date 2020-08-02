@@ -15,5 +15,8 @@ pkg_configure := $(pkg_srcdir)/configure \
 
 pkg_build := make
 
-# Skip installation of useless programs (libpng-config, png-fix-itxt, pngfix)
-pkg_install := make install-data install-libLTLIBRARIES DESTDIR=$(OUT_DIR)
+pkg_install := make install DESTDIR=$(OUT_DIR) && rm -f \
+	$(OUT_DIR)/usr/bin/libpng16-config \
+	$(OUT_DIR)/usr/bin/libpng-config \
+	$(OUT_DIR)/usr/bin/png-fix-itxt \
+	$(OUT_DIR)/usr/bin/pngfix
