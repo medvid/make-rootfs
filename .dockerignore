@@ -9,6 +9,7 @@ README.md
 .bash_history
 .vscode
 
+/log
 /obj
 /out
 /src/*
