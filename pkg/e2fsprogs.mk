@@ -21,5 +21,4 @@ pkg_configure := $(pkg_objdir)/$(pkg_srcdir)/configure \
 pkg_build := make
 
 # TODO: figure out why installdirs target doesn't execute in e2fsck/Makefile
-pkg_install := mkdir -p $(OUT_DIR)/usr/{include/et,share/man/{man1,man5,man8}} && \
-	make install-progs-recursive DESTDIR=$(OUT_DIR)
+pkg_install := make install-progs-recursive DESTDIR=$(OUT_DIR)
