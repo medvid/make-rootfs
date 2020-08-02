@@ -5,8 +5,8 @@
 HOST ?= x86_64-linux-musl
 
 # Set the list of packages built during bootstrapping stages
-HOST_PKGS := musl linux-headers llvm libressl toybox pkgconf mawk \
-	diffutils m4 bash make flex bison bc grep zlib xz wget \
+HOST_PKGS := musl linux-headers llvm zlib libarchive libressl toybox \
+	pkgconf mawk diffutils m4 bash make flex bison bc grep xz wget \
 	libffi python ninja cmake rsync perl curl git e2fsprogs gperf
 
 # Set the target toolchain triple
