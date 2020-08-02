@@ -1,7 +1,8 @@
-diff -Nru a/libcxx/include/locale b/libcxx/include/locale
---- a/libcxx/include/locale	2017-01-04 23:56:00.000000000 +0000
-+++ b/libcxx/include/locale	2017-05-14 23:43:07.867204323 +0000
-@@ -695,7 +695,7 @@
+diff --git a/libcxx/include/locale b/libcxx/include/locale
+index 3fe44300227..cc858f55f03 100644
+--- a/libcxx/include/locale
++++ b/libcxx/include/locale
+@@ -736,7 +736,7 @@ __num_get_signed_integral(const char* __a, const char* __a_end,
          typename remove_reference<decltype(errno)>::type __save_errno = errno;
          errno = 0;
          char *__p2;
@@ -10,7 +11,7 @@ diff -Nru a/libcxx/include/locale b/libcxx/include/locale
          typename remove_reference<decltype(errno)>::type __current_errno = errno;
          if (__current_errno == 0)
              errno = __save_errno;
-@@ -735,7 +735,7 @@
+@@ -776,7 +776,7 @@ __num_get_unsigned_integral(const char* __a, const char* __a_end,
          typename remove_reference<decltype(errno)>::type __save_errno = errno;
          errno = 0;
          char *__p2;

@@ -1,7 +1,8 @@
-diff -Nru a/libcxx/src/locale.cpp b/libcxx/src/locale.cpp
+diff --git a/libcxx/src/locale.cpp b/libcxx/src/locale.cpp
+index 2757eaa5acd..07f60f844fb 100644
 --- a/libcxx/src/locale.cpp
 +++ b/libcxx/src/locale.cpp
-@@ -1019,7 +1019,7 @@
+@@ -1019,7 +1019,7 @@ ctype<char>::do_narrow(const char_type* low, const char_type* high, char dfault,
      return low;
  }
  
@@ -10,7 +11,7 @@ diff -Nru a/libcxx/src/locale.cpp b/libcxx/src/locale.cpp
  extern "C" const unsigned short ** __ctype_b_loc();
  extern "C" const int ** __ctype_tolower_loc();
  extern "C" const int ** __ctype_toupper_loc();
-@@ -1126,6 +1126,8 @@
+@@ -1126,6 +1126,8 @@ ctype<char>::classic_table()  _NOEXCEPT
      return _ctype_ + 1;
  #elif defined(_AIX)
      return (const unsigned int *)__lc_ctype_ptr->obj->mask;

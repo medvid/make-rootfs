@@ -1,7 +1,8 @@
-diff -Nru a/clang/lib/Driver/ToolChains/Linux.cpp b/clang/lib/Driver/ToolChains/Linux.cpp
+diff --git a/clang/lib/Driver/ToolChains/Linux.cpp b/clang/lib/Driver/ToolChains/Linux.cpp
+index 6532c899492..da8d7bce209 100644
 --- a/clang/lib/Driver/ToolChains/Linux.cpp
 +++ b/clang/lib/Driver/ToolChains/Linux.cpp
-@@ -918,7 +918,7 @@
+@@ -918,7 +918,7 @@ void Linux::AddIAMCUIncludeArgs(const ArgList &DriverArgs,
  
  bool Linux::isPIEDefault() const {
    return (getTriple().isAndroid() && !getTriple().isAndroidVersionLT(16)) ||
