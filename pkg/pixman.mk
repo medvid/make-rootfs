@@ -11,6 +11,6 @@ pkg_configure := LDFLAGS="$(LDFLAGS) -Wl,-z,stack-size=2097152" meson \
 	--buildtype=plain \
 	$(pkg_srcdir) $(pkg_objdir)
 
-pkg_build := ninja
+pkg_build := ninja -v
 
 pkg_install := DESTDIR=$(OUT_DIR) ninja install
