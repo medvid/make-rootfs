@@ -5,11 +5,11 @@ pkg_deps := zlib pcre libffi
 
 pkg_configure := meson \
 	-Ddefault_library=static \
-	-Dselinux=false \
+	-Dselinux=disabled \
 	-Dxattr=false \
-	-Dlibmount=false \
+	-Dlibmount=disabled \
 	-Dman=false \
-	-Dnls=false \
+	-Dnls=disabled \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--mandir=/usr/share/man \
