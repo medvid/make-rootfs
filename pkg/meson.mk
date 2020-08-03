@@ -4,6 +4,6 @@ pkg_site := $(pkg_repo)/releases/download/$(pkg_ver)
 pkg_copy := true
 pkg_deps := setuptools
 
-pkg_build := python3 $(pkg_srcdir)/setup.py build
+pkg_build := python3 setup.py build
 
-pkg_install := python3 setup.py install --optimize=1 --skip-build --root=$(OUT_DIR)
+pkg_install := python3 setup.py install --optimize=1 --skip-build --prefix=/usr --root=$(OUT_DIR)
