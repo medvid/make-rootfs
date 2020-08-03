@@ -22,4 +22,5 @@ pkg_configure := $(pkg_srcdir)/configure \
 
 pkg_build := make
 
-pkg_install := make install DESTDIR=$(OUT_DIR)
+pkg_install := make install DESTDIR=$(OUT_DIR) && \
+	cp -v $(pkg_files)/finit.conf $(OUT_DIR)/etc
