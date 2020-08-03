@@ -1,0 +1,13 @@
+diff --git a/clang/lib/Driver/ToolChains/Gnu.cpp b/clang/lib/Driver/ToolChains/Gnu.cpp
+index e8ef881e89a..b7a0295969d 100644
+--- a/clang/lib/Driver/ToolChains/Gnu.cpp
++++ b/clang/lib/Driver/ToolChains/Gnu.cpp
+@@ -336,7 +336,7 @@ static bool getStaticPIE(const ArgList &Args, const ToolChain &TC) {
+ }
+ 
+ static bool getStatic(const ArgList &Args) {
+-  return Args.hasArg(options::OPT_static) &&
++  return !Args.hasArg(options::OPT_shared) &&
+       !Args.hasArg(options::OPT_static_pie);
+ }
+ 
