@@ -44,6 +44,7 @@ $(eval $(call add_extract_rule,tgz))
 $(eval $(call add_extract_rule,tar.bz2))
 $(eval $(call add_extract_rule,tar.gz))
 $(eval $(call add_extract_rule,tar.xz))
+$(eval $(call add_extract_rule,tar.zst))
 $(eval $(call add_extract_rule,zip))
 
 .PHONY: fetch unfetch
