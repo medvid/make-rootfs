@@ -1,7 +1,7 @@
 pkg_ver  := 3.4.3
 pkg_repo := https://github.com/libarchive/libarchive
 pkg_site := $(pkg_repo)/releases/download/v$(pkg_ver)
-pkg_deps := zlib
+pkg_deps := zlib bzip2 zstd
 
 pkg_configure := $(pkg_srcdir)/configure \
 	--build=$(HOST) \
@@ -16,11 +16,11 @@ pkg_configure := $(pkg_srcdir)/configure \
 	--disable-xattr \
 	--disable-acl \
 	--without-pic \
-	--without-bz2lib \
+	--with-bz2lib \
 	--without-libb2 \
 	--without-iconv \
 	--without-lz4 \
-	--without-zstd \
+	--with-zstd \
 	--without-lzma \
 	--without-cng \
 	--without-openssl \
