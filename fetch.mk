@@ -41,6 +41,7 @@ endef
 
 # Define extraction rules for known package types
 $(eval $(call add_extract_rule,tgz))
+$(eval $(call add_extract_rule,tar.bz2))
 $(eval $(call add_extract_rule,tar.gz))
 $(eval $(call add_extract_rule,tar.xz))
 $(eval $(call add_extract_rule,zip))
