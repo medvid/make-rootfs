@@ -105,8 +105,8 @@ export LDFLAGS += --sysroot=$(OUT_DIR) -target $(TARGET)
 export PKG_CONFIG_LIBDIR = $(OUT_DIR)/usr/lib/pkgconfig:$(OUT_DIR)/usr/share/pkgconfig
 export PKG_CONFIG_SYSROOT_DIR = $(OUT_DIR)
 
-ifneq ($(STAGE),)
-# Tweak host flags to point to the current stage sysroot
+ifeq ($(STAGE),stage3)
+# Tweak stage3 host flags to point to the current sysroot
 HOST_CFLAGS += --sysroot=$(OUT_DIR)
 HOST_CXXFLAGS += --sysroot=$(OUT_DIR)
 HOST_LFFLAGS += --sysroot=$(OUT_DIR)
