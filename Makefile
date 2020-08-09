@@ -65,6 +65,8 @@ export STRIP := llvm-strip
 export CFLAGS := -O3 -pipe -static -fno-pic -fno-pie
 export CXXFLAGS := -O3 -pipe -static -fno-pic -fno-pie
 export LDFLAGS := -s -static -static-libgcc -Wl,-no-pie -Wl,-no-dynamic-linker -Wl,-no-export-dynamic -Wl,--gc-sections
+# AC_PROG_MKDIR_P is confused by toybox mkdir --version
+export MKDIR_P := mkdir -p
 
 # Print compiler diagnostic output: make V=2
 ifeq ($(V),2)
