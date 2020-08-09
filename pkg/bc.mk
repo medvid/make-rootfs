@@ -1,16 +1,13 @@
-pkg_ver  := 1.07.1
-pkg_repo := https://git.savannah.gnu.org/git/bc
-pkg_site := https://ftp.gnu.org/gnu/bc
+pkg_ver  := 3.1.5
+pkg_repo := https://git.yzena.com/gavin/bc
+pkg_site := https://github.com/gavinhoward/bc/releases/download/$(pkg_ver)
+pkg_copy := true
 
 pkg_configure := $(pkg_srcdir)/configure \
-	--build=$(HOST) \
-	--host=$(TARGET) \
 	--prefix=/usr \
-	--sysconfdir=/etc \
-	--disable-silent-rules \
-	--without-libedit \
-	--without-readline
+	--disable-nls \
+	--disable-man-pages
 
-pkg_build := make MAKEINFO=true
+pkg_build := make
 
-pkg_install := make install DESTDIR=$(OUT_DIR) MAKEINFO=true
+pkg_install := make install DESTDIR=$(OUT_DIR)
