@@ -9,6 +9,7 @@ pkg_configure := $(pkg_objdir)/$(pkg_srcdir)/configure \
 	--prefix=/usr \
 	--sbindir=/usr/bin \
 	--sysconfdir=/etc \
+	--disable-silent-rules \
 	--enable-symlink-install \
 	--enable-relative-symlinks \
 	--disable-debugfs \
@@ -20,5 +21,4 @@ pkg_configure := $(pkg_objdir)/$(pkg_srcdir)/configure \
 
 pkg_build := make
 
-# TODO: figure out why installdirs target doesn't execute in e2fsck/Makefile
-pkg_install := make install-progs-recursive DESTDIR=$(OUT_DIR)
+pkg_install := make install DESTDIR=$(OUT_DIR)
