@@ -13,7 +13,9 @@ pkg_configure := $(pkg_srcdir)/configure \
 	--without-libdw \
 	--without-libunwind \
 	--without-libiberty \
-	CC_FOR_BUILD=$(CC)
+	CC_FOR_BUILD=$(CC) \
+	CFLAGS_FOR_BUILD="$(HOST_CFLAGS)" \
+	LDFLAGS_FOR_BUILD="$(HOST_LDFLAGS)"
 
 pkg_build := make
 
