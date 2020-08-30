@@ -3,20 +3,16 @@ pkg_repo := https://git.code.sf.net/p/libpng/code
 pkg_site := http://prdownloads.sourceforge.net/libpng
 pkg_deps := zlib
 
-pkg_configure := $(pkg_srcdir)/configure \
-	--build=$(HOST) \
-	--host=$(TARGET) \
-	--prefix=/usr \
-	--sysconfdir=/etc \
-	--localstatedir=/var \
-	--disable-silent-rules \
-	--disable-shared \
-	--without-pic
+pkg_configure := cmake -G Ninja $(pkg_srcdir) \
+	-DCMAKE_BUILD_TYPE:STRING=Release \
+	-DCMAKE_INSTALL_PREFIX:PATH=/usr \
+	-DCMAKE_INSTALL_LIBDIR:STRING=lib \
+	-DCMAKE_SYSROOT=$(OUT_DIR) \
+	-DPNG_SHARED:BOOL=OFF \
+	-DPNG_TESTS:BOOL=OFF
 
-pkg_build := make
+pkg_build := ninja -v
 
-pkg_install := make install DESTDIR=$(OUT_DIR) && rm -f \
+pkg_install := DESTDIR=$(OUT_DIR) ninja -v install && rm -f \
 	$(OUT_DIR)/usr/bin/libpng16-config \
-	$(OUT_DIR)/usr/bin/libpng-config \
-	$(OUT_DIR)/usr/bin/png-fix-itxt \
-	$(OUT_DIR)/usr/bin/pngfix
+	$(OUT_DIR)/usr/bin/libpng-config
