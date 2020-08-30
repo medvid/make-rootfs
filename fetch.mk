@@ -9,13 +9,9 @@ DL_CMD := $(CURL) -s -S -L -f -o
 unfetch:
 	find $(SRC_DIR) -mindepth 1 -maxdepth 1 -not -name "*.sha256sum" -print -exec rm -rf {} \;
 
-# Create top-level source directory
-$(SRC_DIR):
-	mkdir -p $@
-
 # Download tarball to the source directory, verify checksum
 # Each package sets either DL_URL or DL_SITE
-$(SRC_DIR)/%: $(SRC_DIR)/%.sha256sum | $(SRC_DIR)
+$(SRC_DIR)/%: $(SRC_DIR)/%.sha256sum
 	mkdir -p $@.tmp
 	cd $@.tmp && $(DL_CMD) $* $(if $(DL_URL),$(DL_URL),$(DL_SITE)/$*)
 	cd $@.tmp && touch $*
@@ -26,17 +22,23 @@ endif
 	mv -v $@.tmp/$* $@
 	rm -rf $@.tmp
 
+$(SRC_DIR)/%: $(SRC_DIR)/%.orig
+	rm -rf $@.tmp
+	mv $< $@.tmp
+	test ! -d pkg/patches/$* || cat pkg/patches/$*/* | ( cd $@.tmp && patch -p1 )
+	rm -rf $@
+	mv $@.tmp $@
+
 # Extract downloaded tarball to the source directory, apply all patches
 define add_extract_rule =
-$(SRC_DIR)/%: $(SRC_DIR)/%.$(1)
-	rm -rf $$@.orig
-	mkdir $$@.orig
-	( cd $$@.orig && bsdtar xf - ) < $$<
+$(SRC_DIR)/%.orig: $(SRC_DIR)/%.$(1)
+	rm -rf $$@.tmp
+	mkdir $$@.tmp
+	( cd $$@.tmp && bsdtar xf - ) < $$<
 	rm -rf $$@
-	touch $$@.orig/$$*
-	mv -v $$@.orig/$$* $$@
-	test ! -d pkg/patches/$$* || cat pkg/patches/$$*/* | ( cd $$@ && patch -p1 )
-	rm -rf $$@.orig
+	touch $$@.tmp/$$*
+	mv $$@.tmp/$$* $$@
+	rm -rf $$@.tmp
 endef
 
 # Define extraction rules for known package types

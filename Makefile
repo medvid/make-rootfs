@@ -1,3 +1,6 @@
+# Disable built-in rules
+.SUFFIXES:
+
 # Customize ?= variables
 -include config.mk
 
