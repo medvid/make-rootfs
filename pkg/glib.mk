@@ -3,6 +3,9 @@ pkg_repo := https://gitlab.gnome.org/GNOME/glib
 pkg_site := https://download.gnome.org/sources/glib/$(basename $(pkg_ver))
 pkg_deps := zlib pcre libffi
 
+# Disable tests (gio/tests/meson.build defines shared modules)
+pkg_prepare := sed -e '/^build_tests = /a build_tests = false' -i $(pkg_srcdir)/meson.build
+
 pkg_configure := meson \
 	-Ddefault_library=static \
 	-Dselinux=disabled \
