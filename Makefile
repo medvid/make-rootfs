@@ -286,4 +286,7 @@ $(OUT_DIR):
 # Load recipes for rootfs creation
 include rootfs.mk
 
+# Load maintainer scripts
+include maint.mk
+
 .PHONY: all install clean
