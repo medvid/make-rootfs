@@ -4,13 +4,14 @@ pkg_site := https://ftp.gnome.org/pub/GNOME/sources/pango/$(basename $(pkg_ver))
 pkg_deps := expat fontconfig cairo glib harfbuzz
 
 pkg_configure := meson \
-	-Ddefault_library=static \
-	-Dintrospection=false \
-	-Dgtk_doc=false \
+	--cross-file $(TARGET).txt \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	--mandir=/usr/share/man \
 	--localstatedir=/var \
+	-Ddefault_library=static \
+	-Dintrospection=false \
+	-Dgtk_doc=false \
 	$(pkg_srcdir) $(pkg_objdir)
 
 pkg_build := ninja -v
