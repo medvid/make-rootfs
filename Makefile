@@ -14,7 +14,7 @@ HOST ?= x86_64-linux-musl
 HOST_PKGS := musl linux-headers llvm zlib libarchive libressl toybox \
 	pkgconf mawk diffutils m4 bash make flex bison bc grep xz wget \
 	libffi python ninja cmake rsync perl curl git e2fsprogs gperf \
-	meson strace glib wayland
+	meson strace glib wayland qt
 
 # Set the target toolchain triple
 TARGET ?= x86_64-linux-musl
