@@ -86,6 +86,21 @@ HOST_CFLAGS := $(CFLAGS)
 HOST_CXXFLAGS := $(CXXFLAGS)
 HOST_LDFLAGS := $(LDFLAGS)
 
+# Define standard configure args for Meson build system
+meson_pkg_configure := meson \
+	--prefix=/usr \
+	--sysconfdir=/etc \
+	--mandir=/usr/share/man \
+	--localstatedir=/var \
+	--buildtype=release \
+	-Ddefault_library=static
+
+# Pass --cross-file argument when not bootstrapping
+# The cross files are not found on host before stage4
+ifneq ($(STAGE),)
+meson_pkg_configure += --cross-file $(TARGET).txt
+endif
+
 # Default target: build all TARGET_PKGS to OBJ_DIR
 all: $(TARGET_PKGS)
 
