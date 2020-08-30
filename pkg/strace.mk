@@ -1,4 +1,4 @@
-pkg_ver  := 5.7
+pkg_ver  := 5.8
 pkg_repo := https://github.com/strace/strace
 pkg_site := https://strace.io/files/$(pkg_ver)
 
