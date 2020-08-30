@@ -2,7 +2,7 @@ pkg_ver  := 3.8.5
 pkg_repo := https://github.com/python/cpython
 pkg_site := https://www.python.org/ftp/python/$(pkg_ver)
 pkg_base := Python
-pkg_deps := zlib libffi libressl expat
+pkg_deps := zlib libffi libressl expat libuuid
 
 pkg_prepare := mkdir -p Modules && cp -v $(pkg_files)/Setup.local Modules
 
