@@ -1,4 +1,4 @@
-pkg_ver  := 2.64.4
+pkg_ver  := 2.64.5
 pkg_repo := https://gitlab.gnome.org/GNOME/glib
 pkg_site := https://download.gnome.org/sources/glib/$(basename $(pkg_ver))
 pkg_deps := zlib pcre libffi
