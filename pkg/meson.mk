@@ -12,4 +12,4 @@ pkg_install := python3 setup.py install \
 	--skip-build \
 	--optimize=1 && \
 	install -d -D -v -m 755 $(OUT_DIR)/usr/share/meson/cross && \
-	install -v $(pkg_files)/*.txt $(OUT_DIR)/usr/share/meson/cross
+	install -v -m 644 $(pkg_files)/*.txt $(OUT_DIR)/usr/share/meson/cross
