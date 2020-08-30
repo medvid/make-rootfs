@@ -14,8 +14,8 @@ pkg_configure := $(pkg_srcdir)/configure \
 	--without-libunwind \
 	--without-libiberty \
 	CC_FOR_BUILD=$(CC) \
-	CFLAGS_FOR_BUILD="$(HOST_CFLAGS)" \
-	LDFLAGS_FOR_BUILD="$(HOST_LDFLAGS)"
+	CFLAGS_FOR_BUILD="$(HOST_CFLAGS) --sysroot=$(OUT_DIR)" \
+	LDFLAGS_FOR_BUILD="$(HOST_LDFLAGS) --sysroot=$(OUT_DIR)"
 
 pkg_build := make
 

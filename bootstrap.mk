@@ -22,13 +22,6 @@ export PKG_CONFIG_LIBDIR = $(OUT_DIR)/usr/lib/pkgconfig:$(OUT_DIR)/usr/share/pkg
 export PKG_CONFIG_SYSROOT_DIR = $(OUT_DIR)
 endif
 
-# Tweak stage3 host flags to point to the current sysroot
-ifeq ($(STAGE),stage3)
-HOST_CFLAGS += --sysroot=$(OUT_DIR)
-HOST_CXXFLAGS += --sysroot=$(OUT_DIR)
-HOST_LFFLAGS += --sysroot=$(OUT_DIR)
-endif
-
 obj/stage1/.install.stamp:
 	$(MAKE) STAGE=stage1 TARGET_PKGS="$(BASE_PKGS)" install
 	touch $@
