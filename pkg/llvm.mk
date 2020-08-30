@@ -140,18 +140,18 @@ endif
 ifeq ($(llvm_build_toolchain),true)
 llvm_tools := ar as config lto lto2 mt nm objcopy objdump ranlib readelf readobj split strings strip tblgen
 llvm_build_targets += clang clang-resource-headers lld $(addprefix llvm-,$(llvm_tools))
-endif
-
+pkg_configure += -DCMAKE_TRY_COMPILE_TARGET_TYPE=EXECUTABLE
+else
 # The CMake test application cannot be linked during initial execution of
 # 'builtins' target as crtbeginT.o is not yet built for the target arch.
 # Tweak CMake try_compile behavior to resolve chicken-and-egg problem.
 # STATIC_LIBRARY test cannot be enabled universally due to CMake bug:
 # https://gitlab.kitware.com/cmake/cmake/-/issues/18121
+pkg_configure += -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY
+endif
+
 ifeq ($(llvm_builtins_only),true)
 llvm_build_targets := compiler-rt
-pkg_configure += -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY
-else
-pkg_configure += -DCMAKE_TRY_COMPILE_TARGET_TYPE=EXECUTABLE
 endif
 
 llvm_install_targets := $(patsubst %,install-%-stripped,$(llvm_build_targets))
