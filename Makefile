@@ -89,6 +89,7 @@ HOST_LDFLAGS := $(LDFLAGS)
 # Define standard configure args for Meson build system
 meson_pkg_configure := meson \
 	--prefix=/usr \
+	--libdir=/usr/lib \
 	--sysconfdir=/etc \
 	--mandir=/usr/share/man \
 	--localstatedir=/var \
