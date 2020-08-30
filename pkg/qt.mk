@@ -89,7 +89,8 @@ pkg_configure := $(pkg_srcdir)/configure \
 	-no-libjpeg \
 	-system-sqlite \
 	-no-feature-testlib \
-	-no-feature-dlopen \
+	-feature-dlopen \
+	-feature-library \
 	-no-feature-relocatable \
 	-no-feature-pdf \
 	-feature-linuxfb \
