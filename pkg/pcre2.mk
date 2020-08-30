@@ -1,19 +1,22 @@
 pkg_ver  := 10.35
 pkg_site := https://ftp.pcre.org/pub/pcre
 
-pkg_configure := $(pkg_srcdir)/configure \
-	--build=$(HOST) \
-	--host=$(TARGET) \
-	--prefix=/usr \
-	--disable-silent-rules \
-	--disable-shared \
-	--enable-pcre2-8 \
-	--enable-pcre2-16 \
-	--enable-pcre2-32 \
-	--enable-jit \
-	--without-pic
+pkg_configure := cmake -G Ninja $(pkg_srcdir) \
+	-DCMAKE_BUILD_TYPE:STRING=Release \
+	-DCMAKE_INSTALL_PREFIX:PATH=/usr \
+	-DCMAKE_INSTALL_LIBDIR:STRING=lib \
+	-DCMAKE_SYSROOT=$(OUT_DIR) \
+	-DPCRE2_BUILD_PCRE2_8:BOOL=ON \
+	-DPCRE2_BUILD_PCRE2_16:BOOL=ON \
+	-DPCRE2_BUILD_PCRE2_32:BOOL=ON \
+	-DPCRE2_SUPPORT_JIT:BOOL=ON \
+	-DPCRE2_BUILD_PCRE2GREP:BOOL=OFF \
+	-DPCRE2_BUILD_TESTS:BOOL=OFF \
+	-DPCRE2_SUPPORT_LIBBZ2:BOOL=OFF \
+	-DPCRE2_SUPPORT_LIBZ:BOOL=OFF \
+	-DPCRE2_SUPPORT_LIBEDIT:BOOL=OFF \
+	-DPCRE2_SUPPORT_LIBREADLINE:BOOL=OFF
 
-pkg_build := make
+pkg_build := ninja -v
 
-# Do not install the executables
-pkg_install := make install-libLTLIBRARIES install-data DESTDIR=$(OUT_DIR)
+pkg_install := DESTDIR=$(OUT_DIR) ninja -v install
