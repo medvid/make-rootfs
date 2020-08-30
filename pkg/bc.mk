@@ -8,6 +8,6 @@ pkg_configure := $(pkg_objdir)/configure \
 	--disable-nls \
 	--disable-man-pages
 
-pkg_build := make
+pkg_build := make MAKEFLAGS=
 
 pkg_install := make install DESTDIR=$(OUT_DIR)
