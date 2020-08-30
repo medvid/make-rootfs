@@ -1,7 +1,7 @@
 pkg_ver  := 5.15.0
 pkg_site := https://download.qt.io/archive/qt/$(basename $(pkg_ver))/$(pkg_ver)/single
 pkg_base := qt-everywhere-src
-pkg_deps := pcre2 zlib zstd libpng freetype harfbuzz libudev-zero libevdev mtdev libinput libxkbcommon sqlite
+pkg_deps := libressl pcre2 zlib zstd libpng freetype harfbuzz libudev-zero libevdev mtdev libinput libxkbcommon sqlite
 
 # https://doc.qt.io/qt-5.15/configure-options.html
 pkg_configure := $(pkg_srcdir)/configure \
@@ -62,8 +62,8 @@ pkg_configure := $(pkg_srcdir)/configure \
 	-system-pcre \
 	-system-zlib \
 	-zstd \
-	-no-ssl \
-	-no-openssl \
+	-ssl \
+	-openssl-linked \
 	-no-cups \
 	-fontconfig \
 	-system-freetype \
