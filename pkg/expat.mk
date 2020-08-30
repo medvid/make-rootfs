@@ -3,6 +3,8 @@ pkg_repo := https://github.com/libexpat/libexpat
 pkg_site := $(pkg_repo)/releases/download/R_$(subst .,_,$(pkg_ver))
 
 pkg_configure := $(pkg_srcdir)/configure \
+	--build=$(HOST) \
+	--host=$(TARGET) \
 	--prefix=/usr \
 	--disable-silent-rules \
 	--disable-shared \
