@@ -37,7 +37,7 @@ stage2: obj/stage2/.install.stamp
 obj/stage3/.install.stamp: | stage2
 	$(MAKE) STAGE=stage3 TARGET_PKGS="$(HOST_PKGS)" install
 	mkdir -p etc
-	cp -rv pkg/etc/* etc
+	cp -rv $(PKG_DIR)/etc/* etc
 	cp -rv out/stage3/etc/* etc
 	ln -sfvT out/stage3/usr usr
 	ln -sfvT usr/bin bin
@@ -52,7 +52,7 @@ ifeq ($(CURDIR),/)
 obj/stage4/.install.stamp: | tmp
 	$(MAKE) STAGE=stage4 TARGET_PKGS="$(HOST_PKGS)" install
 	mkdir -p etc
-	cp -rv pkg/etc/* etc
+	cp -rv $(PKG_DIR)/etc/* etc
 	cp -rv out/stage4/etc/* etc
 	ln -sfvT out/stage4/usr usr
 	ln -sfvT usr/bin bin
@@ -64,7 +64,7 @@ obj/stage4/.install.stamp: | tmp stage3
 	mkdir -p obj/stage4
 	$(MAKE) chroot CHROOT_PROG="$(MAKE) STAGE=stage4 TARGET_PKGS=\"$(HOST_PKGS)\" install"
 	mkdir -p etc
-	cp -rv pkg/etc/* etc
+	cp -rv $(PKG_DIR)/etc/* etc
 	cp -rv out/stage4/etc/* etc
 	ln -sfvT out/stage4/usr usr
 	ln -sfvT usr/bin bin
@@ -94,7 +94,7 @@ force-bootstrap:
 	ln -sfvT usr/lib lib
 	ln -sfvT usr/bin sbin
 	mkdir -p etc
-	cp -rv pkg/etc/* etc
+	cp -rv $(PKG_DIR)/etc/* etc
 	cp -rv out/stage3/etc/* etc
 	$(MAKE) bootstrap builtins
 

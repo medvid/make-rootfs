@@ -25,7 +25,7 @@ endif
 $(SRC_DIR)/%: $(SRC_DIR)/%.orig
 	rm -rf $@.tmp
 	mv $< $@.tmp
-	test ! -d pkg/patches/$* || cat pkg/patches/$*/* | ( cd $@.tmp && patch -p1 )
+	test ! -d $(PKG_DIR)/patches/$* || cat $(PKG_DIR)/patches/$*/* | ( cd $@.tmp && patch -p1 )
 	rm -rf $@
 	mv $@.tmp $@
 

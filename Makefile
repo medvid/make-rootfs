@@ -29,6 +29,9 @@ else
 ROOT_DIR := $(CURDIR)
 endif
 
+# Directory with the package recipes
+PKG_DIR := pkg
+
 # Directory with the downloaded tarballs and checksums
 SRC_DIR := src
 
@@ -127,10 +130,10 @@ define pkg_add =
 # pkg_files and pkj_objdir are absolute paths
 pkg_srcdir := ../src_$(1)
 pkg_objdir := $(ROOT_DIR)/$(OBJ_DIR)/obj_$(1)
-pkg_files  := $(ROOT_DIR)/pkg/files/$(1)
+pkg_files  := $(ROOT_DIR)/$(PKG_DIR)/files/$(1)
 
 # Load packaging variables and functions
-include pkg/$(1).mk
+include $(PKG_DIR)/$(1).mk
 
 # Save global variables as package-specific variables
 $(1)_ver := $$(pkg_ver)
@@ -202,7 +205,7 @@ $(OBJ_DIR)/obj_$(1): | $(OBJ_DIR)/src_$(1)
 	$$($(1)_mkobjdir)
 
 # Prepare package
-$(OBJ_DIR)/obj_$(1)/.prepare.stamp: pkg/$(1).mk | $(OBJ_DIR)/obj_$(1) \
+$(OBJ_DIR)/obj_$(1)/.prepare.stamp: $(PKG_DIR)/$(1).mk | $(OBJ_DIR)/obj_$(1) \
 	$$(addprefix install-,$$($(1)_deps))
 	cd $(OBJ_DIR)/obj_$(1) && $$($(1)_vars) $$($(1)_prepare)
 	touch $$@
@@ -259,7 +262,7 @@ endef # pkg_add
 
 # Note: package recipes can be loaded in arbitrary order
 # sorting ensures deterministic behavior
-pkgs := $(patsubst pkg/%.mk,%,$(sort $(wildcard pkg/*.mk)))
+pkgs := $(patsubst pkg/%.mk,%,$(sort $(wildcard $(PKG_DIR)/*.mk)))
 
 # Load package recipes from pkg/*.mk
 $(foreach pkg,$(pkgs),$(eval $(call pkg_add,$(pkg))))
@@ -275,7 +278,7 @@ $(LOG_DIR):
 # Create the install directory and the necessary symlinks
 $(OUT_DIR):
 	mkdir -p $(OUT_DIR)/etc $(OUT_DIR)/usr/bin $(OUT_DIR)/usr/lib
-	cp -rv pkg/etc/* $(OUT_DIR)/etc
+	cp -rv $(PKG_DIR)/etc/* $(OUT_DIR)/etc
 	ln -sfvT usr/bin $(OUT_DIR)/bin
 	ln -sfvT usr/lib $(OUT_DIR)/lib
 	ln -sfvT usr/bin $(OUT_DIR)/sbin
