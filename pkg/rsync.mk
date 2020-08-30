@@ -1,4 +1,4 @@
-pkg_ver  := 3.2.2
+pkg_ver  := 3.2.3
 pkg_repo := https://git.samba.org/rsync.git
 pkg_site := https://www.samba.org/ftp/rsync/src
 pkg_deps := zlib libressl
