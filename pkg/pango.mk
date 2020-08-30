@@ -3,7 +3,7 @@ pkg_repo := https://gitlab.gnome.org/GNOME/pango
 pkg_site := https://ftp.gnome.org/pub/GNOME/sources/pango/$(basename $(pkg_ver))
 pkg_deps := expat fontconfig cairo glib harfbuzz fribidi
 
-pkg_configure := meson \
+pkg_configure := LDFLAGS="$(LDFLAGS) -lpng -luuid -lexpat -lpixman-1" meson \
 	--cross-file $(TARGET).txt \
 	--prefix=/usr \
 	--sysconfdir=/etc \
