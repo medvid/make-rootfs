@@ -6,4 +6,10 @@ pkg_deps := setuptools
 
 pkg_build := python3 setup.py build
 
-pkg_install := python3 setup.py install --optimize=1 --skip-build --prefix=/usr --root=$(OUT_DIR)
+pkg_install := python3 setup.py install \
+	--prefix=/usr \
+	--root=$(OUT_DIR) \
+	--skip-build \
+	--optimize=1 && \
+	install -d -D -v -m 755 $(OUT_DIR)/usr/share/meson/cross && \
+	install -v $(pkg_files)/*.txt $(OUT_DIR)/usr/share/meson/cross

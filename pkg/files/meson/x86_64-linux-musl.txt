@@ -1,0 +1,11 @@
+[binaries]
+c = 'clang'
+ar = 'llvm-ar'
+strip = 'llvm-strip'
+pkgconfig = 'pkgconf'
+
+[host_machine]
+system = 'linux'
+cpu_family = 'x86_64'
+cpu = 'x86_64'
+endian = 'little'

@@ -1,0 +1,15 @@
+[binaries]
+c = 'clang'
+cpp = 'clang++'
+ar = 'llvm-ar'
+ld = 'lld'
+objcopy = 'llvm-objcopy'
+readelf = 'llvm-readelf'
+strip = 'llvm-strip'
+pkgconfig = 'pkgconf'
+
+[host_machine]
+system = 'linux'
+cpu_family = 'arm'
+cpu = 'armv7'
+endian = 'little'
