@@ -8,11 +8,7 @@ pkg_prepare := find -L $(pkg_srcdir) -name meson.build \
 	-exec sed -e "s/'nm'/'llvm-nm'/g" -e "s/shared_library/library/g" -i {} \;
 
 # TODO: -Dintel=true requires libpciaccess
-pkg_configure := meson \
-	--cross-file $(TARGET).txt \
-	--prefix=/usr \
-	--sysconfdir=/etc \
-	-Ddefault_library=static \
+pkg_configure := $(meson_pkg_configure) \
 	-Dlibkms=true \
 	-Dintel=false \
 	-Dradeon=true \

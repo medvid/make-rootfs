@@ -2,11 +2,7 @@ pkg_ver  := 1.0.10
 pkg_repo := https://github.com/fribidi/fribidi
 pkg_site := $(pkg_repo)/releases/download/v$(pkg_ver)
 
-pkg_configure := meson \
-	--cross-file $(TARGET).txt \
-	--prefix=/usr \
-	--sysconfdir=/etc \
-	-Ddefault_library=static \
+pkg_configure := $(meson_pkg_configure) \
 	-Ddeprecated=false \
 	-Ddocs=false \
 	-Dtests=false \

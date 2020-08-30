@@ -7,13 +7,7 @@ pkg_deps := libffi expat
 pkg_prepare := sed -e "s/'nm'/'llvm-nm'/g" -i $(pkg_srcdir)/egl/meson.build && \
 	sed -e "/'tests'/s/^\t/\t\#/" -i $(pkg_srcdir)/meson.build
 
-pkg_configure := meson \
-	--cross-file $(TARGET).txt \
-	--prefix=/usr \
-	--sysconfdir=/etc \
-	--mandir=/usr/share/man \
-	--localstatedir=/var \
-	-Ddefault_library=static \
+pkg_configure := $(meson_pkg_configure) \
 	-Ddocumentation=false \
 	-Ddtd_validation=false \
 	$(pkg_srcdir) $(pkg_objdir)

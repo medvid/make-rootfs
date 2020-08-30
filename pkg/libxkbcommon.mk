@@ -3,11 +3,7 @@ pkg_repo := https://github.com/xkbcommon/libxkbcommon
 pkg_site := https://xkbcommon.org/download
 pkg_deps := wayland wayland-protocols xkeyboard-config
 
-pkg_configure := meson \
-	--cross-file $(TARGET).txt \
-	--prefix=/usr \
-	--sysconfdir=/etc \
-	-Ddefault_library=static \
+pkg_configure := $(meson_pkg_configure) \
 	-Dxkb-config-root=/usr/share/X11/xkb \
 	-Denable-x11=false \
 	-Denable-docs=false \

@@ -2,11 +2,7 @@ pkg_ver  := 1.4.5
 pkg_repo := https://github.com/facebook/zstd
 pkg_site := $(pkg_repo)/releases/download/v$(pkg_ver)
 
-pkg_configure := meson \
-	--cross-file $(TARGET).txt \
-	--prefix=/usr \
-	--sysconfdir=/etc \
-	-Ddefault_library=static \
+pkg_configure := $(meson_pkg_configure) \
 	-Dbin_programs=false \
 	-Dzlib=disabled \
 	-Dlzma=disabled \
