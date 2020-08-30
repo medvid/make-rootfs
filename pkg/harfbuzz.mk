@@ -5,6 +5,9 @@ pkg_deps := freetype fontconfig cairo glib
 
 # TODO: check why Requires.private is not parsed from fontconfig.pc
 pkg_configure := LDFLAGS="$(LDFLAGS) -lz -lpng -lexpat -luuid -lfontconfig -lpixman-1" meson \
+	--cross-file $(TARGET).txt \
+	--prefix=/usr \
+	--sysconfdir=/etc \
 	-Ddefault_library=static \
 	-Dglib=enabled \
 	-Dgobject=disabled \
@@ -17,7 +20,6 @@ pkg_configure := LDFLAGS="$(LDFLAGS) -lz -lpng -lexpat -luuid -lfontconfig -lpix
 	-Dintrospection=disabled \
 	-Ddocs=disabled \
 	-Dbenchmark=disabled \
-	--prefix=/usr \
 	$(pkg_srcdir) $(pkg_objdir)
 
 pkg_build := ninja -v
