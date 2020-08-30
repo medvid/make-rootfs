@@ -97,7 +97,7 @@ meson_pkg_configure := meson \
 
 # Pass --cross-file argument when not bootstrapping
 # The cross files are not found on host before stage4
-ifneq ($(STAGE),)
+ifeq ($(STAGE),)
 meson_pkg_configure += --cross-file $(TARGET).txt
 endif
 
