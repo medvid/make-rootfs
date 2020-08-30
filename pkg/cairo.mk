@@ -3,7 +3,7 @@ pkg_repo := https://gitlab.freedesktop.org/cairo/cairo
 pkg_site := https://cairographics.org/snapshots
 pkg_deps := libpng pixman freetype fontconfig
 
-pkg_configure := $(pkg_srcdir)/configure \
+pkg_configure := LDFLAGS="$(LDFLAGS) -luuid -lexpat" $(pkg_srcdir)/configure \
 	--build=$(HOST) \
 	--host=$(TARGET) \
 	--prefix=/usr \
