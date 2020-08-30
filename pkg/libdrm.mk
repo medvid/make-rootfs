@@ -9,6 +9,7 @@ pkg_prepare := find -L $(pkg_srcdir) -name meson.build \
 
 # TODO: -Dintel=true requires libpciaccess
 pkg_configure := meson \
+	--cross-file $(TARGET).txt \
 	--prefix=/usr \
 	--sysconfdir=/etc \
 	-Ddefault_library=static \
