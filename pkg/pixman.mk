@@ -10,6 +10,13 @@ pkg_configure := LDFLAGS="$(LDFLAGS) -Wl,-z,stack-size=2097152" meson \
 	--localstatedir=/var \
 	--buildtype=plain \
 	-Ddefault_library=static \
+	-Darm-simd=disabled \
+	-Dneon=disabled \
+	-Diwmmxt=disabled \
+	-Dgnu-inline-asm=disabled \
+	-Dopenmp=disabled \
+	-Dgtk=disabled \
+	-Dlibpng=disabled \
 	$(pkg_srcdir) $(pkg_objdir)
 
 pkg_build := ninja -v
