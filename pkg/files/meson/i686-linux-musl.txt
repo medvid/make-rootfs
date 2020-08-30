@@ -7,6 +7,7 @@ objcopy = 'llvm-objcopy'
 readelf = 'llvm-readelf'
 strip = 'llvm-strip'
 pkgconfig = 'pkgconf'
+cmake = 'cmake'
 
 [host_machine]
 system = 'linux'

@@ -1,8 +1,13 @@
 [binaries]
 c = 'clang'
+cpp = 'clang++'
 ar = 'llvm-ar'
+ld = 'lld'
+objcopy = 'llvm-objcopy'
+readelf = 'llvm-readelf'
 strip = 'llvm-strip'
 pkgconfig = 'pkgconf'
+cmake = 'cmake'
 
 [host_machine]
 system = 'linux'
