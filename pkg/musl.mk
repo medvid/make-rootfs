@@ -1,4 +1,4 @@
-pkg_ver  := 1.2.0
+pkg_ver  := 1.2.1
 pkg_repo := git://git.musl-libc.org/musl
 pkg_site := https://www.musl-libc.org/releases
 
