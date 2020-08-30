@@ -7,16 +7,17 @@ pkg_deps := zlib pcre libffi
 pkg_prepare := sed -e '/^build_tests = /a build_tests = false' -i $(pkg_srcdir)/meson.build
 
 pkg_configure := meson \
+	--cross-file $(TARGET).txt \
+	--prefix=/usr \
+	--sysconfdir=/etc \
+	--mandir=/usr/share/man \
+	--localstatedir=/var \
 	-Ddefault_library=static \
 	-Dselinux=disabled \
 	-Dxattr=false \
 	-Dlibmount=disabled \
 	-Dman=false \
 	-Dnls=disabled \
-	--prefix=/usr \
-	--sysconfdir=/etc \
-	--mandir=/usr/share/man \
-	--localstatedir=/var \
 	$(pkg_srcdir) $(pkg_objdir)
 
 pkg_build := ninja -v
