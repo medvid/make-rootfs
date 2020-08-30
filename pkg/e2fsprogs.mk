@@ -1,6 +1,6 @@
 pkg_ver  := 1.45.6
 pkg_repo := https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git
-pkg_site := http://prdownloads.sourceforge.net/e2fsprogs
+pkg_site := https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v$(pkg_ver)
 
 # Note: AC_PROG_MKDIR_P doesn't like relative paths
 pkg_configure := $(pkg_objdir)/$(pkg_srcdir)/configure \
