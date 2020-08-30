@@ -1,5 +1,23 @@
-# Set the list of packages built at stage1 and stage2
-BASE_PKGS := musl linux-headers llvm
+# Set the list of packages built at stage1
+STAGE1_PKGS := musl linux-headers llvm
+
+# Set the list of packages built at stage2
+STAGE2_PKGS := musl linux-headers llvm
+
+# Set the list of packages built at stage3
+# Note: the package order matters as the pkg_deps in pkg/*.mk
+# do not specify the build-only dependencies (cmake, meson, bison, ..).
+# The package binaries are installed to out/stage3 one-by-one, while
+# out/stage3/usr/bin is the first entry in PATH - extra care needed
+STAGE3_PKGS := musl linux-headers llvm libarchive libressl toybox \
+	pkgconf mawk diffutils m4 bash make bc grep xz wget libffi python \
+	ninja cmake rsync perl curl git gperf m4 flex bison meson
+
+# Set the list of packages built at stage4
+STAGE4_PKGS := musl linux-headers llvm zlib libarchive libressl toybox \
+	pkgconf mawk diffutils m4 flex bison bash make bc grep xz wget \
+	libffi python ninja cmake rsync perl curl git e2fsprogs gperf strace \
+	glib wayland qt flex meson
 
 # Check if we are currently bootstrapping
 ifneq ($(STAGE),)
@@ -23,19 +41,19 @@ export PKG_CONFIG_SYSROOT_DIR = $(OUT_DIR)
 endif
 
 obj/stage1/.install.stamp:
-	$(MAKE) STAGE=stage1 TARGET_PKGS="$(BASE_PKGS)" install
+	$(MAKE) STAGE=stage1 TARGET_PKGS="$(STAGE1_PKGS)" install
 	touch $@
 
 stage1: obj/stage1/.install.stamp
 
 obj/stage2/.install.stamp: | stage1
-	$(MAKE) STAGE=stage2 TARGET_PKGS="$(BASE_PKGS)" install
+	$(MAKE) STAGE=stage2 TARGET_PKGS="$(STAGE2_PKGS)" install
 	touch $@
 
 stage2: obj/stage2/.install.stamp
 
 obj/stage3/.install.stamp: | stage2
-	$(MAKE) STAGE=stage3 TARGET_PKGS="$(HOST_PKGS)" install
+	$(MAKE) STAGE=stage3 TARGET_PKGS="$(STAGE3_PKGS)" install
 	mkdir -p etc
 	cp -rv $(PKG_DIR)/etc/* etc
 	cp -rv out/stage3/etc/* etc
@@ -50,7 +68,7 @@ stage3: obj/stage3/.install.stamp
 ifeq ($(CURDIR),/)
 # Note: stage3 timestamps are not present inside the multi-stage docker build
 obj/stage4/.install.stamp: | tmp
-	$(MAKE) STAGE=stage4 TARGET_PKGS="$(HOST_PKGS)" install
+	$(MAKE) STAGE=stage4 TARGET_PKGS="$(STAGE4_PKGS)" install
 	mkdir -p etc
 	cp -rv $(PKG_DIR)/etc/* etc
 	cp -rv out/stage4/etc/* etc
@@ -62,7 +80,7 @@ obj/stage4/.install.stamp: | tmp
 else
 obj/stage4/.install.stamp: | tmp stage3
 	mkdir -p obj/stage4
-	$(MAKE) chroot CHROOT_PROG="$(MAKE) STAGE=stage4 TARGET_PKGS=\"$(HOST_PKGS)\" install"
+	$(MAKE) chroot CHROOT_PROG="$(MAKE) STAGE=stage4 TARGET_PKGS=\"$(STAGE4_PKGS)\" install"
 	mkdir -p etc
 	cp -rv $(PKG_DIR)/etc/* etc
 	cp -rv out/stage4/etc/* etc

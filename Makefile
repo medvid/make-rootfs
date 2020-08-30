@@ -10,16 +10,6 @@ SHELL := $(shell which bash) -o pipefail
 # Set the host toolchain triple
 HOST ?= x86_64-linux-musl
 
-# Set the list of packages built during bootstrapping stages
-# Note: the package order matters as the pkg/*.mk recipes
-# do not specify the build dependencies.
-# The package binaries are installed to $(OUT_DIR)/usr/bin
-# one-by-one, the later
-HOST_PKGS := musl linux-headers llvm zlib libarchive libressl toybox \
-	pkgconf mawk diffutils m4 bash make bc grep xz wget libffi python \
-	ninja cmake rsync perl curl git e2fsprogs gperf meson strace \
-	glib wayland qt flex bison
-
 # Set the target toolchain triple
 TARGET ?= x86_64-linux-musl
 
