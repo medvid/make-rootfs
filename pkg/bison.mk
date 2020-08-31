@@ -2,7 +2,7 @@ pkg_ver  := 3.7
 pkg_repo := https://git.savannah.gnu.org/git/bison
 pkg_site := https://ftp.gnu.org/gnu/bison
 
-pkg_configure := $(pkg_srcdir)/configure \
+pkg_configure := M4=/usr/bin/m4 $(pkg_srcdir)/configure \
 	--build=$(HOST) \
 	--host=$(TARGET) \
 	--prefix=/usr \
