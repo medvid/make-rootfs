@@ -1,4 +1,4 @@
-pkg_ver  := 0.10.0
+pkg_ver  := 1.0.1
 pkg_repo := https://github.com/xkbcommon/libxkbcommon
 pkg_site := https://xkbcommon.org/download
 pkg_deps := wayland wayland-protocols xkeyboard-config
