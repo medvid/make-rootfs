@@ -20,9 +20,14 @@ pkg_dir="$(sed -n -e '/^pkg_dir/s/pkg_dir[ ]\+:= //p' "$ROOTPATH/pkg/$pkg_name.m
 pkg_dir="${pkg_dir/\$(pkg_ver)/$pkg_ver}"
 echo pkg_dir=$pkg_dir
 
+if ! git diff --stat --exit-code; then
+  echo "Working tree dirty, aborting.."
+  exit 1
+fi
+
 sed -e "/^pkg_ver/s/$old_ver/$pkg_ver/" -i "$ROOTPATH/pkg/$pkg_name.mk"
 
-pkg_old_sha="$(cd "$ROOTPATH/src" && find . -maxdepth 1 -name "$pkg_base*.sha256sum" | tail -1)"
+pkg_old_sha="$(basename "$(cd "$ROOTPATH/src" && find . -maxdepth 1 -name "$pkg_base*.sha256sum" | tail -1)")"
 if [[ -f "$ROOTPATH/src/$pkg_old_sha" ]]; then
   pkg_new_sha="$(echo "$pkg_old_sha" | sed -e "s/$old_ver/$pkg_ver/")"
   if [[ "$pkg_old_sha" != "$pkg_new_sha" ]]; then
@@ -35,3 +40,5 @@ else
 fi
 
 MAINT=1 make -C "$ROOTPATH" "src/$pkg_dir"
+git add "$ROOTPATH/pkg/$pkg_name.mk" "$ROOTPATH/src/$pkg_old_sha" "$ROOTPATH/src/$pkg_new_sha"
+git commit -m "$pkg_name: update to $pkg_ver"
