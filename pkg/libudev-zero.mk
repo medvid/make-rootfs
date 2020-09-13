@@ -1,4 +1,4 @@
-pkg_ver  := 0.4.1
+pkg_ver  := 0.4.2
 pkg_repo := https://github.com/illiliti/libudev-zero
 pkg_url  := $(pkg_repo)/archive/$(pkg_ver).tar.gz
 pkg_copy := true
