@@ -1,4 +1,4 @@
-pkg_ver  := 49.6.0
+pkg_ver  := 50.3.0
 pkg_repo := https://github.com/pypa/setuptools
 pkg_site := https://files.pythonhosted.org/packages/source/s/setuptools
 pkg_copy := true
