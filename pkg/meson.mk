@@ -13,5 +13,6 @@ pkg_install := python3 setup.py install \
 	--root=$(OUT_DIR) \
 	--skip-build \
 	--optimize=1 && \
+	sed -e '1c$(shell echo "\#")!/usr/bin/python3' -i $(OUT_DIR)/usr/bin/meson && \
 	install -d -D -v -m 755 $(OUT_DIR)/usr/share/meson/cross && \
 	install -v -m 644 $(pkg_files)/*.txt $(OUT_DIR)/usr/share/meson/cross
