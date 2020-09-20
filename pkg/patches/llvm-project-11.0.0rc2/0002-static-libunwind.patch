@@ -1,11 +1,11 @@
 diff --git a/clang/lib/Driver/ToolChains/CommonArgs.cpp b/clang/lib/Driver/ToolChains/CommonArgs.cpp
-index 37ec7346857..6563a994a57 100644
+index 5dc5d834136..b62386019a9 100644
 --- a/clang/lib/Driver/ToolChains/CommonArgs.cpp
 +++ b/clang/lib/Driver/ToolChains/CommonArgs.cpp
-@@ -1212,7 +1212,7 @@ static void AddUnwindLibrary(const ToolChain &TC, const Driver &D,
-     if (LGT == LibGccType::StaticLibGcc)
-       CmdArgs.push_back("-l:libunwind.a");
-     else
+@@ -1330,7 +1330,7 @@ static void AddUnwindLibrary(const ToolChain &TC, const Driver &D,
+         // depending on what's available, and depending on the -static flag
+         CmdArgs.push_back("-lunwind");
+     } else
 -      CmdArgs.push_back("-l:libunwind.so");
 +      CmdArgs.push_back("-lunwind");
      break;
