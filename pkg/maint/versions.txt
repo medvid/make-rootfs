@@ -1,9 +1,9 @@
 bash 5.0
-bc 3.1.5
+bc 3.1.6
 bison 3.7.2
 bzip2 1.0.8
 cairo 1.17.2
-cmake 3.18.2
+cmake 3.18.3
 curl 7.72.0
 diffutils 3.7
 e2fsprogs 1.45.6
@@ -28,7 +28,7 @@ libinput 1.16.1
 libite 2.2.0
 libpng 1.6.37
 libressl 3.2.1
-libudev-zero 0.4.2
+libudev-zero 0.4.4
 libuev 2.3.1
 libuuid 1.0.3
 libxkbcommon 1.0.1
@@ -51,7 +51,7 @@ python 3.8.5
 qt 5.15.1
 rsync 3.2.3
 setuptools 50.3.0
-strace 5.8
+strace 5.9
 tmux 3.1b
 toybox 0.8.3
 wayland 1.18.0
