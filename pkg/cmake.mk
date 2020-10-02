@@ -1,4 +1,4 @@
-pkg_ver  := 3.18.2
+pkg_ver  := 3.18.3
 pkg_repo := https://github.com/Kitware/CMake
 pkg_site := $(pkg_repo)/releases/download/v$(pkg_ver)
 pkg_deps := libressl
