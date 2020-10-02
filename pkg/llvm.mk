@@ -1,4 +1,4 @@
-pkg_ver  := 11.0.0rc2
+pkg_ver  := 10.0.1
 pkg_repo := https://github.com/llvm/llvm-project
 pkg_site := $(pkg_repo)/releases/download/llvmorg-$(subst rc,-rc,$(pkg_ver))
 pkg_base := llvm-project
