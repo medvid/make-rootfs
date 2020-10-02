@@ -15,3 +15,5 @@ do
 done < versions_new.txt
 
 mv versions_new.txt versions.txt
+git add versions.txt
+git commit -m "maint: update versions.txt"
