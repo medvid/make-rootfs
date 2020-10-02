@@ -22,4 +22,5 @@ pkg_configure := $(pkg_srcdir)/configure \
 
 pkg_build := make LINKFORSHARED= EXTRA_CFLAGS="$(CFLAGS) -DTHREAD_STACK_SIZE=0x100000"
 
-pkg_install := make install DESTDIR=$(OUT_DIR)
+pkg_install := make install DESTDIR=$(OUT_DIR) && \
+	ln -sf python3 $(OUT_DIR)/usr/bin/python
