@@ -1,4 +1,4 @@
-pkg_ver  := 2.30
+pkg_ver  := 2.31
 pkg_repo := https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config
 pkg_site := http://www.x.org/releases/individual/data/xkeyboard-config
 
