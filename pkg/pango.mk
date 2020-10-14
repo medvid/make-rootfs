@@ -1,4 +1,4 @@
-pkg_ver  := 1.46.2
+pkg_ver  := 1.47.0
 pkg_repo := https://gitlab.gnome.org/GNOME/pango
 pkg_site := https://ftp.gnome.org/pub/GNOME/sources/pango/$(basename $(pkg_ver))
 pkg_deps := expat fontconfig cairo glib harfbuzz fribidi
