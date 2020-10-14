@@ -1,4 +1,4 @@
-pkg_ver  := 1.16.1
+pkg_ver  := 1.16.2
 pkg_repo := https://gitlab.freedesktop.org/libinput/libinput
 pkg_site := https://www.freedesktop.org/software/libinput
 pkg_deps := libevdev mtdev libudev-zero
