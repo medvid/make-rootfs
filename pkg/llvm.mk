@@ -1,6 +1,6 @@
-pkg_ver  := 10.0.1
+pkg_ver  := 11.0.0
 pkg_repo := https://github.com/llvm/llvm-project
-pkg_site := $(pkg_repo)/releases/download/llvmorg-$(subst rc,-rc,$(pkg_ver))
+pkg_site := $(pkg_repo)/releases/download/llvmorg-$(pkg_ver)
 pkg_base := llvm-project
 pkg_deps := linux-headers
 
@@ -165,7 +165,7 @@ pkg_install := DESTDIR=$(OUT_DIR) ninja $(llvm_install_targets)
 # Avoid overwriting the host builtins
 ifneq ($(HOST),$(TARGET))
 ifeq ($(llvm_builtins_only),true)
-pkg_install += && cp -v lib/clang/11.0.0/lib/linux/* $(ROOT_DIR)/usr/lib/clang/11.0.0/lib/linux
+pkg_install += && cp -v lib/clang/$(pkg_ver)/lib/linux/* $(ROOT_DIR)/usr/lib/clang/$(pkg_ver)/lib/linux
 endif
 endif
 
