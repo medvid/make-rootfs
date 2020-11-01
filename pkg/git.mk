@@ -1,4 +1,4 @@
-pkg_ver  := 2.28.0
+pkg_ver  := 2.29.2
 pkg_repo := https://github.com/git/git
 pkg_site := https://mirrors.edge.kernel.org/pub/software/scm/git
 pkg_deps := zlib curl libressl
