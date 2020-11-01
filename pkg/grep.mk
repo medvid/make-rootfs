@@ -1,4 +1,4 @@
-pkg_ver  := 3.4
+pkg_ver  := 3.5
 pkg_repo := https://git.savannah.gnu.org/git/grep
 pkg_site := https://ftp.gnu.org/gnu/grep
 
