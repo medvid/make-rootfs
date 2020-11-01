@@ -1,4 +1,4 @@
-pkg_ver  := 2.2.9
+pkg_ver  := 2.2.10
 pkg_repo := https://github.com/libexpat/libexpat
 pkg_site := $(pkg_repo)/releases/download/R_$(subst .,_,$(pkg_ver))
 
