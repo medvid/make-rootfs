@@ -1,4 +1,4 @@
-pkg_ver  := 2.10.3
+pkg_ver  := 2.10.4
 pkg_repo := https://git.savannah.gnu.org/git/freetype/freetype2.git
 pkg_site := https://download.savannah.gnu.org/releases/freetype
 pkg_deps := zlib libpng
