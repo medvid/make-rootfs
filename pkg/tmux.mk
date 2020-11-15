@@ -1,4 +1,4 @@
-pkg_ver  := 3.1b
+pkg_ver  := 3.1c
 pkg_repo := https://github.com/tmux/tmux
 pkg_site := $(pkg_repo)/releases/download/$(pkg_ver)
 pkg_deps := ncurses libevent
