@@ -1,4 +1,4 @@
-pkg_ver  := 0.8.3
+pkg_ver  := 0.8.4
 pkg_repo := https://github.com/landley/toybox
 pkg_site := https://landley.net/toybox/downloads
 pkg_deps := libressl
