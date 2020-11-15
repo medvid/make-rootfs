@@ -1,4 +1,4 @@
-pkg_ver  := 2.4.102
+pkg_ver  := 2.4.103
 pkg_repo := https://gitlab.freedesktop.org/mesa/drm
 pkg_site := https://dri.freedesktop.org/libdrm
 pkg_deps := libudev-zero
