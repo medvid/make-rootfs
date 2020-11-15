@@ -1,4 +1,4 @@
-pkg_ver  := 5.73.0
+pkg_ver  := 5.75.0
 pkg_repo := https://invent.kde.org/frameworks/kcoreaddons
 pkg_site := https://download.kde.org/stable/frameworks/$(basename $(pkg_ver))
 pkg_deps := extra-cmake-modules qt
