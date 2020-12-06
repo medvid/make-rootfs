@@ -1,4 +1,4 @@
-pkg_ver  := 3.8.6
+pkg_ver  := 3.9.0
 pkg_repo := https://github.com/python/cpython
 pkg_site := https://www.python.org/ftp/python/$(pkg_ver)
 pkg_base := Python
