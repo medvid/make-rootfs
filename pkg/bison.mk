@@ -1,4 +1,4 @@
-pkg_ver  := 3.7.3
+pkg_ver  := 3.7.4
 pkg_repo := https://git.savannah.gnu.org/git/bison
 pkg_site := https://ftp.gnu.org/gnu/bison
 
