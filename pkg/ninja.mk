@@ -1,4 +1,4 @@
-pkg_ver  := 1.10.1
+pkg_ver  := 1.10.2
 pkg_repo := https://github.com/ninja-build/ninja
 pkg_url  := $(pkg_repo)/archive/v$(pkg_ver).tar.gz
 
