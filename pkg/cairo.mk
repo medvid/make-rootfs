@@ -1,4 +1,4 @@
-pkg_ver  := 1.17.2
+pkg_ver  := 1.17.4
 pkg_repo := https://gitlab.freedesktop.org/cairo/cairo
 pkg_site := https://cairographics.org/snapshots
 pkg_deps := libpng pixman freetype fontconfig
