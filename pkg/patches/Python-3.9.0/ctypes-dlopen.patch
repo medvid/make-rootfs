@@ -1,0 +1,14 @@
+--- Python-3.9.0/Lib/ctypes/__init__.py
++++ Python-3.9.0/Lib/ctypes/__init__.py
+@@ -441,7 +441,10 @@
+ elif _sys.platform == "cygwin":
+     pythonapi = PyDLL("libpython%d.%d.dll" % _sys.version_info[:2])
+ else:
+-    pythonapi = PyDLL(None)
++    try:
++        pythonapi = PyDLL(None)
++    except OSError:
++        pythonapi = None
+ 
+ 
+ if _os.name == "nt":
