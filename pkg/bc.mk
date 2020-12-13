@@ -1,4 +1,4 @@
-pkg_ver  := 3.2.3
+pkg_ver  := 3.2.4
 pkg_repo := https://git.yzena.com/gavin/bc
 pkg_site := https://github.com/gavinhoward/bc/releases/download/$(pkg_ver)
 pkg_copy := true
