@@ -1,6 +1,6 @@
 pkg_ver  := 1.2.1
 pkg_repo := git://git.musl-libc.org/musl
-pkg_site := https://www.musl-libc.org/releases
+pkg_site := https://musl.libc.org/releases
 
 pkg_configure := $(pkg_srcdir)/configure \
 	--prefix=/usr \
