@@ -55,7 +55,11 @@ Should work on any Linux distribution with Clang/LLVM >= 6 and recent GNU Make a
 
 Install the prerequisites:
 
-    sudo apt install cmake curl lzip make ninja-build patch rsync sudo clang lld llvm libarchive-tools python3-distutils
+    sudo apt install cmake curl make ninja-build patch rsync sudo clang lld llvm libarchive-tools python3-distutils
+
+In case /usr/bin/python is not available (Ubuntu 20.04), install additional package:
+
+    sudo apt install python-is-python3
 
 Execute the bootstrap target:
 
