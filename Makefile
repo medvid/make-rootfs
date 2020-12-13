@@ -184,8 +184,8 @@ ifeq ($$($(1)_dir),)
 $(1)_dir := $$($(1)_base)-$$($(1)_ver)
 endif
 
-# Add standard build dependencies (BASE_PKGS)
-ifneq ($(filter-out $(BASE_PKGS),$(1)),)
+# Add standard build dependencies (STAGE1_PKGS)
+ifneq ($(filter-out $(STAGE1_PKGS),$(1)),)
 	$(1)_deps += llvm
 endif
 
