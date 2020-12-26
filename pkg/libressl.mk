@@ -1,4 +1,4 @@
-pkg_ver  := 3.2.2
+pkg_ver  := 3.2.3
 pkg_repo := https://github.com/libressl-portable/portable
 pkg_site := https://ftp.openbsd.org/pub/OpenBSD/LibreSSL
 
