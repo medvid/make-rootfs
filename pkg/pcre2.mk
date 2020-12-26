@@ -1,4 +1,4 @@
-pkg_ver  := 10.35
+pkg_ver  := 10.36
 pkg_site := https://ftp.pcre.org/pub/pcre
 
 pkg_configure := cmake -G Ninja $(pkg_srcdir) \
