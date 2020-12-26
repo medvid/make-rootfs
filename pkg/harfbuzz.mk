@@ -1,4 +1,4 @@
-pkg_ver  := 2.7.2
+pkg_ver  := 2.7.3
 pkg_repo := https://github.com/harfbuzz/harfbuzz
 pkg_url  := $(pkg_repo)/archive/$(pkg_ver).tar.gz
 pkg_deps := freetype fontconfig cairo glib
