@@ -1,6 +1,6 @@
 pkg_ver  := 1.6.37
 pkg_repo := https://git.code.sf.net/p/libpng/code
-pkg_site := http://prdownloads.sourceforge.net/libpng
+pkg_site := https://download.sourceforge.net/libpng
 pkg_deps := zlib
 
 pkg_configure := cmake -G Ninja $(pkg_srcdir) \
