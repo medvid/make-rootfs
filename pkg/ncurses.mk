@@ -13,6 +13,7 @@ pkg_configure := $(pkg_srcdir)/configure \
 	--without-tack \
 	--without-tests \
 	--enable-pc-files \
+	--with-build-cc="$(CC)-11" \
 	--with-build-cflags="$(HOST_CFLAGS)" \
 	--with-build-ldflags="$(HOST_LDFLAGS)" \
 	--without-debug \
