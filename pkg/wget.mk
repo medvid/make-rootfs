@@ -1,7 +1,7 @@
 pkg_ver  := 1.20.3
 pkg_repo := https://git.savannah.gnu.org/git/wget
 pkg_site := https://ftp.gnu.org/gnu/wget
-pkg_deps := zlib libressl
+pkg_deps := zlib openssl
 
 pkg_configure := $(pkg_srcdir)/configure \
 	--build=$(HOST) \

@@ -9,12 +9,12 @@ STAGE2_PKGS := musl linux-headers llvm
 # do not specify the build-only dependencies (cmake, meson, bison, ..).
 # The package binaries are installed to out/stage3 one-by-one, while
 # out/stage3/usr/bin is the first entry in PATH - extra care needed
-STAGE3_PKGS := musl linux-headers llvm libarchive libressl toybox \
+STAGE3_PKGS := musl linux-headers llvm libarchive openssl toybox \
 	pkgconf mawk diffutils m4 bash make bc grep xz wget libffi python \
 	ninja cmake rsync perl curl git gperf m4 flex bison meson
 
 # Set the list of packages built at stage4
-STAGE4_PKGS := musl linux-headers llvm zlib libarchive libressl toybox \
+STAGE4_PKGS := musl linux-headers llvm zlib libarchive openssl toybox \
 	pkgconf mawk diffutils m4 flex bison bash make bc grep xz wget \
 	libffi python ninja cmake rsync perl curl git e2fsprogs gperf strace \
 	glib wayland flex meson

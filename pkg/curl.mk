@@ -1,7 +1,7 @@
 pkg_ver  := 7.74.0
 pkg_repo := https://github.com/curl/curl
 pkg_site := https://curl.haxx.se/download
-pkg_deps := zlib libressl
+pkg_deps := zlib openssl
 
 pkg_configure := $(pkg_srcdir)/configure \
 	--build=$(HOST) \

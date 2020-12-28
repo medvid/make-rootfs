@@ -1,7 +1,7 @@
 pkg_ver  := 2.29.2
 pkg_repo := https://github.com/git/git
 pkg_site := https://mirrors.edge.kernel.org/pub/software/scm/git
-pkg_deps := zlib curl libressl
+pkg_deps := zlib curl openssl
 pkg_copy := true
 
 # TODO: figure out proper way to set CURL_LDFLAGS

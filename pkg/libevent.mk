@@ -2,7 +2,7 @@ pkg_ver  := 2.1.12
 pkg_repo := https://github.com/libevent/libevent
 pkg_site := $(pkg_repo)/releases/download/release-$(pkg_ver)-stable
 pkg_dir  := libevent-$(pkg_ver)-stable
-pkg_deps := libressl
+pkg_deps := openssl
 
 pkg_configure := $(pkg_srcdir)/configure \
 	--build=$(HOST) \

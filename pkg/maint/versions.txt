@@ -32,7 +32,6 @@ libffi 3.3
 libinput 1.16.4
 libite 2.2.0
 libpng 1.6.37
-libressl 3.2.3
 libudev-zero 0.4.5
 libuev 2.3.1
 libuuid 1.0.3
@@ -46,6 +45,7 @@ mtdev 1.1.6
 musl 1.2.1
 ncurses 6.2
 ninja 1.10.2
+openssl 1.1.1i
 pango 1.48.0
 pcre 8.44
 pcre2 10.36

@@ -1,7 +1,7 @@
 pkg_ver  := 3.19.2
 pkg_repo := https://github.com/Kitware/CMake
 pkg_site := $(pkg_repo)/releases/download/v$(pkg_ver)
-pkg_deps := libressl
+pkg_deps := openssl
 
 pkg_configure := cmake -G Ninja $(pkg_srcdir) \
 	-DCMAKE_BUILD_TYPE=Release \

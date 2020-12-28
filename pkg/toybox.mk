@@ -1,7 +1,7 @@
 pkg_ver  := 0.8.4
 pkg_repo := https://github.com/landley/toybox
 pkg_site := https://landley.net/toybox/downloads
-pkg_deps := libressl
+pkg_deps := openssl
 
 # toybox doesn't support out-of-tree build
 # http://lists.landley.net/pipermail/toybox-landley.net/2017-December/009305.html
