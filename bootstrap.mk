@@ -17,7 +17,7 @@ STAGE3_PKGS := musl linux-headers llvm libarchive openssl toybox \
 STAGE4_PKGS := musl linux-headers llvm zlib libarchive openssl toybox \
 	pkgconf mawk diffutils m4 flex bison bash make bc grep xz wget \
 	libffi python ninja cmake rsync perl curl git e2fsprogs gperf strace \
-	glib wayland flex meson
+	glib wayland flex meson ncurses
 
 # Check if we are currently bootstrapping
 ifneq ($(STAGE),)
