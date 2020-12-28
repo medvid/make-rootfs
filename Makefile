@@ -114,7 +114,7 @@ else ifneq (,$(findstring arm,$(TARGET)))
 cmake_target_arch := arm
 else ifneq (,$(findstring x86_64,$(TARGET)))
 cmake_target_arch := x86_64
-else ifneq (,$(findstring x86,$(TARGET)))
+else ifneq (,$(findstring 86,$(TARGET)))
 cmake_target_arch := x86
 else
 $(error Unsupported TARGET: $(TARGET))
