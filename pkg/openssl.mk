@@ -9,7 +9,7 @@ openssl_target_arch := linux-armv4
 else ifneq (,$(findstring x86_64,$(TARGET)))
 openssl_target_arch := linux-x86_64
 openssl_optflags    := enable-ec_nistp_64_gcc_128
-else ifneq (,$(findstring x86,$(TARGET)))
+else ifneq (,$(findstring 86,$(TARGET)))
 openssl_target_arch := linux-elf
 else
 $(error Unsupported TARGET: $(TARGET))
