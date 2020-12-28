@@ -96,6 +96,38 @@ ifeq ($(STAGE),)
 meson_pkg_configure += --cross-file $(TARGET).txt
 endif
 
+cmake_pkg_configure := cmake \
+	-G Ninja \
+	-DCMAKE_C_COMPILER=clang \
+	-DCMAKE_CXX_COMPILER=clang++ \
+	-DCMAKE_BUILD_TYPE:STRING=Release \
+	-DCMAKE_INSTALL_PREFIX:PATH=/usr \
+	-DCMAKE_INSTALL_LIBDIR:STRING=lib \
+	-DINSTALL_SYSCONFDIR:PATH=/etc \
+	-DCMAKE_SKIP_RPATH:BOOL=ON \
+	-DCMAKE_SYSROOT=$(OUT_DIR)
+
+ifeq ($(STAGE),)
+ifneq (,$(findstring aarch64,$(TARGET)))
+cmake_target_arch := aarch64
+else ifneq (,$(findstring arm,$(TARGET)))
+cmake_target_arch := arm
+else ifneq (,$(findstring x86_64,$(TARGET)))
+cmake_target_arch := x86_64
+else ifneq (,$(findstring x86,$(TARGET)))
+cmake_target_arch := x86
+else
+$(error Unsupported TARGET: $(TARGET))
+endif
+cmake_pkg_configure += \
+	-DCMAKE_SYSTEM_NAME=Linux \
+	-DCMAKE_SYSTEM_PROCESSOR=$(cmake_target_arch) \
+	-DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER \
+	-DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY \
+	-DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY \
+	-DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=ONLY
+endif
+
 # Default target: build all TARGET_PKGS to OBJ_DIR
 all: $(TARGET_PKGS)
 
