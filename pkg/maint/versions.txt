@@ -17,7 +17,7 @@ git 2.29.2
 glib 2.66.4
 gperf 3.1
 grep 3.6
-harfbuzz 2.7.3
+harfbuzz 2.7.4
 json-c 0.15
 karchive 5.77.0
 kcoreaddons 5.77.0
