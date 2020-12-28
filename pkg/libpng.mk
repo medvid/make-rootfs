@@ -3,13 +3,10 @@ pkg_repo := https://git.code.sf.net/p/libpng/code
 pkg_site := https://download.sourceforge.net/libpng
 pkg_deps := zlib
 
-pkg_configure := cmake -G Ninja $(pkg_srcdir) \
-	-DCMAKE_BUILD_TYPE:STRING=Release \
-	-DCMAKE_INSTALL_PREFIX:PATH=/usr \
-	-DCMAKE_INSTALL_LIBDIR:STRING=lib \
-	-DCMAKE_SYSROOT=$(OUT_DIR) \
+pkg_configure := $(cmake_pkg_configure) \
 	-DPNG_SHARED:BOOL=OFF \
-	-DPNG_TESTS:BOOL=OFF
+	-DPNG_TESTS:BOOL=OFF \
+	$(pkg_srcdir)
 
 pkg_build := ninja -v
 
