@@ -7,7 +7,6 @@ curl 7.74.0
 diffutils 3.7
 e2fsprogs 1.45.6
 expat 2.2.10
-extra-cmake-modules 5.77.0
 flex 2.6.4
 freetype 2.10.4
 fribidi 1.0.10
@@ -17,10 +16,6 @@ gperf 3.1
 grep 3.6
 harfbuzz 2.7.4
 json-c 0.15
-karchive 5.77.0
-kcoreaddons 5.77.0
-ki18n 5.77.0
-kwidgetsaddons 5.77.0
 libarchive 3.5.1
 libdrm 2.4.103
 libedit 20191231-3.1
