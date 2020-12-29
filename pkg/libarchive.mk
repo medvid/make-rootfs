@@ -1,4 +1,4 @@
-pkg_ver  := 3.5.0
+pkg_ver  := 3.5.1
 pkg_repo := https://github.com/libarchive/libarchive
 pkg_site := https://libarchive.org/downloads
 pkg_deps := zlib bzip2 zstd xz
