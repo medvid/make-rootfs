@@ -1,6 +1,6 @@
 pkg_ver  := 3.5.0
 pkg_repo := https://github.com/libarchive/libarchive
-pkg_site := $(pkg_repo)/releases/download/v$(pkg_ver)
+pkg_site := https://libarchive.org/downloads
 pkg_deps := zlib bzip2 zstd xz
 
 pkg_configure := $(pkg_srcdir)/configure \
