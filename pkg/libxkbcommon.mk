@@ -7,6 +7,7 @@ pkg_configure := $(meson_pkg_configure) \
 	-Dxkb-config-root=/usr/share/X11/xkb \
 	-Denable-x11=false \
 	-Denable-docs=false \
+	-Denable-wayland=false \
 	-Denable-xkbregistry=false \
 	$(pkg_srcdir) $(pkg_objdir)
 
