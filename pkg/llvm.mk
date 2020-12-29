@@ -31,6 +31,9 @@ endif
 pkg_configure := cmake -G Ninja $(pkg_srcdir)/llvm \
 	-DCMAKE_BUILD_TYPE:STRING=Release \
 	-DCMAKE_INSTALL_PREFIX:PATH=/usr \
+	-DCMAKE_DISABLE_FIND_PACKAGE_Git:BOOL=ON \
+	-DCMAKE_DISABLE_FIND_PACKAGE_OCaml:BOOL=ON \
+	-DCMAKE_DISABLE_FIND_PACKAGE_Sphinx:BOOL=ON \
 	-DLLVM_ENABLE_PROJECTS:STRING="clang;libcxx;libcxxabi;libunwind;compiler-rt;lld" \
 	-DLLVM_DEFAULT_TARGET_TRIPLE:STRING="$(TARGET)" \
 	-DLLVM_TARGETS_TO_BUILD:STRING="$(llvm_target_arch)" \
