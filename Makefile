@@ -13,6 +13,17 @@ HOST ?= x86_64-linux-musl
 # Set the target toolchain triple
 TARGET ?= x86_64-linux-musl
 
+# Set the list of packages built during
+# stage1 and stage2 bootstrapping
+BASE_PKGS := musl linux-headers llvm
+
+# Set the list of packages built during
+# stage3 and stage4 bootstrapping
+HOST_PKGS := musl linux-headers llvm zlib libarchive openssl toybox \
+	pkgconf mawk diffutils m4 bash make bc grep xz wget libffi python \
+	ninja cmake rsync perl curl git glib ncurses wayland e2fsprogs \
+	strace gperf m4 flex bison meson
+
 # Set the list of target packages
 TARGET_PKGS ?= bash toybox finit
 
@@ -50,6 +61,11 @@ RMRF_PATHS := /usr/lib/*.la \
 	/usr/share/man \
 	/usr/share/vim
 
+# Set paths to the host binaries
+# Need to evaluate absolute paths before PATH is modified by bootstrap.mk
+HOST_CURL := $(shell which curl)
+HOST_PERL := $(shell which perl)
+
 # Configure LLVM/Clang build environment
 export AR := llvm-ar
 export CC := clang
@@ -67,6 +83,15 @@ export CXXFLAGS := -O3 -pipe -static -fno-pic -fno-pie
 export LDFLAGS := -s -static -static-libgcc -Wl,-no-pie -Wl,-no-dynamic-linker -Wl,-no-export-dynamic -Wl,--gc-sections
 # AC_PROG_MKDIR_P is confused by toybox mkdir --version
 export MKDIR_P := mkdir -p
+
+# Set sysroot directory and target ABI
+ifneq ($(STAGE),stage1)
+export CFLAGS += --sysroot=$(OUT_DIR) -target $(TARGET)
+export CXXFLAGS += --sysroot=$(OUT_DIR) -target $(TARGET)
+export LDFLAGS += --sysroot=$(OUT_DIR) -target $(TARGET)
+export PKG_CONFIG_LIBDIR = $(OUT_DIR)/usr/lib/pkgconfig:$(OUT_DIR)/usr/share/pkgconfig
+export PKG_CONFIG_SYSROOT_DIR = $(OUT_DIR)
+endif
 
 # Print compiler diagnostic output: make V=2
 ifeq ($(V),2)
@@ -216,8 +241,8 @@ ifeq ($$($(1)_dir),)
 $(1)_dir := $$($(1)_base)-$$($(1)_ver)
 endif
 
-# Add standard build dependencies (STAGE1_PKGS)
-ifneq ($(filter-out $(STAGE1_PKGS),$(1)),)
+# Add standard build dependencies (BASE_PKGS)
+ifneq ($(filter-out $(BASE_PKGS),$(1)),)
 	$(1)_deps += llvm
 endif
 

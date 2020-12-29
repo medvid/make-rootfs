@@ -1,9 +1,5 @@
-# Set path to curl binary
-# Need to evaluate absolute path before PATH is modified by bootstrap.mk
-CURL := $(shell which curl)
-
 # Set download command
-DL_CMD := $(CURL) -s -S -L -f -o
+DL_CMD := $(HOST_CURL) -s -S -L -f -o
 
 # Delete all downloaded sources and tarballs
 unfetch:
