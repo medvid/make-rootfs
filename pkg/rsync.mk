@@ -8,6 +8,8 @@ pkg_configure := $(pkg_srcdir)/configure \
 	--host=$(TARGET) \
 	--prefix=/usr \
 	--sysconfdir=/etc \
+	--disable-simd \
+	--disable-asm \
 	--disable-debug \
 	--disable-md2man \
 	--disable-ipv6 \
