@@ -15,7 +15,8 @@ else
 $(error Unsupported TARGET: $(TARGET))
 endif
 
-pkg_configure := $(pkg_srcdir)/Configure \
+pkg_configure := $(HOST_PERL) \
+	$(pkg_srcdir)/Configure \
 	$(openssl_target_arch) \
 	--prefix=/usr --libdir=lib \
 	--openssldir=/etc/ssl \
@@ -34,10 +35,10 @@ pkg_configure := $(pkg_srcdir)/Configure \
 	no-ssl3 \
 	no-seed \
 	no-weak-ssl-ciphers \
-	$(HOST_CFLAGS) \
-	$(HOST_LDFLAGS) \
+	$(subst -target $(TARGET),,$(CFLAGS)) \
+	$(subst -target $(TARGET),,$(LDFLAGS)) \
 	-Wa,--noexecstack
 
-pkg_build := make
+pkg_build := make PROGRAMS=apps/openssl
 
-pkg_install := make install_sw DESTDIR=$(OUT_DIR)
+pkg_install := make install_sw PROGRAMS=apps/openssl DESTDIR=$(OUT_DIR)
