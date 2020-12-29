@@ -15,6 +15,7 @@ pkg_configure := $(cmake_pkg_configure) \
 	-DBUILD_TESTING:BOOL=OFF \
 	-DBUILD_CursesDialog:BOOL=OFF \
 	-DBUILD_QtDialog:BOOL=OFF \
+	-DHAVE_POLL_FINE_EXITCODE=0 \
 	$(pkg_srcdir)
 
 pkg_build := ninja -v
