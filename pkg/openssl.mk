@@ -15,8 +15,7 @@ else
 $(error Unsupported TARGET: $(TARGET))
 endif
 
-pkg_configure := $(HOST_PERL) \
-	$(pkg_srcdir)/Configure \
+pkg_configure := $(pkg_srcdir)/Configure \
 	$(openssl_target_arch) \
 	--prefix=/usr --libdir=lib \
 	--openssldir=/etc/ssl \

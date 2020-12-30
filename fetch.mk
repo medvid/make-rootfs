@@ -1,5 +1,5 @@
 # Set download command
-DL_CMD := $(HOST_CURL) -s -S -L -f -o
+DL_CMD := curl -s -S -L -f -o
 
 # Delete all downloaded sources and tarballs
 unfetch:

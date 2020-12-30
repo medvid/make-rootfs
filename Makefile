@@ -5,27 +5,44 @@
 -include config.mk
 
 # Ensure the '| tee' logging recipes return failures
-SHELL := $(shell which bash) -o pipefail
+SHELL := bash -o pipefail
 
 # Set the host toolchain triple
-HOST ?= x86_64-linux-musl
+HOST := $(shell uname -m)-linux-musl
 
 # Set the target toolchain triple
-TARGET ?= x86_64-linux-musl
+TARGET ?= $(HOST)
 
-# Set the list of packages built during
-# stage1 and stage2 bootstrapping
+# Set the list of packages built during stage1 and stage2 bootstrapping
 BASE_PKGS := musl linux-headers llvm
 
-# Set the list of packages built during
-# stage3 and stage4 bootstrapping
-HOST_PKGS := musl linux-headers llvm zlib libarchive openssl toybox \
-	pkgconf mawk diffutils m4 bash make bc grep xz wget libffi python \
-	ninja cmake rsync perl curl git glib ncurses wayland e2fsprogs \
-	strace gperf m4 flex bison meson
+# Set the list of packages built during stage3 and stage4 bootstrapping
+HOST_PKGS := musl linux-headers llvm bash bc bison bzip2 diffutils \
+	e2fsprogs expat flex gperf grep json-c libffi libuuid m4 make \
+	mawk ncurses ninja openssl pcre pcre2 perl pkgconf strace toybox \
+	xz zlib cmake curl libarchive libedit libpng python rsync sqlite \
+	wget git libevent tmux meson setuptools libudev-zero libuuid libdrm \
+	libevdev mtdev libinput pixman freetype fribidi fontconfig cairo \
+	harfbuzz glib pango xkeyboard-config wayland wayland-protocols \
+	libxkbcommon qt
 
-# Set the list of target packages
+# Set the default list of packages built to the target rootfs
 TARGET_PKGS ?= bash toybox finit
+
+# Check if we are currently bootstrapping
+ifneq ($(STAGE),)
+# Disable cross-compilation build recipes
+CROSS := 0
+# During bootstrap, TARGET always equals HOST
+TARGET := $(HOST)
+# Set stage-specific OBJ_DIR, LOG_DIR and OUT_DIR
+TARGET_DIR := $(STAGE)
+else
+# Enable cross-compilation build recipes
+CROSS := 1
+# Set target-specific OBJ_DIR, LOG_DIR and OUT_DIR
+TARGET_DIR := $(TARGET)
+endif
 
 # Root directory prefix
 ifeq ($(CURDIR),/)
@@ -34,20 +51,20 @@ else
 ROOT_DIR := $(CURDIR)
 endif
 
-# Directory with the package recipes
+# Directory with the package build recipes
 PKG_DIR := pkg
 
 # Directory with the downloaded tarballs and checksums
 SRC_DIR := src
 
 # Directory with the intermediate build output
-OBJ_DIR := obj/$(TARGET)
+OBJ_DIR := obj/$(TARGET_DIR)
 
 # Directory with the build logs
-LOG_DIR := $(ROOT_DIR)/log/$(TARGET)
+LOG_DIR := $(ROOT_DIR)/log/$(TARGET_DIR)
 
 # Directory with the installed packages
-OUT_DIR := $(ROOT_DIR)/out/$(TARGET)
+OUT_DIR := $(ROOT_DIR)/out/$(TARGET_DIR)
 
 # List of the file/directory patterns to purge from OUT_DIR after package install
 RMRF_PATHS := /usr/lib/*.la \
@@ -61,36 +78,62 @@ RMRF_PATHS := /usr/lib/*.la \
 	/usr/share/man \
 	/usr/share/vim
 
-# Set paths to the host binaries
-# Need to evaluate absolute paths before PATH is modified by bootstrap.mk
-HOST_CURL := $(shell which curl)
-HOST_PERL := $(shell which perl)
+# Set sysroot and base path to the LLVM binaries
+ifeq ($(STAGE),stage1)
+# Link against host system libraries
+SYSROOT :=
+# Use LLVM binaries from host PATH
+HOST_LLVM_DIR :=
+
+else ifeq ($(STAGE),stage2)
+# Link against stage2 libraries
+SYSROOT := $(ROOT_DIR)/out/stage2
+# Use LLVM binaries from stage1
+HOST_LLVM_DIR := $(ROOT_DIR)/out/stage1/usr/bin/
+
+else ifeq ($(STAGE),stage3)
+# Link against stage3 libraries
+SYSROOT := $(ROOT_DIR)/out/stage3
+# Use LLVM binaries from stage2
+HOST_LLVM_DIR := $(ROOT_DIR)/out/stage2/usr/bin/
+
+else ifeq ($(STAGE),stage4)
+# Link against stage4 libraries
+SYSROOT := $(ROOT_DIR)/out/stage4
+# Use LLVM binaries from stage3 chroot
+HOST_LLVM_DIR :=
+
+else
+# Link against target cross-compiled libraries
+SYSROOT := $(OUT_DIR)
+# Use LLVM binaries from chroot PATH
+HOST_LLVM_DIR :=
+endif
 
 # Configure LLVM/Clang build environment
-export AR := llvm-ar
-export CC := clang
-export CPP := clang-cpp
-export CXX := clang++
-export LD := lld
-export NM := llvm-nm
-export OBJCOPY := llvm-objcopy
-export OBJDUMP := llvm-objdump
-export RANLIB := llvm-ranlib
-export READELF := llvm-readelf
-export STRIP := llvm-strip
+export AR := $(HOST_LLVM_DIR)llvm-ar
+export CC := $(HOST_LLVM_DIR)clang
+export CPP := $(HOST_LLVM_DIR)clang-cpp
+export CXX := $(HOST_LLVM_DIR)clang++
+export LD := $(HOST_LLVM_DIR)lld
+export NM := $(HOST_LLVM_DIR)llvm-nm
+export OBJCOPY := $(HOST_LLVM_DIR)llvm-objcopy
+export OBJDUMP := $(HOST_LLVM_DIR)llvm-objdump
+export RANLIB := $(HOST_LLVM_DIR)llvm-ranlib
+export READELF := $(HOST_LLVM_DIR)llvm-readelf
+export STRIP := $(HOST_LLVM_DIR)llvm-strip
 export CFLAGS := -O3 -pipe -static -fno-pic -fno-pie
 export CXXFLAGS := -O3 -pipe -static -fno-pic -fno-pie
 export LDFLAGS := -s -static -static-libgcc -Wl,-no-pie -Wl,-no-dynamic-linker -Wl,-no-export-dynamic -Wl,--gc-sections
 # AC_PROG_MKDIR_P is confused by toybox mkdir --version
 export MKDIR_P := mkdir -p
 
-# Set sysroot directory and target ABI
-ifneq ($(STAGE),stage1)
-export CFLAGS += --sysroot=$(OUT_DIR) -target $(TARGET)
-export CXXFLAGS += --sysroot=$(OUT_DIR) -target $(TARGET)
-export LDFLAGS += --sysroot=$(OUT_DIR) -target $(TARGET)
-export PKG_CONFIG_LIBDIR = $(OUT_DIR)/usr/lib/pkgconfig:$(OUT_DIR)/usr/share/pkgconfig
-export PKG_CONFIG_SYSROOT_DIR = $(OUT_DIR)
+# Use default CFLAGS/CXXFLAGS/LDFLAGS when building stage1 with host toolchain
+# -U_FORTIFY_SOURCE prevents libc++abi from pulling glibc __fprintf_chk
+ifeq ($(STAGE),stage1)
+export CFLAGS     := -U_FORTIFY_SOURCE
+export CXXFLAGS   := -U_FORTIFY_SOURCE
+export LDFLAGS    := -s
 endif
 
 # Print compiler diagnostic output: make V=2
@@ -105,6 +148,38 @@ HOST_CFLAGS := $(CFLAGS)
 HOST_CXXFLAGS := $(CXXFLAGS)
 HOST_LDFLAGS := $(LDFLAGS)
 
+# Set sysroot directory
+ifneq ($(SYSROOT),)
+export CFLAGS += --sysroot=$(SYSROOT)
+export CXXFLAGS += --sysroot=$(SYSROOT)
+export LDFLAGS += --sysroot=$(SYSROOT)
+export PKG_CONFIG_LIBDIR = $(SYSROOT)/usr/lib/pkgconfig:$(SYSROOT)/usr/share/pkgconfig
+export PKG_CONFIG_SYSROOT_DIR = $(SYSROOT)
+endif
+
+# Set target ABI for clang cross-compiler
+ifeq ($(CROSS),1)
+export CFLAGS += -target $(TARGET)
+export CXXFLAGS += -target $(TARGET)
+export LDFLAGS += -target $(TARGET)
+endif
+
+# Enable LTO when not bootstrapping
+ifeq ($(CROSS),1)
+export CFLAGS += -flto
+export CXXFLAGS += -flto
+endif
+
+# Print diagnostic output: make V=1
+ifneq ($(V),)
+ifneq ($(STAGE),)
+$(info export STAGE=$(STAGE))
+endif
+$(info export CFLAGS="$(CFLAGS)")
+$(info export CXXFLAGS="$(CXXFLAGS)")
+$(info export LDFLAGS="$(LDFLAGS)")
+endif
+
 # Define standard configure args for Meson build system
 meson_pkg_configure := meson \
 	--prefix=/usr \
@@ -115,24 +190,26 @@ meson_pkg_configure := meson \
 	--buildtype=release \
 	-Ddefault_library=static
 
-# Pass --cross-file argument when not bootstrapping
-# The cross files are not found on host before stage4
-ifeq ($(STAGE),)
+# Use cross-compilation definitions from /usr/share/meson/cross
+ifeq ($(CROSS),1)
 meson_pkg_configure += --cross-file $(TARGET).txt
 endif
 
+# Define standard configure args for CMake build system
 cmake_pkg_configure := cmake \
 	-G Ninja \
-	-DCMAKE_C_COMPILER=clang \
-	-DCMAKE_CXX_COMPILER=clang++ \
+	-DCMAKE_C_COMPILER=$(CC) \
+	-DCMAKE_CXX_COMPILER=$(CXX) \
+	-DCMAKE_LINKER=$(LD) \
 	-DCMAKE_BUILD_TYPE:STRING=Release \
 	-DCMAKE_INSTALL_PREFIX:PATH=/usr \
 	-DCMAKE_INSTALL_LIBDIR:STRING=lib \
 	-DINSTALL_SYSCONFDIR:PATH=/etc \
 	-DCMAKE_SKIP_RPATH:BOOL=ON \
-	-DCMAKE_SYSROOT=$(OUT_DIR)
+	$(if $(SYSROOT),-DCMAKE_SYSROOT=$(SYSROOT),)
 
-ifeq ($(STAGE),)
+# Define custom args for cross-compilation
+ifeq ($(CROSS),1)
 ifneq (,$(findstring aarch64,$(TARGET)))
 cmake_target_arch := aarch64
 else ifneq (,$(findstring arm,$(TARGET)))
@@ -144,9 +221,13 @@ cmake_target_arch := x86
 else
 $(error Unsupported TARGET: $(TARGET))
 endif
+
 cmake_pkg_configure += \
 	-DCMAKE_SYSTEM_NAME=Linux \
 	-DCMAKE_SYSTEM_PROCESSOR=$(cmake_target_arch) \
+	-DCMAKE_C_COMPILER_TARGET=$(TARGET) \
+	-DCMAKE_CXX_COMPILER_TARGET=$(TARGET) \
+	-DCMAKE_ASM_COMPILER_TARGET=$(TARGET) \
 	-DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM=NEVER \
 	-DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY \
 	-DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY \
@@ -171,23 +252,6 @@ include chroot.mk
 
 # Load recipes for stage bootstrapping
 include bootstrap.mk
-
-# Enable LTO when not bootstrapping
-ifeq ($(STAGE),)
-export CFLAGS += -flto
-export CXXFLAGS += -flto
-endif
-
-# Print diagnostic output: make V=1
-ifneq ($(V),)
-ifneq ($(STAGE),)
-$(info export STAGE=$(STAGE))
-endif
-$(info export PATH=$(PATH))
-$(info export CFLAGS="$(CFLAGS)")
-$(info export CXXFLAGS="$(CXXFLAGS)")
-$(info export LDFLAGS="$(LDFLAGS)")
-endif
 
 # Define standard packaging recipes for $(1)
 define pkg_add =
@@ -302,7 +366,11 @@ $(1): $(OBJ_DIR)/obj_$(1)/.build.stamp
 # Define alias for the install rule
 install-$(1): $(OBJ_DIR)/obj_$(1)/.install.stamp
 
-.PHONY: $(1) install-$(1)
+# Define custom rule to cleanup package build directory
+clean-$(1):
+	rm -rf $(OBJ_DIR)/obj_$(1)
+
+.PHONY: $(1) install-$(1) clean-$(1)
 
 # Cleanup the global packaging variables
 pkg_srcdir :=

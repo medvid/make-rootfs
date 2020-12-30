@@ -17,7 +17,18 @@ llvm_target_arch := PowerPC
 else ifneq (,$(findstring riscv,$(TARGET)))
 llvm_target_arch := RISCV
 else ifneq (,$(findstring 86,$(TARGET)))
-llvm_target_arch := X86
+llvm_sizeof_void := 4
+else
+$(error Unsupported TARGET: $(TARGET))
+endif
+
+# Set CMAKE_SIZEOF_VOID_P for builtins-only build
+ifneq (,$(findstring 64,$(TARGET)))
+llvm_sizeof_void := 8
+else ifneq (,$(findstring 32,$(TARGET)))
+llvm_sizeof_void := 4
+else ifneq (,$(findstring 86,$(TARGET)))
+llvm_sizeof_void := 4
 else
 $(error Unsupported TARGET: $(TARGET))
 endif
@@ -28,9 +39,8 @@ ifeq ($(STAGE),stage4)
 llvm_target_arch := all
 endif
 
-pkg_configure := cmake -G Ninja $(pkg_srcdir)/llvm \
-	-DCMAKE_BUILD_TYPE:STRING=Release \
-	-DCMAKE_INSTALL_PREFIX:PATH=/usr \
+pkg_configure := $(cmake_pkg_configure) \
+	$(pkg_srcdir)/llvm \
 	-DCMAKE_DISABLE_FIND_PACKAGE_Git:BOOL=ON \
 	-DCMAKE_DISABLE_FIND_PACKAGE_OCaml:BOOL=ON \
 	-DCMAKE_DISABLE_FIND_PACKAGE_Sphinx:BOOL=ON \
@@ -82,55 +92,33 @@ pkg_configure := cmake -G Ninja $(pkg_srcdir)/llvm \
 
 # Enable stage1 bootstrapping from glibc system
 ifneq ($(STAGE),stage1)
-pkg_configure += \
-	-DLIBCXX_HAS_MUSL_LIBC:BOOL=ON
+pkg_configure += -DLIBCXX_HAS_MUSL_LIBC:BOOL=ON
 endif
 
-# Use generic CFLAGS/CXXFLAGS/LDFLAGS without --sysroot/-target options
-# During bootstrap, sysroot flags are added via CMAKE_SYSROOT
-LLVM_CFLAGS     := $(HOST_CFLAGS)
-LLVM_CXXFLAGS   := $(HOST_CXXFLAGS)
-LLVM_LDFLAGS    := $(HOST_LDFLAGS)
-
-ifeq ($(STAGE),stage1)
-# Build stage1 llvm with system clang
-# Resulting toolchain is dynamically linked against libgcc_s.so/libstdc++.so
-# Ignore global CFLAGS/CXXFLAGS/LDFLAGS by setting custom CMAKE_*_FLAGS
-# -U_FORTIFY_SOURCE prevents libc++abi from pulling glibc __fprintf_chk
-LLVM_CFLAGS     := -U_FORTIFY_SOURCE
-LLVM_CXXFLAGS   := -U_FORTIFY_SOURCE
-LLVM_LDFLAGS    := -s
-else ifeq ($(STAGE),stage2)
-# Build stage2 llvm with stage1 toolchain
-pkg_configure += \
-	-DCMAKE_SYSROOT=$(ROOT_DIR)/out/stage1 \
-	-DCMAKE_C_COMPILER=$(ROOT_DIR)/out/stage1/usr/bin/clang \
-	-DCMAKE_CXX_COMPILER=$(ROOT_DIR)/out/stage1/usr/bin/clang++ \
-	-DCMAKE_LINKER=$(ROOT_DIR)/out/stage1/usr/bin/lld
+# Link LLVM tools against musl/libc++ from the previuos stage
+ifeq ($(STAGE),stage2)
+pkg_configure += -DCMAKE_SYSROOT:PATH=$(ROOT_DIR)/out/stage1
 else ifeq ($(STAGE),stage3)
-# Build stage3 llvm with stage2 toolchain
+pkg_configure += -DCMAKE_SYSROOT:PATH=$(ROOT_DIR)/out/stage2
+else ifeq ($(STAGE),stage4)
+pkg_configure += -DCMAKE_SYSROOT:PATH=$(ROOT_DIR)/out/stage3
+endif
+
+# Ignore --sysroot argument from CFLAGS/CXXFLAGS/LDFLAGS
+ifeq ($(CROSS),0)
 pkg_configure += \
-	-DCMAKE_SYSROOT=$(ROOT_DIR)/out/stage2 \
-	-DCMAKE_C_COMPILER=$(ROOT_DIR)/out/stage2/usr/bin/clang \
-	-DCMAKE_CXX_COMPILER=$(ROOT_DIR)/out/stage2/usr/bin/clang++ \
-	-DCMAKE_LINKER=$(ROOT_DIR)/out/stage2/usr/bin/lld
-# Set custom sysroot/target when not bootstrapping
-else ifneq ($(STAGE),stage4)
+	-DCMAKE_C_FLAGS="$(HOST_CFLAGS)" \
+	-DCMAKE_CXX_FLAGS="$(HOST_CXXFLAGS)" \
+	-DCMAKE_EXE_LINKER_FLAGS="$(HOST_LDFLAGS)"
+endif
+
+# Do not build llvm-tblgen and clang-tblgen when cross-compiling
+ifeq ($(CROSS),1)
 pkg_configure += \
-	-DCMAKE_SYSROOT=$(OUT_DIR) \
-	-DCMAKE_C_COMPILER_TARGET=$(TARGET) \
-	-DCMAKE_CXX_COMPILER_TARGET=$(TARGET) \
-	-DCMAKE_ASM_COMPILER_TARGET=$(TARGET) \
 	-DLLVM_TABLEGEN=$(ROOT_DIR)/usr/bin/llvm-tblgen \
 	-DCLANG_TABLEGEN=$(ROOT_DIR)/usr/bin/clang-tblgen \
 	-DCOMPILER_RT_DEFAULT_TARGET_ONLY:BOOL=ON
 endif
-
-# Set the customized compilation flags (without --sysroot)
-pkg_configure += \
-	-DCMAKE_C_FLAGS="$(LLVM_CFLAGS)" \
-	-DCMAKE_CXX_FLAGS="$(LLVM_CXXFLAGS)" \
-	-DCMAKE_EXE_LINKER_FLAGS="$(LLVM_LDFLAGS)"
 
 # Unconditionally build standard C/C++ runtimes
 llvm_build_targets := compiler-rt cxx unwind
@@ -151,6 +139,7 @@ else
 # STATIC_LIBRARY test cannot be enabled universally due to CMake bug:
 # https://gitlab.kitware.com/cmake/cmake/-/issues/18121
 pkg_configure += -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY
+pkg_configure += -DCMAKE_SIZEOF_VOID_P=$(llvm_sizeof_void)
 endif
 
 ifeq ($(llvm_builtins_only),true)

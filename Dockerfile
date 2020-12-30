@@ -1,9 +1,16 @@
 # Step#1: build stage1, stage2, stage3
-FROM ubuntu:18.04 AS base
+FROM ubuntu:20.04 AS base
+
+# https://askubuntu.com/a/1013396
+ENV DEBIAN_FRONTEND=noninteractive
 
 # Install prerequisites
 RUN apt update -y \
- && apt install -y cmake curl make ninja-build patch rsync sudo clang lld llvm libarchive-tools python3-distutils \
+ && apt install -y apt-transport-https ca-certificates gnupg software-properties-common \
+ && curl -fsSL https://apt.kitware.com/keys/kitware-archive-latest.asc | gpg --dearmor - | tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null \
+ && apt-add-repository -y 'deb https://apt.kitware.com/ubuntu/ focal main' \
+ && apt update -y \
+ && apt install -y bison clang cmake curl flex gperf libarchive-tools lld llvm m4 make meson ninja-build patch pkg-config python-is-python3 python3-distutils python3-pip rsync sudo \
  && apt clean
 
 # Copy build recipes

@@ -50,16 +50,16 @@ Example:
 
 ## Getting started
 
-This guide is tested on Ubuntu 18.04.
-Should work on any Linux distribution with Clang/LLVM >= 6 and recent GNU Make and CMake.
+This guide is tested on Ubuntu 20.04.
+Should work on any Linux distribution with Clang/LLVM >= 6, CMake >= 3.18, Meson >= 0.54.0.
 
 Install the prerequisites:
 
-    sudo apt install cmake curl make ninja-build patch rsync sudo clang lld llvm libarchive-tools python3-distutils
-
-In case /usr/bin/python is not available (Ubuntu 20.04), install additional package:
-
-    sudo apt install python-is-python3
+    sudo apt update
+    sudo apt install -y apt-transport-https ca-certificates gnupg software-properties-common
+    curl -fsSL https://apt.kitware.com/keys/kitware-archive-latest.asc | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
+    sudo apt update
+    sudo apt install -y bison clang cmake curl flex gperf libarchive-tools lld llvm m4 make meson ninja-build patch pkg-config python-is-python3 python3-distutils python3-pip rsync sudo
 
 Execute the bootstrap target:
 

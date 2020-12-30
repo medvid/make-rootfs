@@ -1,13 +1,3 @@
-# Check if we are currently bootstrapping
-ifneq ($(STAGE),)
-# During bootstrap, TARGET always equals HOST
-TARGET := $(HOST)
-# Override OBJ_DIR, LOG_DIR and OUT_DIR to point to the bootstrapped stage
-OBJ_DIR := obj/$(STAGE)
-LOG_DIR := $(ROOT_DIR)/log/$(STAGE)
-OUT_DIR := $(ROOT_DIR)/out/$(STAGE)
-endif
-
 obj/stage1/.install.stamp:
 	$(MAKE) STAGE=stage1 TARGET_PKGS="$(BASE_PKGS)" install
 	touch $@
@@ -48,7 +38,7 @@ obj/stage4/.install.stamp: | tmp
 else
 obj/stage4/.install.stamp: | tmp stage3
 	mkdir -p obj/stage4
-	$(MAKE) chroot CHROOT_PROG="$(MAKE) STAGE=stage4 TARGET_PKGS=\"$(STAGE4_PKGS)\" install"
+	$(MAKE) chroot CHROOT_PROG="$(MAKE) STAGE=stage4 TARGET_PKGS=\"$(HOST_PKGS)\" install"
 	mkdir -p etc
 	cp -rv $(PKG_DIR)/etc/* etc
 	cp -rv out/stage4/etc/* etc
