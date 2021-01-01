@@ -12,4 +12,5 @@ pkg_configure := $(meson_pkg_configure) \
 
 pkg_build := ninja -v
 
-pkg_install := DESTDIR=$(OUT_DIR) ninja install
+pkg_install := rm -rf $(OUT_DIR)/etc/fonts/conf.d && \
+	DESTDIR=$(OUT_DIR) ninja install

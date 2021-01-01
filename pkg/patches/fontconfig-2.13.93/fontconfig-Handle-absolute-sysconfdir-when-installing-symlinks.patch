@@ -1,0 +1,39 @@
+Upstream: under review, https://gitlab.freedesktop.org/fontconfig/fontconfig/-/merge_requests/138
+
+From 6e9aacae1743bdd432bf4e180beb4199785077c7 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Thu, 3 Dec 2020 21:04:26 +0100
+Subject: [PATCH] Handle absolute sysconfdir when installing symlinks
+
+sysconfdir defaults to /etc when the prefix is set to /usr. But joining
+MESON_INSTALL_DESTDIR_PREFIX and sysconfdir when the latter is an
+absoulte path, results in sysconfdir only. Which might lead to an error
+during install because /etc/fonts/conf.d/ might already exist from an
+pre-existing fontconfig installation.
+---
+ conf.d/link_confs.py | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/conf.d/link_confs.py b/conf.d/link_confs.py
+index 0c42efb..bafaf3a 100644
+--- a/conf.d/link_confs.py
++++ b/conf.d/link_confs.py
+@@ -11,7 +11,14 @@ if __name__=='__main__':
+     parser.add_argument('links', nargs='+')
+     args = parser.parse_args()
+ 
+-    confpath = os.path.join(os.environ['MESON_INSTALL_DESTDIR_PREFIX'], args.confpath)
++    if os.path.isabs(args.confpath):
++        destdir = os.environ.get('DESTDIR')
++        if destdir:
++            confpath = os.path.join(destdir, args.confpath[1:])
++        else:
++            confpath = args.confpath
++    else:
++        confpath = os.path.join(os.environ['MESON_INSTALL_DESTDIR_PREFIX'], args.confpath)
+ 
+     if not os.path.exists(confpath):
+         os.makedirs(confpath)
+-- 
+2.29.2
+
