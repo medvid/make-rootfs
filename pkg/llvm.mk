@@ -29,6 +29,8 @@ else ifneq (,$(findstring 32,$(TARGET)))
 llvm_sizeof_void := 4
 else ifneq (,$(findstring 86,$(TARGET)))
 llvm_sizeof_void := 4
+else ifneq (,$(findstring arm,$(TARGET)))
+llvm_sizeof_void := 4
 else
 $(error Unsupported TARGET: $(TARGET))
 endif
