@@ -6,12 +6,13 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Install prerequisites
 RUN apt update -y \
- && apt install -y apt-transport-https ca-certificates gnupg software-properties-common \
+ && apt install -y apt-transport-https ca-certificates curl gnupg software-properties-common \
  && curl -fsSL https://apt.kitware.com/keys/kitware-archive-latest.asc | gpg --dearmor - | tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null \
  && apt-add-repository -y 'deb https://apt.kitware.com/ubuntu/ focal main' \
  && apt update -y \
- && apt install -y bison clang cmake curl flex gperf libarchive-tools libglib2.0-dev lld llvm m4 make meson ninja-build patch pkg-config python-is-python3 python3-distutils python3-pip rsync sudo \
- && apt clean
+ && apt install -y bison clang cmake flex gperf libarchive-tools libglib2.0-dev lld llvm m4 make meson ninja-build patch pkg-config python-is-python3 python3-distutils python3-pip rsync sudo \
+ && apt clean \
+ && pip3 install --upgrade meson
 
 # Copy build recipes
 COPY . /opt/make-rootfs
