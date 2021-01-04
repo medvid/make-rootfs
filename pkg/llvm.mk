@@ -17,7 +17,7 @@ llvm_target_arch := PowerPC
 else ifneq (,$(findstring riscv,$(TARGET)))
 llvm_target_arch := RISCV
 else ifneq (,$(findstring 86,$(TARGET)))
-llvm_sizeof_void := 4
+llvm_target_arch := X86
 else
 $(error Unsupported TARGET: $(TARGET))
 endif
