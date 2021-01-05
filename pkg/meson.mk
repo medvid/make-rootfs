@@ -4,8 +4,6 @@ pkg_site := $(pkg_repo)/releases/download/$(pkg_ver)
 pkg_copy := true
 pkg_deps := setuptools
 
-pkg_vars := PYTHONPATH=$(OUT_DIR)/usr/lib/python3.9/site-packages
-
 pkg_build := python3 setup.py build
 
 pkg_install := python3 setup.py install \

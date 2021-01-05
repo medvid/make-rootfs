@@ -180,6 +180,15 @@ $(info export CXXFLAGS="$(CXXFLAGS)")
 $(info export LDFLAGS="$(LDFLAGS)")
 endif
 
+# Define path to the host Python interpreter
+ifeq ($(STAGE),stage3)
+PYTHON := $(ROOT_DIR)/out/stage3/usr/bin/python3
+else ifeq ($(STAGE),stage4)
+PYTHON := $(ROOT_DIR)/out/stage4/usr/bin/python3
+else
+PYTHON := $(shell which python)
+endif
+
 # Define standard configure args for Meson build system
 meson_pkg_configure := meson \
 	--prefix=/usr \
