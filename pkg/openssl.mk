@@ -40,4 +40,4 @@ pkg_configure := $(pkg_srcdir)/Configure \
 
 pkg_build := make PROGRAMS=apps/openssl
 
-pkg_install := make install_sw PROGRAMS=apps/openssl DESTDIR=$(OUT_DIR)
+pkg_install := make install_dev install_runtime PROGRAMS=apps/openssl DESTDIR=$(OUT_DIR)
