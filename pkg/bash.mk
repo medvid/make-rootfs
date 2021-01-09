@@ -1,4 +1,4 @@
-pkg_ver  := 5.0
+pkg_ver  := 5.1
 pkg_repo := https://git.savannah.gnu.org/git/bash
 pkg_site := https://ftp.gnu.org/gnu/bash
 
