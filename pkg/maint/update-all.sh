@@ -5,15 +5,16 @@ cd "$SCRIPTPATH"
 
 set -e
 
-nvchecker "source.ini"
-#mv versions.txt versions_new.txt
+nvchecker -c source.toml
+#mv versions.json versions_new.json
 
+jq -r 'keys[] as $k | "\($k) \(.[$k])"' versions_new.json |
 while IFS= read -r pkgdef
 do
   [[ $pkgdef == '#'* ]] && continue
   bash ./update.sh $pkgdef
-done < versions_new.txt
+done
 
-mv versions_new.txt versions.txt
-git add versions.txt
-git commit -m "maint: update versions.txt"
+mv versions_new.json versions.json
+git add versions.json
+git commit -m "maint: update versions.json"

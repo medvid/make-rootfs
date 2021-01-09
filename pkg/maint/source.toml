@@ -1,0 +1,265 @@
+[__config__]
+oldver = "versions.json"
+newver = "versions_new.json"
+max_concurrency = 4
+
+#[bash]
+#source = "repology"
+#repo = "distrowatch"
+
+[bc]
+source = "github"
+github = "gavinhoward/bc"
+use_latest_release = true
+
+[bison]
+source = "repology"
+repo = "debian_unstable"
+
+[bzip2]
+source = "repology"
+repo = "arch"
+
+[cairo]
+source = "repology"
+repo = "arch"
+
+[cmake]
+source = "repology"
+repo = "arch"
+
+[curl]
+source = "repology"
+repo = "arch"
+
+[diffutils]
+source = "repology"
+repo = "arch"
+
+[e2fsprogs]
+source = "repology"
+repo = "arch"
+
+[expat]
+source = "repology"
+repo = "arch"
+
+[flex]
+source = "repology"
+repo = "arch"
+
+#[fontconfig]
+#source = "repology"
+#repo = "debian_unstable"
+
+[freetype]
+source = "repology"
+repo = "arch"
+
+[fribidi]
+source = "repology"
+repo = "arch"
+
+[git]
+source = "repology"
+repo = "arch"
+
+[glib]
+source = "repology"
+repo = "arch"
+
+[gperf]
+source = "repology"
+repo = "arch"
+
+[grep]
+source = "repology"
+repo = "arch"
+
+[harfbuzz]
+source = "repology"
+repo = "arch"
+
+[json-c]
+source = "repology"
+repo = "arch"
+
+[libarchive]
+source = "repology"
+repo = "arch"
+
+[libdrm]
+source = "repology"
+repo = "arch"
+
+[libedit]
+source = "repology"
+repo = "kiss_community"
+
+[libevdev]
+source = "repology"
+repo = "arch"
+
+[libevent]
+source = "repology"
+repo = "arch"
+
+[libffi]
+source = "repology"
+repo = "arch"
+
+[libinput]
+source = "repology"
+repo = "debian_unstable"
+
+[libite]
+source = "repology"
+repo = "debian_unstable"
+
+[libpng]
+source = "repology"
+repo = "kiss_main"
+
+[libudev-zero]
+source = "repology"
+repo = "kiss_main"
+
+[libuev]
+source = "repology"
+repo = "void_x86_64"
+
+[libuuid]
+source = "repology"
+repo = "gentoo"
+
+[libxkbcommon]
+source = "repology"
+repo = "arch"
+
+#[linux]
+#source = "repology"
+#repo = "void_x86_64"
+
+#[linux-headers]
+#source = "repology"
+#repo = "alpine_edge"
+
+#[llvm]
+#source = "repology"
+#repo = "arch"
+
+[m4]
+source = "repology"
+repo = "arch"
+
+[make]
+source = "repology"
+repo = "arch"
+
+[mawk]
+source = "repology"
+repo = "kiss_community"
+
+[meson]
+source = "repology"
+repo = "debian_unstable"
+
+[mtdev]
+source = "repology"
+repo = "arch"
+
+[musl]
+source = "repology"
+repo = "arch"
+
+[ncurses]
+source = "repology"
+repo = "arch"
+
+[ninja]
+source = "repology"
+repo = "arch"
+
+#[openssl]
+#source = "repology"
+#repo = "arch"
+
+[pango]
+source = "repology"
+repo = "arch"
+
+[pcre]
+source = "repology"
+repo = "arch"
+
+[pcre2]
+source = "repology"
+repo = "arch"
+
+[perl]
+source = "repology"
+repo = "arch"
+
+[pixman]
+source = "repology"
+repo = "arch"
+
+[pkgconf]
+source = "repology"
+repo = "arch"
+
+[python]
+source = "repology"
+repo = "arch"
+
+#[qt]
+#source = "repology"
+#repo = "arch"
+
+[rsync]
+source = "repology"
+repo = "arch"
+
+[setuptools]
+source = "pypi"
+pypi = "setuptools"
+
+[strace]
+source = "repology"
+repo = "arch"
+
+[tmux]
+source = "repology"
+repo = "debian_unstable"
+
+[toybox]
+source = "repology"
+repo = "alpine_edge"
+
+[wayland]
+source = "repology"
+repo = "arch"
+
+[wayland-protocols]
+source = "repology"
+repo = "arch"
+
+[wget]
+source = "repology"
+repo = "arch"
+
+[xkeyboard-config]
+source = "repology"
+repo = "arch"
+
+[xz]
+source = "repology"
+repo = "arch"
+
+[zlib]
+source = "repology"
+repo = "arch"
+
+[zstd]
+source = "repology"
+repo = "arch"
