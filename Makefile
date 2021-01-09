@@ -69,6 +69,7 @@ OUT_DIR := $(ROOT_DIR)/out/$(TARGET_DIR)
 # List of the file/directory patterns to purge from OUT_DIR after package install
 RMRF_PATHS := /usr/lib/*.la \
 	/usr/lib/charset.alias \
+	/usr/man \
 	/usr/share/aclocal \
 	/usr/share/bash-completion \
 	/usr/share/emacs \
