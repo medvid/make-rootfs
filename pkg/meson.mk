@@ -4,9 +4,9 @@ pkg_site := $(pkg_repo)/releases/download/$(pkg_ver)
 pkg_copy := true
 pkg_deps := setuptools
 
-pkg_build := python3 setup.py build
+pkg_build := $(PYTHON) setup.py build
 
-pkg_install := python3 setup.py install \
+pkg_install := $(PYTHON) setup.py install \
 	--prefix=/usr \
 	--root=$(OUT_DIR) \
 	--skip-build \
