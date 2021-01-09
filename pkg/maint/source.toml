@@ -180,9 +180,9 @@ repo = "arch"
 source = "repology"
 repo = "arch"
 
-#[openssl]
-#source = "repology"
-#repo = "arch"
+[openssl]
+source = "repology"
+repo = "distrowatch"
 
 [pango]
 source = "repology"
