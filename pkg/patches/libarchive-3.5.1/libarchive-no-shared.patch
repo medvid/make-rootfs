@@ -1,0 +1,20 @@
+--- libarchive-3.5.1/libarchive/CMakeLists.txt
++++ libarchive-3.5.1/libarchive/CMakeLists.txt
+@@ -236,7 +236,7 @@
+ ENDIF()
+ 
+ # Libarchive is a shared library
+-ADD_LIBRARY(archive SHARED ${libarchive_SOURCES} ${include_HEADERS})
++ADD_LIBRARY(archive SHARED EXCLUDE_FROM_ALL ${libarchive_SOURCES} ${include_HEADERS})
+ TARGET_INCLUDE_DIRECTORIES(archive PUBLIC .)
+ TARGET_LINK_LIBRARIES(archive ${ADDITIONAL_LIBS})
+ SET_TARGET_PROPERTIES(archive PROPERTIES SOVERSION ${SOVERSION})
+@@ -253,7 +253,7 @@
+ 
+ IF(ENABLE_INSTALL)
+   # How to install the libraries
+-  INSTALL(TARGETS archive archive_static
++  INSTALL(TARGETS archive_static
+           RUNTIME DESTINATION bin
+           LIBRARY DESTINATION lib
+           ARCHIVE DESTINATION lib)

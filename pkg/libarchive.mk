@@ -3,30 +3,31 @@ pkg_repo := https://github.com/libarchive/libarchive
 pkg_site := https://libarchive.org/downloads
 pkg_deps := zlib bzip2 zstd xz
 
-pkg_configure := $(pkg_srcdir)/configure \
-	--build=$(HOST) \
-	--host=$(TARGET) \
-	--prefix=/usr \
-	--disable-silent-rules \
-	--disable-shared \
-	--enable-bsdtar=static \
-	--enable-bsdtar=static \
-	--enable-bsdcpio=static \
-	--enable-posix-regex-lib=libc \
-	--disable-xattr \
-	--disable-acl \
-	--without-pic \
-	--with-bz2lib \
-	--without-libb2 \
-	--without-iconv \
-	--without-lz4 \
-	--with-zstd \
-	--with-lzma \
-	--without-cng \
-	--without-openssl \
-	--without-xml2 \
-	--without-expat
+pkg_configure := $(cmake_pkg_configure) \
+	-DENABLE_MBEDTLS:BOOL=OFF \
+	-DENABLE_NETTLE:BOOL=OFF \
+	-DENABLE_OPENSSL:BOOL=OFF \
+	-DENABLE_LIBB2:BOOL=OFF \
+	-DENABLE_LZ4:BOOL=OFF \
+	-DENABLE_LZO:BOOL=OFF \
+	-DENABLE_LZMA:BOOL=ON \
+	-DENABLE_ZSTD:BOOL=ON \
+	-DENABLE_ZLIB:BOOL=ON \
+	-DENABLE_BZip2:BOOL=ON \
+	-DENABLE_LIBXML2:BOOL=OFF \
+	-DENABLE_EXPAT:BOOL=OFF \
+	-DENABLE_PCREPOSIX:BOOL=OFF \
+	-DENABLE_LibGCC:BOOL=OFF \
+	-DENABLE_CNG:BOOL=OFF \
+	-DENABLE_TAR:BOOL=ON \
+	-DENABLE_CPIO:BOOL=ON \
+	-DENABLE_XATTR:BOOL=OFF \
+	-DENABLE_ACL:BOOL=OFF \
+	-DENABLE_ICONV:BOOL=OFF \
+	-DENABLE_TEST:BOOL=OFF \
+	-DENABLE_INSTALL:BOOL=ON \
+	$(pkg_srcdir)
 
-pkg_build := make
+pkg_build := ninja -v
 
-pkg_install := make install DESTDIR=$(OUT_DIR)
+pkg_install := DESTDIR=$(OUT_DIR) ninja -v install
