@@ -1,17 +1,14 @@
 pkg_ver  := 1.7.3
-pkg_repo := https://github.com/pkgconf/pkgconf
+pkg_repo := https://git.sr.ht/~kaniini/pkgconf
 pkg_site := https://distfiles.dereferenced.org/pkgconf
 
-pkg_configure := $(pkg_srcdir)/configure \
-	--build=$(HOST) \
-	--host=$(TARGET) \
-	--prefix=/usr \
-	--disable-silent-rules \
-	--disable-shared \
-	--without-pic \
-	--with-pkg-config-dir=/usr/lib/pkgconfig:/usr/share/pkgconfig
+pkg_prepare := sed -e "s/shared_library/library/g" -i $(pkg_srcdir)/meson.build
 
-pkg_build := make
+pkg_configure := $(meson_pkg_configure) \
+	-Dtests=false \
+	$(pkg_srcdir) $(pkg_objdir)
 
-pkg_install := make install DESTDIR=$(OUT_DIR) && \
+pkg_build := ninja -v
+
+pkg_install := DESTDIR=$(OUT_DIR) ninja install && \
 	ln -sf pkgconf $(OUT_DIR)/usr/bin/pkg-config
