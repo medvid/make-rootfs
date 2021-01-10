@@ -50,6 +50,7 @@
   "pixman": "0.40.0",
   "pkgconf": "1.7.3",
   "python": "3.9.1",
+  "rhash": "1.4.1",
   "rsync": "3.2.3",
   "setuptools": "51.1.2",
   "strace": "5.10",

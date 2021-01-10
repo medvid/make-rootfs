@@ -224,6 +224,10 @@ repo = "arch"
 source = "repology"
 repo = "arch"
 
+[rhash]
+source = "repology"
+repo = "arch"
+
 #[qt]
 #source = "repology"
 #repo = "arch"
