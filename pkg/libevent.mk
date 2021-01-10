@@ -4,18 +4,15 @@ pkg_site := $(pkg_repo)/releases/download/release-$(pkg_ver)-stable
 pkg_dir  := libevent-$(pkg_ver)-stable
 pkg_deps := openssl
 
-pkg_configure := $(pkg_srcdir)/configure \
-	--build=$(HOST) \
-	--host=$(TARGET) \
-	--prefix=/usr \
-	--sysconfdir=/etc \
-	--disable-silent-rules \
-	--disable-debug-mode \
-	--disable-samples \
-	--disable-shared \
-	--disable-doxygen-html \
-	--without-pic
+pkg_configure := $(cmake_pkg_configure) \
+	-DEVENT__DISABLE_DEBUG_MODE:BOOL=OFF \
+	-DEVENT__DISABLE_BENCHMARK:BOOL=ON \
+	-DEVENT__DISABLE_TESTS:BOOL=ON \
+	-DEVENT__DISABLE_REGRESS:BOOL=ON \
+	-DEVENT__DISABLE_SAMPLES:BOOL=ON \
+	-DEVENT__LIBRARY_TYPE:STRING="STATIC" \
+	$(pkg_srcdir)
 
-pkg_build := make
+pkg_build := ninja -v
 
-pkg_install := make install DESTDIR=$(OUT_DIR)
+pkg_install := DESTDIR=$(OUT_DIR) ninja -v install
