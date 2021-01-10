@@ -200,6 +200,10 @@ repo = "arch"
 source = "repology"
 repo = "arch"
 
+[pigz]
+source = "repology"
+repo = "arch"
+
 [pixman]
 source = "repology"
 repo = "arch"
