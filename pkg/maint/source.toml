@@ -180,6 +180,10 @@ repo = "arch"
 source = "repology"
 repo = "arch"
 
+[nghttp2]
+source = "repology"
+repo = "void_x86_64"
+
 [ninja]
 source = "repology"
 repo = "arch"
