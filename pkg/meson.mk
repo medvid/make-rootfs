@@ -1,4 +1,4 @@
-pkg_ver  := 0.56.1
+pkg_ver  := 0.56.2
 pkg_repo := https://github.com/mesonbuild/meson
 pkg_site := $(pkg_repo)/releases/download/$(pkg_ver)
 pkg_copy := true
