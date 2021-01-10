@@ -1,0 +1,20 @@
+--- libuv-v1.40.0/CMakeLists.txt
++++ libuv-v1.40.0/CMakeLists.txt
+@@ -326,7 +326,7 @@
+   list(APPEND uv_test_libraries util)
+ endif()
+ 
+-add_library(uv SHARED ${uv_sources})
++add_library(uv SHARED EXCLUDE_FROM_ALL ${uv_sources})
+ target_compile_definitions(uv
+   INTERFACE
+     USING_UV_SHARED=1
+@@ -598,7 +598,7 @@
+   install(FILES LICENSE DESTINATION ${CMAKE_INSTALL_DOCDIR})
+   install(FILES ${PROJECT_BINARY_DIR}/libuv.pc ${PROJECT_BINARY_DIR}/libuv-static.pc
+           DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+-  install(TARGETS uv LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
++  #install(TARGETS uv LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+   install(TARGETS uv_a ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ endif()
+ 

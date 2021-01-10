@@ -30,6 +30,7 @@
   "libudev-zero": "0.4.5",
   "libuev": "2.3.1",
   "libuuid": "1.0.3",
+  "libuv": "1.40.0",
   "libxkbcommon": "1.0.3",
   "m4": "1.4.18",
   "make": "4.3",

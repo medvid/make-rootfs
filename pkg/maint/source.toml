@@ -132,6 +132,10 @@ repo = "void_x86_64"
 source = "repology"
 repo = "gentoo"
 
+[libuv]
+source = "repology"
+repo = "arch"
+
 [libxkbcommon]
 source = "repology"
 repo = "arch"
