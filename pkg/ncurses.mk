@@ -12,9 +12,8 @@ pkg_configure := $(pkg_srcdir)/configure \
 	--without-manpages \
 	--without-tack \
 	--without-tests \
-	--with-pkg-config \
-	--with-pkg-config-libdir=/usr/lib/pkgconfig \
-	--enable-pc-files \
+	--without-pkg-config \
+	--disable-pc-files \
 	--with-build-cc="$(CC)-11" \
 	--with-build-cflags="$(HOST_CFLAGS)" \
 	--with-build-ldflags="$(HOST_LDFLAGS)" \
