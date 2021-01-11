@@ -3,6 +3,7 @@
 .bash_history
 .vscode
 
+/git
 /log
 /obj
 /out
