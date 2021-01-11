@@ -1,4 +1,4 @@
-pkg_ver  := 5.7.12
+pkg_ver  := 5.10.6
 pkg_repo := https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux
 pkg_site := https://cdn.kernel.org/pub/linux/kernel/v5.x
 
