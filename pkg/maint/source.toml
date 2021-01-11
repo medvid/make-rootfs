@@ -232,6 +232,10 @@ repo = "arch"
 source = "repology"
 repo = "arch"
 
+[ruby]
+source = "repology"
+repo = "distrowatch"
+
 #[qt]
 #source = "repology"
 #repo = "arch"

@@ -53,6 +53,7 @@
   "python": "3.9.1",
   "rhash": "1.4.1",
   "rsync": "3.2.3",
+  "ruby": "3.0.0",
   "setuptools": "51.1.2",
   "strace": "5.10",
   "tmux": "3.1c",
