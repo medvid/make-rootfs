@@ -1,0 +1,11 @@
+--- llvm-project-11.0.0/lldb/source/API/CMakeLists.txt
++++ llvm-project-11.0.0/lldb/source/API/CMakeLists.txt
+@@ -19,7 +19,7 @@
+   set(option_framework FRAMEWORK)
+ endif()
+ 
+-add_lldb_library(liblldb SHARED ${option_framework}
++add_lldb_library(liblldb ${option_framework}
+   SBAddress.cpp
+   SBAttachInfo.cpp
+   SBBlock.cpp

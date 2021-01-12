@@ -46,7 +46,7 @@ pkg_configure := $(cmake_pkg_configure) \
 	-DCMAKE_DISABLE_FIND_PACKAGE_Git:BOOL=ON \
 	-DCMAKE_DISABLE_FIND_PACKAGE_OCaml:BOOL=ON \
 	-DCMAKE_DISABLE_FIND_PACKAGE_Sphinx:BOOL=ON \
-	-DLLVM_ENABLE_PROJECTS:STRING="clang;libcxx;libcxxabi;libunwind;compiler-rt;lld" \
+	-DLLVM_ENABLE_PROJECTS:STRING="clang;libcxx;libcxxabi;libunwind;compiler-rt;lld;lldb" \
 	-DLLVM_DEFAULT_TARGET_TRIPLE:STRING="$(TARGET)" \
 	-DLLVM_TARGETS_TO_BUILD:STRING="$(llvm_target_arch)" \
 	-DLLVM_ENABLE_BINDINGS:BOOL=OFF \
@@ -142,6 +142,20 @@ else
 # https://gitlab.kitware.com/cmake/cmake/-/issues/18121
 pkg_configure += -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY
 pkg_configure += -DCMAKE_SIZEOF_VOID_P=$(llvm_sizeof_void)
+endif
+
+ifeq ($(STAGE),stage4)
+llvm_build_targets += lldb lldb-server
+pkg_configure += \
+	-DLLVM_TOOL_LLDB_BUILD:BOOL=ON \
+	-DLLDB_ENABLE_LIBEDIT:BOOL=ON \
+	-DLLDB_ENABLE_CURSES:BOOL=ON \
+	-DLLDB_ENABLE_LZMA:BOOL=ON \
+	-DLLDB_ENABLE_LUA:BOOL=OFF \
+	-DLLDB_ENABLE_PYTHON:BOOL=OFF \
+	-DLLDB_ENABLE_LIBXML2:BOOL=OFF \
+	-DLLDB_USE_SYSTEM_SIX:BOOL=OFF \
+	-DLLDB_INCLUDE_TESTS:BOOL=OFF
 endif
 
 ifeq ($(llvm_builtins_only),true)
