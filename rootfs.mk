@@ -1,6 +1,7 @@
 IMG_SIZE := 1GB
 IMG_FILE := $(OUT_DIR).img
 LOOP_DEV := /dev/loop0
+LOOP_PART := $(LOOP_DEV)p1
 #$(eval LOOP_DEV := $(shell losetup -fs $(IMG_FILE)))
 
 rootfs:
@@ -11,14 +12,15 @@ rootfs:
 	#losetup --find --partscan --show $(IMG_FILE)
 	# ignore BLKRRPART ioctl error reported by fdisk
 	printf "o\nn\np\n1\n\n\nw\n" | fdisk $(LOOP_DEV) || true
+	sleep 1
 	partprobe $(LOOP_DEV) || true
-	losetup -d $(LOOP_DEV)
+	losetup -D
 	losetup -fs $(IMG_FILE)
 	#losetup --find --partscan --show $(IMG_FILE)
 	fdisk -l $(LOOP_DEV)
-	mkfs.ext4 $(LOOP_DEV)
+	mkfs.ext4 $(LOOP_PART)
 	mkdir -p /mnt/$(TARGET)
-	mount -t ext4 $(LOOP_DEV)p1 /mnt/$(TARGET)
+	mount -t ext4 $(LOOP_PART) /mnt/$(TARGET)
 	rsync -apv --chmod=ugo+rwx $(OUT_DIR)/ /mnt/$(TARGET)/
 	mkdir -p /mnt/$(TARGET)/dev
 	mkdir -p /mnt/$(TARGET)/proc
@@ -30,6 +32,6 @@ rootfs:
 	ln -s /run /mnt/$(TARGET)/var/run
 	touch /mnt/$(TARGET)/etc/fstab
 	umount /mnt/$(TARGET)
-	losetup -d $(LOOP_DEV)
+	losetup -D
 
 .PHONY: rootfs
