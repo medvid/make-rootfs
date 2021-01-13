@@ -16,6 +16,9 @@ TARGET ?= $(HOST)
 # Set the list of packages built during stage1 and stage2 bootstrapping
 BASE_PKGS := musl linux-headers llvm
 
+# https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html
+CONFIG ?= Release
+
 # Set the list of packages built during stage3 and stage4 bootstrapping
 HOST_PKGS := musl linux-headers llvm bash bc bison bzip2 diffutils \
 	e2fsprogs expat flex gperf grep json-c libffi libuuid m4 make \
@@ -123,18 +126,34 @@ export OBJDUMP := $(HOST_LLVM_DIR)llvm-objdump
 export RANLIB := $(HOST_LLVM_DIR)llvm-ranlib
 export READELF := $(HOST_LLVM_DIR)llvm-readelf
 export STRIP := $(HOST_LLVM_DIR)llvm-strip
-export CFLAGS := -O3 -pipe -static -fno-pic -fno-pie
-export CXXFLAGS := -O3 -pipe -static -fno-pic -fno-pie
-export LDFLAGS := -s -static -static-libgcc -Wl,-no-pie -Wl,-no-dynamic-linker -Wl,-no-export-dynamic -Wl,--gc-sections
+export CFLAGS := -pipe -static -fno-pic -fno-pie
+export CXXFLAGS := -pipe -static -fno-pic -fno-pie
+export LDFLAGS := -static -static-libgcc -Wl,-no-pie -Wl,-no-dynamic-linker -Wl,-no-export-dynamic -Wl,--gc-sections
 # AC_PROG_MKDIR_P is confused by toybox mkdir --version
 export MKDIR_P := mkdir -p
+
+ifeq ($(CONFIG),Debug)
+export CFLAGS += -O0 -g
+export CXXFLAGS += -O0 -g
+else ifeq ($(CONFIG),Release)
+export CFLAGS += -O3
+export CXXFLAGS += -O3
+export LDFLAGS += -s
+else ifeq ($(CONFIG),RelWithDebInfo)
+export CFLAGS += -O3 -g
+export CXXFLAGS += -O3 -g
+else ifeq ($(CONFIG),MinSizeRel)
+export CFLAGS += -Os
+export CXXFLAGS += -Os
+export LDFLAGS += -s
+endif
 
 # Use default CFLAGS/CXXFLAGS/LDFLAGS when building stage1 with host toolchain
 # -U_FORTIFY_SOURCE prevents libc++abi from pulling glibc __fprintf_chk
 ifeq ($(STAGE),stage1)
 export CFLAGS     := -U_FORTIFY_SOURCE
 export CXXFLAGS   := -U_FORTIFY_SOURCE
-export LDFLAGS    := -s
+export LDFLAGS    :=
 endif
 
 # Print compiler diagnostic output: make V=2
@@ -166,10 +185,10 @@ export LDFLAGS += -target $(TARGET)
 endif
 
 # Enable LTO when not bootstrapping
-ifeq ($(CROSS),1)
-export CFLAGS += -flto
-export CXXFLAGS += -flto
-endif
+#ifeq ($(CROSS),1)
+#export CFLAGS += -flto
+#export CXXFLAGS += -flto
+#endif
 
 # Print diagnostic output: make V=1
 ifneq ($(V),)
@@ -211,7 +230,7 @@ cmake_pkg_configure := cmake \
 	-DCMAKE_C_COMPILER=$(CC) \
 	-DCMAKE_CXX_COMPILER=$(CXX) \
 	-DCMAKE_LINKER=$(LD) \
-	-DCMAKE_BUILD_TYPE:STRING=Release \
+	-DCMAKE_BUILD_TYPE:STRING=$(CONFIG) \
 	-DCMAKE_INSTALL_PREFIX:PATH=/usr \
 	-DCMAKE_INSTALL_LIBDIR:STRING=lib \
 	-DINSTALL_SYSCONFDIR:PATH=/etc \
