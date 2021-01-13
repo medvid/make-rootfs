@@ -1,4 +1,4 @@
-pkg_ver  := 1.10.0
+pkg_ver  := 1.10.1
 pkg_repo := https://gitlab.freedesktop.org/libevdev/libevdev
 pkg_site := https://www.freedesktop.org/software/libevdev
 
