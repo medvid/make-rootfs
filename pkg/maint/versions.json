@@ -22,7 +22,7 @@
   "libarchive": "3.5.1",
   "libdrm": "2.4.103",
   "libedit": "20191231-3.1",
-  "libevdev": "1.10.0",
+  "libevdev": "1.10.1",
   "libevent": "2.1.12",
   "libffi": "3.3",
   "libinput": "1.16.4",
