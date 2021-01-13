@@ -43,9 +43,8 @@ endif
 
 pkg_configure := $(cmake_pkg_configure) \
 	$(pkg_srcdir)/llvm \
+	-DCMAKE_DISABLE_FIND_PACKAGE_Backtrace:BOOL=ON \
 	-DCMAKE_DISABLE_FIND_PACKAGE_Git:BOOL=ON \
-	-DCMAKE_DISABLE_FIND_PACKAGE_OCaml:BOOL=ON \
-	-DCMAKE_DISABLE_FIND_PACKAGE_Sphinx:BOOL=ON \
 	-DLLVM_ENABLE_PROJECTS:STRING="clang;libcxx;libcxxabi;libunwind;compiler-rt;lld;lldb" \
 	-DLLVM_DEFAULT_TARGET_TRIPLE:STRING="$(TARGET)" \
 	-DLLVM_TARGETS_TO_BUILD:STRING="$(llvm_target_arch)" \
@@ -145,6 +144,10 @@ pkg_configure += -DCMAKE_SIZEOF_VOID_P=$(llvm_sizeof_void)
 endif
 
 ifeq ($(STAGE),stage4)
+llvm_build_lldb := true
+endif
+
+ifeq ($(llvn_build_lldb),true)
 llvm_build_targets += lldb lldb-server
 pkg_configure += \
 	-DLLVM_TOOL_LLDB_BUILD:BOOL=ON \
@@ -156,6 +159,15 @@ pkg_configure += \
 	-DLLDB_ENABLE_LIBXML2:BOOL=OFF \
 	-DLLDB_USE_SYSTEM_SIX:BOOL=OFF \
 	-DLLDB_INCLUDE_TESTS:BOOL=OFF
+else
+pkg_configure += \
+	-DCMAKE_DISABLE_FIND_PACKAGE_Git:BOOL=ON \
+	-DCMAKE_DISABLE_FIND_PACKAGE_LibEdit:BOOL=ON \
+	-DCMAKE_DISABLE_FIND_PACKAGE_CursesAndPanel:BOOL=ON \
+	-DCMAKE_DISABLE_FIND_PACKAGE_LibLZMA:BOOL=ON \
+	-DCMAKE_DISABLE_FIND_PACKAGE_LuaAndSwig:BOOL=ON \
+	-DCMAKE_DISABLE_FIND_PACKAGE_PythonInterpAndLibs:BOOL=ON \
+	-DCMAKE_DISABLE_FIND_PACKAGE_LibXml2:BOOL=ON
 endif
 
 ifeq ($(llvm_builtins_only),true)
@@ -179,7 +191,7 @@ endif
 
 # There is no standard CMake rule to install clang-tblgen tool (required by cross build)
 ifeq ($(STAGE),stage4)
-pkg_install += && cp -v bin/clang-tblgen $(OUT_DIR)/bin/clang-tblgen
+pkg_install += && cp -v bin/clang-tblgen $(OUT_DIR)/usr/bin/clang-tblgen
 endif
 
 # Define custom target for toolchain installation
