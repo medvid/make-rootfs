@@ -1,4 +1,4 @@
-pkg_ver  := 3.19.2
+pkg_ver  := 3.19.3
 pkg_repo := https://github.com/Kitware/CMake
 pkg_site := $(pkg_repo)/releases/download/v$(pkg_ver)
 pkg_deps := curl expat zlib bzip2 zstd xz nghttp2 jsoncpp rhash libuv openssl
