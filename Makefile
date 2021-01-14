@@ -320,6 +320,9 @@ endif
 ifeq ($$($(1)_build),)
 $(1)_build := true
 endif
+ifeq ($$($(1)_check),)
+$(1)_check := true
+endif
 ifeq ($$($(1)_install),)
 $(1)_install := true
 endif
@@ -394,6 +397,11 @@ $(1): $(OBJ_DIR)/obj_$(1)/.build.stamp
 
 # Define alias for the install rule
 install-$(1): $(OBJ_DIR)/obj_$(1)/.install.stamp
+
+# Define custom rule to run the test suite
+check-$(1): $(1)
+	cd $(OBJ_DIR)/obj_$(1) && $$($(1)_vars) $$($(1)_check) 2>&1 | \
+		tee $(LOG_DIR)/`date '+%Y%m%d-%H%M%S'`-$(1)-check.log
 
 # Define custom rule to cleanup package build directory
 clean-$(1):
