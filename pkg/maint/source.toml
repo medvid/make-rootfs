@@ -88,6 +88,10 @@ repo = "arch"
 source = "repology"
 repo = "arch"
 
+[less]
+source = "repology"
+repo = "arch"
+
 [libarchive]
 source = "repology"
 repo = "arch"
