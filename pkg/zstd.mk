@@ -1,4 +1,4 @@
-pkg_ver  := 1.4.5
+pkg_ver  := 1.4.8
 pkg_repo := https://github.com/facebook/zstd
 pkg_site := $(pkg_repo)/releases/download/v$(pkg_ver)
 
