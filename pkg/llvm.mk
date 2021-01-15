@@ -147,7 +147,7 @@ ifeq ($(STAGE),stage4)
 llvm_build_lldb := true
 endif
 
-ifeq ($(llvn_build_lldb),true)
+ifeq ($(llvm_build_lldb),true)
 llvm_build_targets += lldb lldb-server
 pkg_configure += \
 	-DLLVM_TOOL_LLDB_BUILD:BOOL=ON \
