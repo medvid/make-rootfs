@@ -32,6 +32,10 @@ repo = "arch"
 source = "repology"
 repo = "arch"
 
+[dash]
+source = "archpkg"
+strip_release = true
+
 [diffutils]
 source = "repology"
 repo = "arch"
