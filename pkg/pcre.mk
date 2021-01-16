@@ -31,4 +31,6 @@ pkg_build := ninja -v
 
 pkg_check := ninja test
 
-pkg_install := DESTDIR=$(OUT_DIR) ninja -v install
+pkg_install := DESTDIR=$(OUT_DIR) ninja -v install && rm \
+	$(OUT_DIR)/usr/bin/pcretest \
+	$(OUT_DIR)/usr/bin/pcre_jit_test
