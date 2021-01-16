@@ -20,6 +20,6 @@ pkg_configure := $(meson_pkg_configure) \
 
 pkg_build := ninja -v
 
-pkg_build := ninja test
+pkg_check := ninja test
 
 pkg_install := DESTDIR=$(OUT_DIR) ninja install
