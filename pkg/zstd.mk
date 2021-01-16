@@ -9,6 +9,7 @@ pkg_repo := https://github.com/facebook/zstd
 pkg_site := $(pkg_repo)/releases/download/v$(pkg_ver)
 
 pkg_configure := $(meson_pkg_configure) \
+	-Dlegacy_level=0 \
 	-Dbin_programs=false \
 	-Dbin_tests=false \
 	-Dzlib=disabled \
