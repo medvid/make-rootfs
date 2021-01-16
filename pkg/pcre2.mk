@@ -19,7 +19,6 @@ pkg_configure := $(cmake_pkg_configure) \
 	-DPCRE2_SUPPORT_LIBZ:BOOL=OFF \
 	-DPCRE2_SUPPORT_LIBEDIT:BOOL=OFF \
 	-DPCRE2_SUPPORT_LIBREADLINE:BOOL=OFF \
-	-DPCRE2_SUPPORT_LIBREADLINE:BOOL=OFF \
 	-DCMAKE_DISABLE_FIND_PACKAGE_BZip2:BOOL=ON \
 	-DCMAKE_DISABLE_FIND_PACKAGE_ZLIB:BOOL=ON \
 	-DCMAKE_DISABLE_FIND_PACKAGE_Readline:BOOL=ON \
@@ -30,4 +29,7 @@ pkg_build := ninja -v
 
 pkg_check := ninja test
 
-pkg_install := DESTDIR=$(OUT_DIR) ninja -v install
+pkg_install := DESTDIR=$(OUT_DIR) ninja -v install && rm \
+	$(OUT_DIR)/usr/bin/pcre2test \
+	$(OUT_DIR)/usr/bin/pcre2_jit_test \
+	$(OUT_DIR)/usr/bin/pcre2-config
