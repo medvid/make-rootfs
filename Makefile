@@ -77,10 +77,13 @@ RMRF_PATHS := /usr/lib/*.la \
 	/usr/share/bash-completion \
 	/usr/share/emacs \
 	/usr/share/doc \
+	/usr/share/gettext \
 	/usr/share/gtk-doc \
 	/usr/share/info \
 	/usr/share/man \
-	/usr/share/vim
+	/usr/share/polkit-1 \
+	/usr/share/vim \
+	/usr/share/xml
 
 # Set sysroot and base path to the LLVM binaries
 ifeq ($(STAGE),stage1)
