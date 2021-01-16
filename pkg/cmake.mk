@@ -1,3 +1,10 @@
+# https://repology.org/project/cmake
+# https://git.alpinelinux.org/aports/tree/main/cmake/APKBUILD
+# https://git.buildroot.net/buildroot/tree/package/cmake/cmake.mk
+# https://github.com/distr1/distri/blob/master/pkgs/cmake/build.textproto
+# https://github.com/kisslinux/repo/blob/master/extra/cmake/build
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/cmake/template
+
 pkg_ver  := 3.19.3
 pkg_repo := https://github.com/Kitware/CMake
 pkg_site := $(pkg_repo)/releases/download/v$(pkg_ver)
@@ -26,5 +33,7 @@ pkg_configure := LDFLAGS="$(LDFLAGS) -lcurl -lcrypto -lssl" \
 	$(pkg_srcdir)
 
 pkg_build := ninja -v
+
+pkg_test := ninja test
 
 pkg_install := DESTDIR=$(OUT_DIR) ninja install

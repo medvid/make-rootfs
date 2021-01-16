@@ -1,3 +1,9 @@
+# https://repology.org/project/libuv
+# https://git.alpinelinux.org/aports/tree/main/libuv/APKBUILD
+# https://git.buildroot.net/buildroot/tree/package/libuv/libuv.mk
+# https://github.com/kisslinux/community/blob/master/community/libuv/build
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/libuv/template
+
 pkg_ver  := 1.40.0
 pkg_repo := https://github.com/libuv/libuv
 pkg_site := https://dist.libuv.org/dist/v$(pkg_ver)

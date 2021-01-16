@@ -1,3 +1,10 @@
+# https://repology.org/project/curl
+# https://git.alpinelinux.org/aports/tree/main/curl/APKBUILD
+# https://git.buildroot.net/buildroot/tree/package/libcurl/libcurl.mk
+# https://github.com/distr1/distri/blob/master/pkgs/curl/build.textproto
+# https://github.com/kisslinux/repo/blob/master/core/curl/build
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/curl/template
+
 pkg_ver  := 7.74.0
 pkg_repo := https://github.com/curl/curl
 pkg_site := https://curl.haxx.se/download
@@ -7,6 +14,7 @@ pkg_configure := $(pkg_srcdir)/configure \
 	--build=$(HOST) \
 	--host=$(TARGET) \
 	--prefix=/usr \
+	--disable-silent-rules \
 	--disable-debug \
 	--enable-optimize \
 	--disable-curldebug \
@@ -72,4 +80,7 @@ pkg_configure := $(pkg_srcdir)/configure \
 
 pkg_build := make
 
-pkg_install := make install DESTDIR=$(OUT_DIR)
+pkg_check := make -C tests nonflaky-test
+
+pkg_install := make install DESTDIR=$(OUT_DIR) && \
+	rm -f $(OUT_DIR)/usr/bin/curl-config

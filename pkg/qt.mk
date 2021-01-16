@@ -1,3 +1,5 @@
+# https://repology.org/project/qt
+
 pkg_ver  := 6.0.0
 pkg_site := https://download.qt.io/archive/qt/$(basename $(pkg_ver))/$(pkg_ver)/single
 pkg_base := qt-everywhere-src

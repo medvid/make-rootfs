@@ -1,3 +1,10 @@
+# https://repology.org/project/libdrm
+# https://git.alpinelinux.org/aports/tree/main/libdrm/APKBUILD
+# https://git.buildroot.net/buildroot/tree/package/libdrm/libdrm.mk
+# https://github.com/distr1/distri/blob/master/pkgs/libdrm/build.textproto
+# https://github.com/kisslinux/repo/blob/master/extra/libdrm/build
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/libdrm/template
+
 pkg_ver  := 2.4.104
 pkg_repo := https://gitlab.freedesktop.org/mesa/drm
 pkg_site := https://dri.freedesktop.org/libdrm
@@ -28,5 +35,7 @@ pkg_configure := $(meson_pkg_configure) \
 	$(pkg_srcdir) $(pkg_objdir)
 
 pkg_build := ninja -v
+
+pkg_check := ninja test
 
 pkg_install := DESTDIR=$(OUT_DIR) ninja install

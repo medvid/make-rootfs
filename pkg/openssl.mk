@@ -1,3 +1,8 @@
+# https://repology.org/project/openssl/versions
+# https://git.alpinelinux.org/aports/tree/main/openssl/APKBUILD
+# https://git.buildroot.net/buildroot/tree/package/libopenssl/libopenssl.mk
+# https://github.com/distr1/distri/blob/master/pkgs/openssl/build.textproto
+
 pkg_ver  := 1.1.1i
 pkg_repo := https://github.com/openssl/openssl
 pkg_site := https://www.openssl.org/source

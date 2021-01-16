@@ -1,3 +1,9 @@
+# https://repology.org/project/llvm
+# https://git.alpinelinux.org/aports/tree/main/llvm10/APKBUILD
+# https://git.buildroot.net/buildroot/tree/package/llvm/llvm.mk
+# https://github.com/kisslinux/repo/blob/master/extra/llvm/build
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/llvm11/template
+
 pkg_ver  := 11.0.0
 pkg_repo := https://github.com/llvm/llvm-project
 pkg_site := $(pkg_repo)/releases/download/llvmorg-$(pkg_ver)

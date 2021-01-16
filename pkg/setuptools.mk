@@ -1,3 +1,8 @@
+# https://repology.org/project/python:setuptools
+# https://git.alpinelinux.org/aports/tree/main/py3-setuptools/APKBUILD
+# https://git.buildroot.net/buildroot/tree/package/python3-setuptools/python3-setuptools.mk
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/python3-setuptools/template
+
 pkg_ver  := 51.1.2
 pkg_repo := https://github.com/pypa/setuptools
 pkg_site := https://files.pythonhosted.org/packages/source/s/setuptools

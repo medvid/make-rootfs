@@ -1,3 +1,10 @@
+# https://repology.org/project/ruby
+# https://git.alpinelinux.org/aports/tree/main/ruby/APKBUILD
+# https://git.buildroot.net/buildroot/tree/package/ruby/ruby.mk
+# https://github.com/distr1/distri/blob/master/pkgs/ruby/build.textproto
+# https://github.com/kisslinux/community/blob/master/community/ruby/build
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/ruby/template
+
 pkg_ver  := 3.0.0
 pkg_repo := https://github.com/ruby/ruby
 pkg_site := https://cache.ruby-lang.org/pub/ruby/$(basename $(pkg_ver))

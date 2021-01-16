@@ -1,3 +1,10 @@
+# https://repology.org/project/ncurses
+# https://git.alpinelinux.org/aports/tree/main/ncurses/APKBUILD
+# https://git.buildroot.net/buildroot/tree/package/ncurses/ncurses.mk
+# https://github.com/distr1/distri/blob/master/pkgs/ncurses/build.textproto
+# https://github.com/kisslinux/repo/blob/master/extra/ncurses/build
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/ncurses/template
+
 pkg_ver  := 6.2
 pkg_site := https://invisible-mirror.net/archives/ncurses
 

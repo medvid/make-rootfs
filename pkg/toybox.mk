@@ -1,3 +1,7 @@
+# https://repology.org/project/toybox
+# https://git.alpinelinux.org/aports/tree/testing/toybox/APKBUILD
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/toybox/template
+
 pkg_ver  := 0.8.4
 pkg_repo := https://github.com/landley/toybox
 pkg_site := https://landley.net/toybox/downloads

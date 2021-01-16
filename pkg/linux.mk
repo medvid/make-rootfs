@@ -1,3 +1,8 @@
+# https://repology.org/project/linux
+# https://git.alpinelinux.org/aports/tree/main/linux-lts/APKBUILD
+# https://github.com/distr1/distri/blob/master/pkgs/linux/build.textproto
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/linux/template
+
 pkg_ver  := 5.10.6
 pkg_repo := https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux
 pkg_site := https://cdn.kernel.org/pub/linux/kernel/v5.x

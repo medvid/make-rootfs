@@ -1,3 +1,10 @@
+# https://repology.org/project/pcre
+# https://git.alpinelinux.org/aports/tree/main/pcre/APKBUILD
+# https://git.buildroot.net/buildroot/tree/package/pcre/pcre.mk
+# https://github.com/distr1/distri/blob/master/pkgs/pcre/build.textproto
+# https://github.com/kisslinux/community/blob/master/community/pcre/build
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/pcre/template
+
 pkg_ver  := 8.44
 pkg_site := https://ftp.pcre.org/pub/pcre
 
@@ -9,7 +16,7 @@ pkg_configure := $(cmake_pkg_configure) \
 	-DPCRE_SUPPORT_JIT:BOOL=ON \
 	-DPCRE_SUPPORT_UTF:BOOL=ON \
 	-DPCRE_BUILD_PCREGREP:BOOL=OFF \
-	-DPCRE_BUILD_TESTS:BOOL=OFF \
+	-DPCRE_BUILD_TESTS:BOOL=ON \
 	-DPCRE_SUPPORT_LIBBZ2:BOOL=OFF \
 	-DPCRE_SUPPORT_LIBZ:BOOL=OFF \
 	-DPCRE_SUPPORT_LIBEDIT:BOOL=OFF \
@@ -21,5 +28,7 @@ pkg_configure := $(cmake_pkg_configure) \
 	$(pkg_srcdir)
 
 pkg_build := ninja -v
+
+pkg_check := ninja test
 
 pkg_install := DESTDIR=$(OUT_DIR) ninja -v install

@@ -1,3 +1,9 @@
+# https://repology.org/project/libedit
+# https://git.alpinelinux.org/aports/tree/main/libedit/APKBUILD
+# https://git.buildroot.net/buildroot/tree/package/libedit/libedit.mk
+# https://github.com/kisslinux/community/blob/master/community/libedit/build
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/libedit/template
+
 pkg_ver  := 20191231-3.1
 pkg_site := https://thrysoee.dk/editline
 pkg_deps := ncurses

@@ -1,3 +1,10 @@
+# https://repology.org/project/git
+# https://git.alpinelinux.org/aports/tree/main/git/APKBUILD
+# https://git.buildroot.net/buildroot/tree/package/git/git.mk
+# https://github.com/distr1/distri/blob/master/pkgs/git/build.textproto
+# https://github.com/kisslinux/repo/blob/master/core/git/build
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/git/template
+
 pkg_ver  := 2.30.0
 pkg_repo := https://github.com/git/git
 pkg_site := https://mirrors.edge.kernel.org/pub/software/scm/git
@@ -26,5 +33,7 @@ pkg_configure := $(pkg_srcdir)/configure \
 	ac_cv_snprintf_returns_bogus=no
 
 pkg_build := make $(pkg_vars)
+
+pkg_check := make check
 
 pkg_install := make install DESTDIR=$(OUT_DIR) $(pkg_vars)

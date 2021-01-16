@@ -1,3 +1,10 @@
+# https://repology.org/project/glib
+# https://git.alpinelinux.org/aports/tree/main/glib/APKBUILD
+# https://git.buildroot.net/buildroot/tree/package/libglib2/libglib2.mk
+# https://github.com/distr1/distri/blob/master/pkgs/glib/build.textproto
+# https://github.com/kisslinux/repo/blob/master/extra/glib/build
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/glib/template
+
 pkg_ver  := 2.66.4
 pkg_repo := https://gitlab.gnome.org/GNOME/glib
 pkg_site := https://download.gnome.org/sources/glib/$(basename $(pkg_ver))
@@ -15,5 +22,7 @@ pkg_configure := $(meson_pkg_configure) \
 	$(pkg_srcdir) $(pkg_objdir)
 
 pkg_build := ninja -v
+
+pkg_check := ninja test
 
 pkg_install := DESTDIR=$(OUT_DIR) ninja install

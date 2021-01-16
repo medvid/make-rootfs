@@ -1,3 +1,10 @@
+# https://repology.org/project/freetype
+# https://git.alpinelinux.org/aports/tree/main/freetype/APKBUILD
+# https://git.buildroot.net/buildroot/tree/package/freetype/freetype.mk
+# https://github.com/distr1/distri/blob/master/pkgs/freetype/build.textproto
+# https://github.com/kisslinux/repo/blob/master/extra/freetype-harfbuzz/build
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/freetype/template
+
 pkg_ver  := 2.10.4
 pkg_repo := https://git.savannah.gnu.org/git/freetype/freetype2.git
 pkg_site := https://download.savannah.gnu.org/releases/freetype

@@ -1,3 +1,10 @@
+# https://repology.org/project/perl
+# https://git.alpinelinux.org/aports/tree/main/perl/APKBUILD
+# https://git.buildroot.net/buildroot/tree/package/perl/perl.mk
+# https://github.com/distr1/distri/blob/master/pkgs/perl/build.textproto
+# https://github.com/kisslinux/repo/blob/master/extra/perl/build
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/perl/template
+
 pkg_ver  := 5.32.0
 pkg_repo := https://github.com/Perl/perl5
 pkg_site := https://www.cpan.org/src/5.0
@@ -44,5 +51,7 @@ pkg_configure := $(pkg_srcdir)/Configure \
 	-Uusedl
 
 pkg_build := make
+
+pkg_check := make check
 
 pkg_install := make install DESTDIR=$(OUT_DIR)

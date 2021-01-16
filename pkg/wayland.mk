@@ -1,3 +1,8 @@
+# https://repology.org/project/wayland
+# https://git.alpinelinux.org/aports/tree/main/wayland/APKBUILD
+# https://git.buildroot.net/buildroot/tree/package/wayland/wayland.mk
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/wayland/template
+
 pkg_ver  := 1.18.0
 pkg_repo := https://gitlab.freedesktop.org/wayland/wayland
 pkg_site := https://wayland.freedesktop.org/releases
@@ -15,5 +20,7 @@ pkg_configure := PKG_CONFIG_LIBDIR=$(OUT_DIR)/usr/lib/pkgconfig:$(ROOT_DIR)/usr/
 	$(pkg_srcdir) $(pkg_objdir)
 
 pkg_build := ninja -v
+
+pkg_check := ninja test
 
 pkg_install := DESTDIR=$(OUT_DIR) ninja install

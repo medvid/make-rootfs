@@ -1,3 +1,5 @@
+# https://repology.org/project/libuuid
+
 pkg_ver  := 1.0.3
 pkg_repo := https://git.code.sf.net/p/libuuid/code
 pkg_site := http://prdownloads.sourceforge.net/libuuid

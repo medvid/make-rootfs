@@ -1,3 +1,5 @@
+# https://repology.org/project/finit
+
 pkg_ver  := 3.2-rc3
 pkg_repo := https://github.com/troglobit/finit
 pkg_site := $(pkg_repo)/releases/download/$(pkg_ver)
