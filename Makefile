@@ -27,7 +27,7 @@ HOST_PKGS := musl linux-headers llvm bash bc bison bzip2 diffutils \
 	wget git libevent tmux meson setuptools libudev-zero libuuid libdrm \
 	libevdev mtdev libinput pixman freetype fribidi fontconfig cairo \
 	harfbuzz glib pango xkeyboard-config wayland wayland-protocols \
-	libxkbcommon qt less
+	libxkbcommon qt less dash go
 
 # Set the default list of packages built to the target rootfs
 TARGET_PKGS ?= bash toybox finit

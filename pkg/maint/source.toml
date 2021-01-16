@@ -72,6 +72,10 @@ repo = "arch"
 source = "repology"
 repo = "arch"
 
+[go]
+source = "archpkg"
+strip_release = true
+
 [gperf]
 source = "repology"
 repo = "arch"
