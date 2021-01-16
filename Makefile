@@ -308,6 +308,7 @@ $(1)_vars := $$(pkg_vars)
 $(1)_prepare := $$(pkg_prepare)
 $(1)_configure := $$(pkg_configure)
 $(1)_build := $$(pkg_build)
+$(1)_check := $$(pkg_check)
 $(1)_install := $$(pkg_install)
 
 # Replace empty phases with 'true' command
@@ -425,6 +426,7 @@ pkg_vars :=
 pkg_prepare :=
 pkg_configure :=
 pkg_build :=
+pkg_check :=
 pkg_install :=
 
 endef # pkg_add
