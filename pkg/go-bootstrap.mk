@@ -10,11 +10,14 @@ pkg_url  := $(pkg_repo)/archive/go$(pkg_ver).tar.gz
 pkg_dir  := go-go$(pkg_ver)
 pkg_copy := true
 
+pkg_prepare := ln -sf $(shell which llvm-ar) ar
+
 pkg_build := cd src && \
+	PATH=$(pkg_objdir):$(PATH) \
 	TMPDIR=/tmp \
 	CGO_ENABLED=0 \
 	GOROOT_FINAL=/usr/lib/go14 \
 	./make.bash
 
 pkg_install := mkdir -p $(OUT_DIR)/usr/lib/go14 && \
-	cp -r bin src pkg $(OUT_DIR)/usr/lib/go14/
+	cp -rL bin src pkg $(OUT_DIR)/usr/lib/go14/

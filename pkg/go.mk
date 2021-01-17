@@ -13,14 +13,17 @@ pkg_dir  := go-go$(pkg_ver)
 pkg_copy := true
 pkg_deps := go-bootstrap
 
+pkg_prepare := ln -sf $(shell which llvm-ar) ar
+
 pkg_build := cd src && \
 	GOROOT_BOOTSTRAP=$(OUT_DIR)/usr/lib/go14 \
+	PATH=$(pkg_objdir):$(PATH) \
 	TMPDIR=/tmp \
 	CGO_ENABLED=0 \
 	GOROOT_FINAL=/usr/lib/go \
 	./make.bash
 
 pkg_install := mkdir -p $(OUT_DIR)/usr/lib/go && \
-	cp -r bin src pkg $(OUT_DIR)/usr/lib/go/ && \
+	cp -rL bin src pkg $(OUT_DIR)/usr/lib/go/ && \
 	ln -sf ../lib/go/bin/go $(OUT_DIR)/usr/bin/go && \
 	ln -sf ../lib/go/bin/gofmt $(OUT_DIR)/usr/bin/gofmt
