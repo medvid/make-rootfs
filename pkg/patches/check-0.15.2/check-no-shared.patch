@@ -1,0 +1,20 @@
+--- check-0.15.2/src/CMakeLists.txt
++++ check-0.15.2/src/CMakeLists.txt
+@@ -60,7 +60,7 @@
+ # especially with target_link_libraries and install(EXPORT...
+ # https://stackoverflow.com/questions/38832528/transitive-target-include-directories-on-object-libraries
+ # So we instead do the work twice.
+-add_library(checkShared SHARED ${SOURCES} ${HEADERS})
++add_library(checkShared SHARED EXCLUDE_FROM_ALL ${SOURCES} ${HEADERS})
+ add_library(Check::checkShared ALIAS checkShared)
+ 
+ # Add parts of libcompat as required
+@@ -188,7 +188,7 @@
+ )
+ 
+ if(NOT THIS_IS_SUBPROJECT)
+-  install(TARGETS check checkShared
++  install(TARGETS check
+     EXPORT check-targets
+     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
