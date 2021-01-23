@@ -16,5 +16,6 @@ pkg_build := $(PYTHON) setup.py build
 pkg_install := $(PYTHON) setup.py install \
 	--optimize=1 \
 	--skip-build \
+	--single-version-externally-managed \
 	--prefix=/usr \
 	--root=$(OUT_DIR)
