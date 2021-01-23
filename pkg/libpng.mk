@@ -20,6 +20,6 @@ pkg_build := ninja -v
 # FIXME: tests depend on PNG_SHARED
 #pkg_check := ninja test
 
-pkg_install := DESTDIR=$(OUT_DIR) ninja -v install && rm -f \
+pkg_install := DESTDIR=$(OUT_DIR) ninja install && rm -f \
 	$(OUT_DIR)/usr/bin/libpng16-config \
 	$(OUT_DIR)/usr/bin/libpng-config
