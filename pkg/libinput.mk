@@ -8,7 +8,7 @@
 pkg_ver  := 1.16.4
 pkg_repo := https://gitlab.freedesktop.org/libinput/libinput
 pkg_site := https://www.freedesktop.org/software/libinput
-pkg_deps := libevdev mtdev libudev-zero
+pkg_deps := libevdev mtdev libudev-zero check
 
 pkg_prepare := sed -e "s/shared_library/library/g" -i $(pkg_srcdir)/meson.build
 
