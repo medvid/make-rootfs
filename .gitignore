@@ -17,6 +17,7 @@
 /mnt
 /proc
 /root
+/run
 /sbin
 /sys
 /tmp
