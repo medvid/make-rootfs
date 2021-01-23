@@ -24,6 +24,10 @@ repo = "arch"
 source = "repology"
 repo = "arch"
 
+[check]
+source = "archpkg"
+strip_release = true
+
 [cmake]
 source = "repology"
 repo = "arch"
@@ -186,6 +190,10 @@ source = "pypi"
 source = "repology"
 repo = "kiss_community"
 
+[mesa]
+source = "archpkg"
+strip_release = true
+
 [meson]
 source = "repology"
 repo = "debian_unstable"
@@ -262,6 +270,10 @@ repo = "distrowatch"
 source = "repology"
 repo = "arch"
 
+[seatd]
+source = "repology"
+repo = "kiss_community"
+
 [setuptools]
 source = "pypi"
 pypi = "setuptools"
@@ -269,6 +281,10 @@ pypi = "setuptools"
 [strace]
 source = "repology"
 repo = "arch"
+
+[sway]
+source = "archpkg"
+strip_release = true
 
 [tmux]
 source = "repology"
@@ -293,6 +309,10 @@ repo = "arch"
 [wget]
 source = "repology"
 repo = "arch"
+
+[wlroots]
+source = "archpkg"
+strip_release = true
 
 [xkeyboard-config]
 source = "repology"
