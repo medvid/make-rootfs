@@ -4,7 +4,7 @@
 # https://github.com/kisslinux/community/blob/master/community/dash/build
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/dash/template
 
-pkg_ver  := 0.5.11.2
+pkg_ver  := 0.5.11.3
 pkg_repo := https://git.kernel.org/pub/scm/utils/dash/dash.git
 pkg_site := http://gondor.apana.org.au/~herbert/dash/files
 
