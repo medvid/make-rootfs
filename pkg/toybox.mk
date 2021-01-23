@@ -31,4 +31,6 @@ pkg_configure := make silentoldconfig
 # Build system doesn't like TARGET variable
 pkg_build := make TARGET=
 
+pkg_check := make test
+
 pkg_install := make install_flat PREFIX=$(OUT_DIR)/usr/bin
