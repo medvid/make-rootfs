@@ -1,0 +1,11 @@
+--- spice-0.14.3/meson.build
++++ spice-0.14.3/meson.build
+@@ -223,7 +223,7 @@
+ spice_server_pc.set('includedir', join_paths('${prefix}', get_option('includedir')))
+ spice_server_pc.set('VERSION', meson.project_version())
+ spice_server_pc.set('SPICE_PROTOCOL_MIN_VER', spice_protocol_version)
+-spice_server_requires += 'glib-2.0 @0@ gio-2.0 @0@ gobject-2.0 @0@ pixman-1 @1@ openssl'.format(glib_version_info, pixman_version)
++spice_server_requires += 'glib-2.0 @0@ gio-2.0 @0@ gobject-2.0 @0@ pixman-1 @1@ openssl libjpeg'.format(glib_version_info, pixman_version)
+ spice_server_pc.set('SPICE_REQUIRES', spice_server_requires)
+ spice_server_pc.set('SPICE_NONPKGCONFIG_LIBS', '-pthread -lm -lrt')
+ 

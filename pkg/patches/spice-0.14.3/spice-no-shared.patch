@@ -1,0 +1,30 @@
+--- spice-0.14.3/server/meson.build
++++ spice-0.14.3/server/meson.build
+@@ -175,7 +175,7 @@
+                           '-Wl,-z,now',
+                           '-Wl,--version-script=@0@'.format(spice_server_syms_path)]
+ 
+-spice_server_libs = both_libraries('spice-server', spice_server_sources,
++spice_server_static_lib = library('spice-server', spice_server_sources,
+                                    version : spice_server_so_version,
+                                    install : true,
+                                    include_directories : spice_server_include,
+@@ -184,7 +184,4 @@
+                                    dependencies : spice_server_deps,
+                                    gnu_symbol_visibility : 'hidden')
+ 
+-spice_server_shared_lib = spice_server_libs.get_shared_lib()
+-spice_server_static_lib = spice_server_libs.get_static_lib()
+-
+ subdir('tests')
+--- spice-0.14.3/server/tests/meson.build
++++ spice-0.14.3/server/tests/meson.build
+@@ -101,7 +101,7 @@
+ 
+ executable('spice-server-replay',
+            sources : ['replay.c', join_paths('..', 'event-loop.c'), 'basic-event-loop.c', 'basic-event-loop.h'],
+-           link_with : spice_server_shared_lib,
++           link_with : spice_server_static_lib,
+            include_directories : test_lib_include,
+            dependencies : test_lib_deps,
+            install : false)

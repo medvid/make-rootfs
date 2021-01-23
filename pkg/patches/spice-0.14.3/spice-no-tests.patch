@@ -1,0 +1,11 @@
+--- spice-0.14.3/meson.build
++++ spice-0.14.3/meson.build
+@@ -54,7 +54,7 @@
+ #
+ # Spice common subproject
+ #
+-spice_common = subproject('spice-common', default_options : 'generate-code=server')
++spice_common = subproject('spice-common', default_options : ['generate-code=server', 'tests=false'])
+ spice_server_config_data.merge_from(spice_common.get_variable('spice_common_config_data'))
+ spice_server_deps += spice_common.get_variable('spice_common_server_dep')
+ 
