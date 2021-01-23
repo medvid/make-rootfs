@@ -219,8 +219,19 @@ meson_pkg_configure := meson \
 	--sysconfdir=/etc \
 	--mandir=/usr/share/man \
 	--localstatedir=/var \
-	--buildtype=release \
 	-Ddefault_library=static
+
+ifeq ($(CONFIG),Debug)
+meson_pkg_configure += --buildtype=debug
+else ifeq ($(CONFIG),Release)
+meson_pkg_configure += --buildtype=release
+else ifeq ($(CONFIG),RelWithDebInfo)
+meson_pkg_configure += --buildtype=debugoptimized
+else ifeq ($(CONFIG),MinSizeRel)
+meson_pkg_configure += --buildtype=minsize
+else
+meson_pkg_configure += --buildtype=custom
+endif
 
 # Use cross-compilation definitions from /usr/share/meson/cross
 ifeq ($(CROSS),1)
