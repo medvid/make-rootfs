@@ -176,6 +176,12 @@ repo = "arch"
 source = "repology"
 repo = "arch"
 
+[mako]
+source = "pypi"
+
+[markupsafe]
+source = "pypi"
+
 [mawk]
 source = "repology"
 repo = "kiss_community"
