@@ -31,6 +31,6 @@ pkg_build := ninja -v
 
 pkg_check := ninja test
 
-pkg_install := DESTDIR=$(OUT_DIR) ninja -v install && rm \
-	$(OUT_DIR)/usr/bin/pcretest \
-	$(OUT_DIR)/usr/bin/pcre_jit_test
+pkg_install := DESTDIR=$(OUT_DIR) ninja -v install && \
+	install -m 644 $(pkg_files)/libpcre.pc $(pkg_files)/libpcreposix.pc $(OUT_DIR)/usr/lib/pkgconfig && \
+	rm $(OUT_DIR)/usr/bin/pcretest $(OUT_DIR)/usr/bin/pcre_jit_test
