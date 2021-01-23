@@ -5,7 +5,7 @@
 # https://github.com/kisslinux/repo/blob/master/extra/pango/build
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/pango/template
 
-pkg_ver  := 1.48.0
+pkg_ver  := 1.48.1
 pkg_repo := https://gitlab.gnome.org/GNOME/pango
 pkg_site := https://ftp.gnome.org/pub/GNOME/sources/pango/$(basename $(pkg_ver))
 pkg_deps := expat fontconfig cairo glib harfbuzz fribidi
