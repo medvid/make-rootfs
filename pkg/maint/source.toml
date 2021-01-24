@@ -17,128 +17,155 @@ source = "repology"
 repo = "debian_unstable"
 
 [bzip2]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [cairo]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [check]
 source = "archpkg"
 strip_release = true
 
 [cmake]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [curl]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [dash]
 source = "archpkg"
 strip_release = true
 
 [diffutils]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [e2fsprogs]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [expat]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
+
+# TODO: check latest RC
+#[finit]
+#source = "github"
+#github = "troglobit/finit"
+#use_latest_release = false
 
 [flex]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
+# TODO: using beta version
 #[fontconfig]
 #source = "repology"
 #repo = "debian_unstable"
 
 [freetype]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+archpkg = "freetype2"
+strip_release = true
 
 [fribidi]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [git]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [glib]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+archpkg = "glib2"
+strip_release = true
 
+# TODO: custom pkg_url
 #[go]
 #source = "archpkg"
 #strip_release = true
 
 [gperf]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [grep]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [harfbuzz]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [json-c]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [jsoncpp]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [less]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [libarchive]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [libdrm]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
-[libedit]
-source = "repology"
-repo = "kiss_community"
+# TODO: 20191231-3.1 vs 20191231.3.1
+#[libedit]
+#source = "repology"
+#repo = "arch"
+
+[libepoxy]
+source = "archpkg"
+strip_release = true
 
 [libevdev]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [libevent]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [libffi]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [libinput]
-source = "repology"
-repo = "debian_unstable"
+source = "archpkg"
+strip_release = true
 
 [libite]
 source = "repology"
 repo = "debian_unstable"
 
+[libjpeg-turbo]
+source = "archpkg"
+strip_release = true
+
 [libpng]
+source = "archpkg"
+strip_release = true
+
+[libseccomp]
+source = "archpkg"
+strip_release = true
+
+[libucontext]
 source = "repology"
-repo = "kiss_main"
+repo = "alpine_edge"
 
 [libudev-zero]
 source = "repology"
@@ -148,37 +175,47 @@ repo = "kiss_main"
 source = "repology"
 repo = "void_x86_64"
 
+[liburing]
+source = "archpkg"
+strip_release = true
+
+[libusb]
+source = "archpkg"
+strip_release = true
+
 [libuuid]
 source = "repology"
 repo = "gentoo"
 
 [libuv]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [libxkbcommon]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
+# TODO: check kernel.org
 #[linux]
 #source = "repology"
 #repo = "void_x86_64"
 
+# TODO: intentionally using non-latest version
 #[linux-headers]
 #source = "repology"
 #repo = "alpine_edge"
 
-#[llvm]
-#source = "repology"
-#repo = "arch"
+[llvm]
+source = "archpkg"
+strip_release = true
 
 [m4]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [make]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [mako]
 source = "pypi"
@@ -195,80 +232,88 @@ source = "archpkg"
 strip_release = true
 
 [meson]
-source = "repology"
-repo = "debian_unstable"
+source = "archpkg"
+strip_release = true
 
 [mtdev]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [musl]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [ncurses]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [nghttp2]
 source = "repology"
 repo = "void_x86_64"
 
 [ninja]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [openssl]
 source = "repology"
 repo = "distrowatch"
 
 [pango]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [pcre]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [pcre2]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [perl]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [pigz]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [pixman]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [pkgconf]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
+
+[pyparsing]
+source = "pypi"
 
 [python]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
+
+[qemu]
+source = "archpkg"
+strip_release = true
+
+[qt]
+source = "archpkg"
+archpkg = "qt6-base"
+strip_release = true
 
 [rhash]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
+
+[rsync]
+source = "archpkg"
+strip_release = true
 
 [ruby]
 source = "repology"
 repo = "distrowatch"
-
-#[qt]
-#source = "repology"
-#repo = "arch"
-
-[rsync]
-source = "repology"
-repo = "arch"
 
 [seatd]
 source = "repology"
@@ -278,9 +323,25 @@ repo = "kiss_community"
 source = "pypi"
 pypi = "setuptools"
 
+[six]
+source = "pypi"
+
+[spice]
+source = "archpkg"
+strip_release = true
+
+[spice-protocol]
+source = "archpkg"
+strip_release = true
+
+# TODO: 3340100 vs 3.34.1
+#[sqlite]
+#source = "archpkg"
+#strip_release = true
+
 [strace]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [sway]
 source = "archpkg"
@@ -294,38 +355,42 @@ repo = "debian_unstable"
 source = "repology"
 repo = "alpine_edge"
 
+[usbredir]
+source = "archpkg"
+strip_release = true
+
 [valgrind]
 source = "archpkg"
 strip_release = true
 
 [wayland]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [wayland-protocols]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [wget]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [wlroots]
 source = "archpkg"
 strip_release = true
 
 [xkeyboard-config]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [xz]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [zlib]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
 
 [zstd]
-source = "repology"
-repo = "arch"
+source = "archpkg"
+strip_release = true
