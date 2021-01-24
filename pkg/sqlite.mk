@@ -5,8 +5,8 @@
 # https://github.com/kisslinux/repo/blob/master/extra/sqlite/build
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/sqlite/template
 
-pkg_ver  := 3320300
-pkg_site := https://www.sqlite.org/2020
+pkg_ver  := 3340100
+pkg_site := https://www.sqlite.org/2021
 pkg_base := sqlite-autoconf
 pkg_deps := libedit
 
