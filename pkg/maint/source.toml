@@ -205,9 +205,10 @@ strip_release = true
 #source = "repology"
 #repo = "alpine_edge"
 
-[llvm]
-source = "archpkg"
-strip_release = true
+# TODO: custom pkg_url
+#[llvm]
+#source = "archpkg"
+#strip_release = true
 
 [m4]
 source = "archpkg"

@@ -4,10 +4,10 @@
 # https://github.com/kisslinux/repo/blob/master/extra/llvm/build
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/llvm11/template
 
-pkg_ver  := 11.0.0
+pkg_ver  := 11.0.1
 pkg_repo := https://github.com/llvm/llvm-project
 pkg_site := $(pkg_repo)/releases/download/llvmorg-$(pkg_ver)
-pkg_base := llvm-project
+pkg_dir  := llvm-project-$(pkg_ver).src
 pkg_deps := linux-headers
 
 # Set the LLVM target arch
