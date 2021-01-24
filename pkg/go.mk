@@ -6,7 +6,7 @@
 # https://github.com/kisslinux/community/blob/master/community/go/build
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/go/template
 
-pkg_ver  := 1.15.6
+pkg_ver  := 1.15.7
 pkg_repo := https://github.com/golang/go
 pkg_url  := $(pkg_repo)/archive/go$(pkg_ver).tar.gz
 pkg_dir  := go-go$(pkg_ver)
