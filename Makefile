@@ -24,10 +24,10 @@ HOST_PKGS := musl linux-headers llvm bash bc bison bzip2 diffutils \
 	e2fsprogs expat flex gperf grep json-c libffi libuuid m4 make \
 	mawk ncurses ninja openssl pcre pcre2 perl pkgconf strace toybox \
 	xz zlib pigz cmake curl libarchive libedit libpng python rsync sqlite \
-	wget git libevent tmux meson setuptools libudev-zero libuuid libdrm \
-	libevdev mtdev libinput pixman freetype fribidi fontconfig cairo \
-	harfbuzz glib pango xkeyboard-config wayland wayland-protocols \
-	libxkbcommon qt less dash go
+	wget git libevent tmux setuptools meson pyparsing six markupsafe mako \
+	libudev-zero libuuid libdrm libevdev mtdev libinput pixman freetype \
+	fribidi fontconfig cairo harfbuzz glib pango xkeyboard-config wayland \
+	wayland-protocols libxkbcommon qt less dash go qemu
 
 # Set the default list of packages built to the target rootfs
 TARGET_PKGS ?= bash toybox finit
