@@ -51,7 +51,6 @@ pkg_configure := $(cmake_pkg_configure) \
 	$(pkg_srcdir)/llvm \
 	-DCMAKE_DISABLE_FIND_PACKAGE_Backtrace:BOOL=ON \
 	-DCMAKE_DISABLE_FIND_PACKAGE_Git:BOOL=ON \
-	-DLLVM_ENABLE_PROJECTS:STRING="clang;libcxx;libcxxabi;libunwind;compiler-rt;lld;lldb" \
 	-DLLVM_DEFAULT_TARGET_TRIPLE:STRING="$(TARGET)" \
 	-DLLVM_TARGETS_TO_BUILD:STRING="$(llvm_target_arch)" \
 	-DLLVM_ENABLE_BINDINGS:BOOL=OFF \
@@ -127,6 +126,8 @@ pkg_configure += \
 	-DCOMPILER_RT_DEFAULT_TARGET_ONLY:BOOL=ON
 endif
 
+llvm_projects := libcxx;libcxxabi;libunwind;compiler-rt
+
 # Unconditionally build standard C/C++ runtimes
 llvm_build_targets := compiler-rt cxx unwind
 
@@ -136,6 +137,7 @@ llvm_build_toolchain := true
 endif
 
 ifeq ($(llvm_build_toolchain),true)
+llvm_projects := $(llvm_projects);clang;lld
 llvm_tools := ar as config lto lto2 mt nm objcopy objdump ranlib readelf readobj split strings strip tblgen
 llvm_build_targets += clang clang-resource-headers lld $(addprefix llvm-,$(llvm_tools))
 pkg_configure += -DCMAKE_TRY_COMPILE_TARGET_TYPE=EXECUTABLE
@@ -154,6 +156,7 @@ llvm_build_lldb := true
 endif
 
 ifeq ($(llvm_build_lldb),true)
+llvm_projects := $(llvm_projects);lldb
 llvm_build_targets += lldb lldb-server
 pkg_configure += \
 	-DLLVM_TOOL_LLDB_BUILD:BOOL=ON \
@@ -165,16 +168,9 @@ pkg_configure += \
 	-DLLDB_ENABLE_LIBXML2:BOOL=OFF \
 	-DLLDB_USE_SYSTEM_SIX:BOOL=OFF \
 	-DLLDB_INCLUDE_TESTS:BOOL=OFF
-else
-pkg_configure += \
-	-DCMAKE_DISABLE_FIND_PACKAGE_Git:BOOL=ON \
-	-DCMAKE_DISABLE_FIND_PACKAGE_LibEdit:BOOL=ON \
-	-DCMAKE_DISABLE_FIND_PACKAGE_CursesAndPanel:BOOL=ON \
-	-DCMAKE_DISABLE_FIND_PACKAGE_LibLZMA:BOOL=ON \
-	-DCMAKE_DISABLE_FIND_PACKAGE_LuaAndSwig:BOOL=ON \
-	-DCMAKE_DISABLE_FIND_PACKAGE_PythonInterpAndLibs:BOOL=ON \
-	-DCMAKE_DISABLE_FIND_PACKAGE_LibXml2:BOOL=ON
 endif
+
+pkg_configure += -DLLVM_ENABLE_PROJECTS:STRING="$(llvm_projects)"
 
 ifeq ($(llvm_builtins_only),true)
 llvm_build_targets := compiler-rt
