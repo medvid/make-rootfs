@@ -10,7 +10,7 @@
 pkg_ver  := 5.2.0
 pkg_repo := https://git.qemu.org/git/qemu.git
 pkg_site := https://download.qemu.org
-pkg_deps := pixman zlib libxkbcommon libudev-zero libpng libjpeg-turbo zstd liburing libepoxy libusb spice usbredir
+pkg_deps := pixman zlib libxkbcommon libudev-zero libpng libjpeg-turbo zstd liburing libepoxy libusb spice usbredir libseccomp
 
 pkg_configure := $(pkg_srcdir)/configure \
 	--target-list=aarch64-softmmu,arm-softmmu,i386-softmmu,x86_64-softmmu,aarch64-linux-user,arm-linux-user,i386-linux-user,x86_64-linux-user \
