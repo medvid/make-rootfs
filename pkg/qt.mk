@@ -6,10 +6,8 @@ pkg_base := qt-everywhere-src
 pkg_deps := openssl pcre2 zlib zstd libpng freetype harfbuzz libudev-zero libevdev mtdev libinput libxkbcommon sqlite
 
 pkg_configure := $(cmake_pkg_configure) \
-	$(if $(STAGE),,-DQT_HOST_PATH=/usr) \
-	-DINSTALL_ARCHDATADIR:STRING=lib/qt6 \
-	-DINSTALL_DATADIR:STRING=share/qt6 \
-	-DINSTALL_MKSPECSDIR:STRING=lib/qt6/mkspecs \
+	$(if $(STAGE),,-DQT_HOST_PATH=/usr/lib/qt6) \
+	-DCMAKE_INSTALL_PREFIX:PATH=/usr/lib/qt6 \
 	-DBUILD_CMAKE_TESTING:BOOL=ON \
 	-DBUILD_SHARED_LIBS:BOOL=OFF \
 	-DBUILD_TESTING:BOOL=OFF \
