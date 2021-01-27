@@ -1,0 +1,20 @@
+--- mesa-20.3.3/meson.build
++++ mesa-20.3.3/meson.build
+@@ -128,7 +128,7 @@
+ endif
+ 
+ # shared-glapi is required if at least two OpenGL APIs are being built
+-if not with_shared_glapi
++if false and not with_shared_glapi
+   if ((with_gles1 == 'enabled' and with_gles2 == 'enabled') or
+       (with_gles1 == 'enabled' and with_opengl) or
+       (with_gles2 == 'enabled' and with_opengl))
+@@ -422,7 +422,7 @@
+ elif _egl == 'enabled'
+   if not with_dri
+     error('EGL requires dri')
+-  elif not with_shared_glapi
++  elif false and not with_shared_glapi
+     error('EGL requires shared-glapi')
+   elif not ['disabled', 'dri'].contains(with_glx)
+     error('EGL requires dri, but a GLX is being built without dri')
