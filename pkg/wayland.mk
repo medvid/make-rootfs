@@ -3,7 +3,7 @@
 # https://git.buildroot.net/buildroot/tree/package/wayland/wayland.mk
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/wayland/template
 
-pkg_ver  := 1.18.0
+pkg_ver  := 1.19.0
 pkg_repo := https://gitlab.freedesktop.org/wayland/wayland
 pkg_site := https://wayland.freedesktop.org/releases
 pkg_deps := libffi expat
