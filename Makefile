@@ -13,21 +13,22 @@ HOST := $(shell uname -m)-linux-musl
 # Set the target toolchain triple
 TARGET ?= $(HOST)
 
-# Set the list of packages built during stage1 and stage2 bootstrapping
-BASE_PKGS := musl linux-headers llvm
-
 # https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html
 CONFIG ?= Release
 
-# Set the list of packages built during stage3 and stage4 bootstrapping
-HOST_PKGS := musl linux-headers llvm bash bc bison bzip2 diffutils \
-	e2fsprogs expat flex gperf grep json-c libffi libuuid m4 make \
-	mawk ncurses ninja openssl pcre pcre2 perl pkgconf strace toybox \
-	xz zlib pigz cmake curl libarchive libedit libpng python rsync sqlite \
-	wget git libevent tmux setuptools meson pyparsing six markupsafe mako \
-	libudev-zero libuuid libdrm libevdev mtdev libinput pixman freetype \
-	fribidi fontconfig cairo harfbuzz glib pango xkeyboard-config wayland \
-	wayland-protocols libxkbcommon qt less dash go qemu
+# Set the list of packages built during stage1 bootstrap
+STAGE1_PKGS := musl linux-headers llvm
+
+# Set the list of packages built during stage2 bootstrap
+STAGE2_PKGS := $(STAGE1_PKGS)
+
+# Set the list of packages built during stage3 bootstrap
+STAGE3_PKGS := $(STAGE2_PKGS) bash bc bison cmake curl diffutils \
+	flex glib gperf grep libarchive libedit m4 make mako mawk \
+	meson ncurses ninja perl pkgconf python mako rsync toybox xz
+
+# Set the list of packages built during stage4 bootstrap
+STAGE4_PKGS := $(STAGE3_PKGS) dash git go less qemu qt5 qt6 tmux wget
 
 # Set the default list of packages built to the target rootfs
 TARGET_PKGS ?= bash toybox finit
@@ -132,8 +133,6 @@ export STRIP := $(HOST_LLVM_DIR)llvm-strip
 export CFLAGS := -pipe -static -fno-pic -fno-pie
 export CXXFLAGS := -pipe -static -fno-pic -fno-pie
 export LDFLAGS := -static -static-libgcc -Wl,-no-pie -Wl,-no-dynamic-linker -Wl,-no-export-dynamic -Wl,--gc-sections
-# AC_PROG_MKDIR_P is confused by toybox mkdir --version
-export MKDIR_P := mkdir -p
 
 ifeq ($(CONFIG),Debug)
 export CFLAGS += -O0 -g
@@ -176,8 +175,9 @@ ifneq ($(SYSROOT),)
 export CFLAGS += --sysroot=$(SYSROOT)
 export CXXFLAGS += --sysroot=$(SYSROOT)
 export LDFLAGS += --sysroot=$(SYSROOT)
-export PKG_CONFIG_LIBDIR = $(SYSROOT)/usr/lib/pkgconfig:$(SYSROOT)/usr/share/pkgconfig
-export PKG_CONFIG_SYSROOT_DIR = $(SYSROOT)
+export PKG_CONFIG_LIBDIR := $(SYSROOT)/usr/lib/pkgconfig:$(SYSROOT)/usr/share/pkgconfig
+export PKG_CONFIG_SYSROOT_DIR := $(SYSROOT)
+export PYTHONPATH := $(SYSROOT)/usr/lib/python3.9/site-packages
 endif
 
 # Set target ABI for clang cross-compiler
@@ -188,10 +188,12 @@ export LDFLAGS += -target $(TARGET)
 endif
 
 # Enable LTO when not bootstrapping
-#ifeq ($(CROSS),1)
-#export CFLAGS += -flto
-#export CXXFLAGS += -flto
-#endif
+ifeq ($(CROSS),1)
+ifneq ($(CONFIG),Debug)
+export CFLAGS += -flto
+export CXXFLAGS += -flto
+endif
+endif
 
 # Print diagnostic output: make V=1
 ifneq ($(V),)
@@ -352,8 +354,8 @@ ifeq ($$($(1)_dir),)
 $(1)_dir := $$($(1)_base)-$$($(1)_ver)
 endif
 
-# Add standard build dependencies (BASE_PKGS)
-ifneq ($(filter-out $(BASE_PKGS),$(1)),)
+# Add standard build dependencies (STAGE1_PKGS)
+ifneq ($(filter-out $(STAGE1_PKGS),$(1)),)
 	$(1)_deps += llvm
 endif
 
