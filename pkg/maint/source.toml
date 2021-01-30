@@ -298,7 +298,7 @@ strip_release = true
 source = "archpkg"
 strip_release = true
 
-[qt]
+[qt6]
 source = "archpkg"
 archpkg = "qt6-base"
 strip_release = true
