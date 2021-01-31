@@ -20,4 +20,7 @@ pkg_build := ninja -v
 
 pkg_check := ninja test
 
-pkg_install := DESTDIR=$(OUT_DIR) ninja install
+pkg_install := DESTDIR=$(OUT_DIR) ninja install && rm -f \
+	$(OUT_DIR)/usr/bin/libevdev-tweak-device \
+	$(OUT_DIR)/usr/bin/mouse-dpi-tool \
+	$(OUT_DIR)/usr/bin/touchpad-edge-detector
