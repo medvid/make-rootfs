@@ -16,9 +16,6 @@ pkg_configure := $(pkg_objdir)/$(pkg_srcdir)/configure \
 	--prefix=/usr \
 	--sbindir=/usr/bin \
 	--sysconfdir=/etc \
-	--disable-silent-rules \
-	--enable-symlink-install \
-	--enable-relative-symlinks \
 	--disable-debugfs \
 	--disable-imager \
 	--enable-fsck \
@@ -30,4 +27,8 @@ pkg_build := make
 
 pkg_check := make check
 
-pkg_install := make install DESTDIR=$(OUT_DIR)
+pkg_install := install -m 755 e2fsck/e2fsck misc/mke2fs \
+	misc/tune2fs resize/resize2fs $(OUT_DIR)/usr/bin/ && \
+	install -m644 misc/mke2fs.conf $(OUT_DIR)/etc/ && \
+	ln -sf e2fsck $(OUT_DIR)/usr/bin/fsck.ext4 && \
+	ln -sf mke2fs $(OUT_DIR)/usr/bin/mkfs.ext4
