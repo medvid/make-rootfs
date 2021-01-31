@@ -10,6 +10,8 @@ pkg_ver=$2
 grep -q "^pkg_ver[ ]\+:= $pkg_ver\$" "$ROOTPATH/pkg/$pkg_name.mk" && exit 0
 old_ver="$(sed -n -e '/^pkg_ver/s/pkg_ver[ ]\+:= //p' "$ROOTPATH/pkg/$pkg_name.mk")"
 
+[ $pkg_ver \< $old_ver ] && exit
+
 echo "$@"
 
 pkg_base="$(sed -n -e '/^pkg_base/s/pkg_base[ ]\+:= //p' "$ROOTPATH/pkg/$pkg_name.mk")"
