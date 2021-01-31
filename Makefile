@@ -407,6 +407,7 @@ $(OBJ_DIR)/obj_$(1)/.install.stamp: $(OBJ_DIR)/obj_$(1)/.build.stamp | $(OUT_DIR
 	cd $(OBJ_DIR)/obj_$(1) && $$($(1)_vars) $$($(1)_install) 2>&1 | \
 		tee $(LOG_DIR)/`date '+%Y%m%d-%H%M%S'`-$(1)-install.log
 	@rm -rvf $(addprefix $(OUT_DIR), $(RMRF_PATHS))
+	pkg/maint/list.sh $(1) $(TARGET) $(OUT_DIR)
 	touch $$@
 
 # Define alias for the build rule
@@ -472,6 +473,7 @@ $(OUT_DIR):
 	ln -sfvT usr/bin $(OUT_DIR)/bin
 	ln -sfvT usr/lib $(OUT_DIR)/lib
 	ln -sfvT usr/bin $(OUT_DIR)/sbin
+	pkg/maint/list.sh baselayout $(TARGET) $(OUT_DIR)
 
 # Load recipes for rootfs creation
 include rootfs.mk
