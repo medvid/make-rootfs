@@ -8,19 +8,25 @@ pkg_repo := https://gitlab.freedesktop.org/wayland/wayland
 pkg_site := https://wayland.freedesktop.org/releases
 pkg_deps := libffi expat
 
-# TODO: figure out how to parse from NM and patch properly
-pkg_prepare := sed -e "s/'nm'/'llvm-nm'/g" -i $(pkg_srcdir)/egl/meson.build && \
-	sed -e "/'tests'/s/^\t/\t\#/" -i $(pkg_srcdir)/meson.build
+pkg_configure := $(pkg_srcdir)/configure \
+	--build=$(HOST) \
+	--host=$(TARGET) \
+	--prefix=/usr \
+	--disable-silent-rules \
+	--enable-static \
+	--disable-shared \
+	--disable-documentation \
+	--disable-dtd-validation \
+	--without-pic
 
-# workaround for wayland-scanner.pc native dependency
-pkg_configure := PKG_CONFIG_LIBDIR=$(OUT_DIR)/usr/lib/pkgconfig:$(ROOT_DIR)/usr/lib/pkgconfig \
-	PKG_CONFIG_SYSROOT_DIR= $(meson_pkg_configure) \
-	-Ddocumentation=false \
-	-Ddtd_validation=false \
-	$(pkg_srcdir) $(pkg_objdir)
+# Avoid dependency on host libwayland-bin during bootstrap
+ifeq ($(CROSS),1)
+pkg_configure += --with-host-scanner
+endif
 
-pkg_build := ninja -v
+# Do not build test programs
+pkg_build := make am__EXEEXT_2=
 
-pkg_check := ninja test
+pkg_check := make test
 
-pkg_install := DESTDIR=$(OUT_DIR) ninja install
+pkg_install := make install DESTDIR=$(OUT_DIR) am__EXEEXT_2=
