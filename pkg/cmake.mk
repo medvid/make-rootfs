@@ -10,7 +10,7 @@ pkg_repo := https://github.com/Kitware/CMake
 pkg_site := $(pkg_repo)/releases/download/v$(pkg_ver)
 pkg_deps := curl expat zlib bzip2 zstd xz nghttp2 jsoncpp rhash libuv openssl
 
-pkg_configure := LDFLAGS="$(LDFLAGS) -lcurl -lcrypto -lssl" \
+pkg_configure := LDFLAGS="$(LDFLAGS) -lcurl -lz -lcrypto -lssl" \
 	$(cmake_pkg_configure) \
 	-DCMAKE_DATA_DIR=share/cmake \
 	-DCMAKE_DOC_DIR=share/doc/cmake \
