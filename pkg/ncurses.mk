@@ -34,4 +34,6 @@ pkg_configure := $(pkg_srcdir)/configure \
 
 pkg_build := make
 
-pkg_install := make install DESTDIR=$(OUT_DIR)
+pkg_install := make install DESTDIR=$(OUT_DIR) && rm -f \
+	$(OUT_DIR)/usr/bin/ncurses6-config \
+	$(OUT_DIR)/usr/lib/terminfo
