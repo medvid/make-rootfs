@@ -23,4 +23,5 @@ pkg_build := make
 
 pkg_check := make check
 
-pkg_install := make install DESTDIR=$(OUT_DIR)
+pkg_install := make install DESTDIR=$(OUT_DIR) && \
+	rm -f $(OUT_DIR)/usr/bin/mtdev-test
