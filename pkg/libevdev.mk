@@ -5,7 +5,7 @@
 # https://github.com/kisslinux/repo/blob/master/extra/libevdev/build
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/libevdev/template
 
-pkg_ver  := 1.10.1
+pkg_ver  := 1.11.0
 pkg_repo := https://gitlab.freedesktop.org/libevdev/libevdev
 pkg_site := https://www.freedesktop.org/software/libevdev
 
