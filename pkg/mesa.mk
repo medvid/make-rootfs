@@ -5,7 +5,7 @@
 # https://github.com/kisslinux/repo/blob/master/extra/mesa/build
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/mesa/template
 
-pkg_ver  := 20.3.3
+pkg_ver  := 20.3.4
 pkg_repo := https://gitlab.freedesktop.org/mesa/mesa
 pkg_site := https://mesa.freedesktop.org/archive
 pkg_deps := libdrm libudev-zero wayland wayland-protocols zstd
