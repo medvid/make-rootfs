@@ -28,11 +28,14 @@ pkg_prepare := cp -v $(pkg_files)/$(TARGET).config $(pkg_objdir)/.config
 
 pkg_build := make -C $(pkg_srcdir) \
 	O=$(pkg_objdir) \
+	V=1 \
 	LLVM=1 \
 	LLVM_IAS=1 \
 	ARCH=$(linux_arch) \
 	CROSS_COMPILE=$(TARGET)- \
 	HOST_LFS_CFLAGS="$(HOST_CFLAGS)" \
-	olddefconfig all
+	olddefconfig bzImage
 
-pkg_install := false
+pkg_install := install -v -d $(OUT_DIR)/boot && \
+	cp -v $(pkg_objdir)/arch/$(linux_arch)/boot/bzImage $(OUT_DIR)/boot/vmlinuz-$(pkg_ver) && \
+	cp -v $(pkg_objdir)/System.map $(OUT_DIR)/boot/System.map-$(pkg_ver)
