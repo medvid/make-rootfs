@@ -28,7 +28,8 @@ STAGE3_PKGS := $(STAGE2_PKGS) bash bc bison cmake curl diffutils \
 	meson ncurses ninja perl pkgconf python mako rsync toybox xz
 
 # Set the list of packages built during stage4 bootstrap
-STAGE4_PKGS := $(STAGE3_PKGS) dash git go less qemu qt5 qt6 tmux wget
+STAGE4_PKGS := $(STAGE3_PKGS) dash git go less pigz qemu qt5 qt6 \
+	tmux wget
 
 # Set the default list of packages built to the target rootfs
 TARGET_PKGS ?= bash toybox finit
