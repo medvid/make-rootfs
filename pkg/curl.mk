@@ -5,7 +5,7 @@
 # https://github.com/kisslinux/repo/blob/master/core/curl/build
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/curl/template
 
-pkg_ver  := 7.74.0
+pkg_ver  := 7.75.0
 pkg_repo := https://github.com/curl/curl
 pkg_site := https://curl.haxx.se/download
 pkg_deps := zlib openssl
