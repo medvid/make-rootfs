@@ -1,3 +1,9 @@
+# https://repology.org/project/qt
+# https://git.alpinelinux.org/aports/tree/community/qt5-qtbase/APKBUILD
+# https://github.com/distr1/distri/blob/master/pkgs/qt/build.textproto
+# https://github.com/kisslinux/community/blob/master/community/qt5/build
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/qt5/template
+
 pkg_ver  := 5.15.2
 pkg_site := https://download.qt.io/archive/qt/$(basename $(pkg_ver))/$(pkg_ver)/single
 pkg_base := qt-everywhere-src
@@ -96,8 +102,8 @@ pkg_configure := $(pkg_srcdir)/configure \
 	-feature-linuxfb \
 	-no-feature-gnu-libiconv
 
-ifeq ($(STAGE),stage3)
-	pkg_configure := PATH="$(OUT_DIR)/usr/bin:$(PATH)" $(pkg_configure)
+ifeq ($(CROSS),1)
+	pkg_configure += -hostprefix /usr/lib/qt5
 endif
 
 pkg_build := make AR="llvm-ar cqs"
