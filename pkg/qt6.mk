@@ -3,7 +3,7 @@
 pkg_ver  := 6.0.0
 pkg_site := https://download.qt.io/archive/qt/$(basename $(pkg_ver))/$(pkg_ver)/single
 pkg_base := qt-everywhere-src
-pkg_deps := openssl pcre2 zlib zstd libpng freetype harfbuzz libudev-zero libevdev mtdev libinput libxkbcommon sqlite
+pkg_deps := openssl pcre2 zlib zstd libpng freetype harfbuzz libudev-zero libevdev libinput libxkbcommon mesa mtdev sqlite
 
 pkg_configure := $(cmake_pkg_configure) \
 	$(if $(STAGE),,-DQT_HOST_PATH=/usr/lib/qt6) \
