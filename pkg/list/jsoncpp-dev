@@ -1,0 +1,4 @@
+/usr/include/json/
+/usr/lib/cmake/jsoncpp/
+/usr/lib/libjsoncpp.a
+/usr/lib/pkgconfig/jsoncpp.pc

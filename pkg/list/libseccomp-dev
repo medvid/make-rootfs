@@ -1,0 +1,4 @@
+/usr/include/seccomp-syscalls.h
+/usr/include/seccomp.h
+/usr/lib/libseccomp.a
+/usr/lib/pkgconfig/libseccomp.pc

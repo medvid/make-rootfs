@@ -1,0 +1,6 @@
+/usr/include/pcre.h
+/usr/include/pcreposix.h
+/usr/lib/libpcre.a
+/usr/lib/libpcreposix.a
+/usr/lib/pkgconfig/libpcre.pc
+/usr/lib/pkgconfig/libpcreposix.pc

@@ -1,0 +1,4 @@
+/usr/include/editline/readline.h
+/usr/include/histedit.h
+/usr/lib/libedit.a
+/usr/lib/pkgconfig/libedit.pc

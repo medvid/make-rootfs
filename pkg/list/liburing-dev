@@ -1,0 +1,4 @@
+/usr/include/liburing.h
+/usr/include/liburing/
+/usr/lib/liburing.a
+/usr/lib/pkgconfig/liburing.pc

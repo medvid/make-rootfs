@@ -1,0 +1,10 @@
+/etc/fstab
+/etc/group
+/etc/hostname
+/etc/hosts
+/etc/issue
+/etc/passwd
+/etc/resolv.conf
+/etc/shadow
+/etc/shells
+/etc/ssl/cert.pem

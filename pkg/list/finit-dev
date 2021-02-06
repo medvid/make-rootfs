@@ -1,0 +1,7 @@
+/usr/include/finit/cond.h
+/usr/include/finit/finit.h
+/usr/include/finit/helpers.h
+/usr/include/finit/inetd.h
+/usr/include/finit/log.h
+/usr/include/finit/plugin.h
+/usr/include/finit/svc.h

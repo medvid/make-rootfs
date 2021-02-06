@@ -1,0 +1,16 @@
+/usr/bin/gapplication
+/usr/bin/gdbus
+/usr/bin/gdbus-codegen
+/usr/bin/gio
+/usr/bin/gio-querymodules
+/usr/bin/glib-compile-resources
+/usr/bin/glib-compile-schemas
+/usr/bin/glib-genmarshal
+/usr/bin/glib-gettextize
+/usr/bin/glib-mkenums
+/usr/bin/gobject-query
+/usr/bin/gresource
+/usr/bin/gsettings
+/usr/bin/gtester
+/usr/bin/gtester-report
+/usr/share/glib-2.0/

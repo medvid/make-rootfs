@@ -1,0 +1,14 @@
+/usr/include/EGL/
+/usr/include/GL/
+/usr/include/GLES2/
+/usr/include/KHR/
+/usr/include/gbm.h
+/usr/lib/dri/kms_swrast_dri.so
+/usr/lib/dri/swrast_dri.so
+/usr/lib/libEGL.a
+/usr/lib/libGLESv2.a
+/usr/lib/libgbm.a
+/usr/lib/pkgconfig/dri.pc
+/usr/lib/pkgconfig/egl.pc
+/usr/lib/pkgconfig/gbm.pc
+/usr/lib/pkgconfig/glesv2.pc

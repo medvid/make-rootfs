@@ -1,0 +1,5 @@
+/usr/include/zdict.h
+/usr/include/zstd.h
+/usr/include/zstd_errors.h
+/usr/lib/libzstd.a
+/usr/lib/pkgconfig/libzstd.pc

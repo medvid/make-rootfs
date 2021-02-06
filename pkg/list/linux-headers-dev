@@ -1,0 +1,11 @@
+/usr/include/asm-generic/
+/usr/include/asm/
+/usr/include/drm/
+/usr/include/linux/
+/usr/include/misc/
+/usr/include/mtd/
+/usr/include/rdma/
+/usr/include/scsi/
+/usr/include/sound/
+/usr/include/video/
+/usr/include/xen/

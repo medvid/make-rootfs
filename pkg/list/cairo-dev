@@ -1,0 +1,7 @@
+/usr/include/cairo/
+/usr/lib/libcairo.a
+/usr/lib/pkgconfig/cairo-fc.pc
+/usr/lib/pkgconfig/cairo-ft.pc
+/usr/lib/pkgconfig/cairo-png.pc
+/usr/lib/pkgconfig/cairo-svg.pc
+/usr/lib/pkgconfig/cairo.pc

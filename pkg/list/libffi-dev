@@ -1,0 +1,4 @@
+/usr/include/ffi.h
+/usr/include/ffitarget.h
+/usr/lib/libffi.a
+/usr/lib/pkgconfig/libffi.pc

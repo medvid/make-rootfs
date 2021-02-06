@@ -1,0 +1,16 @@
+/usr/include/gio-unix-2.0/
+/usr/include/glib-2.0/
+/usr/lib/glib-2.0/
+/usr/lib/libgio-2.0.a
+/usr/lib/libglib-2.0.a
+/usr/lib/libgmodule-2.0.a
+/usr/lib/libgobject-2.0.a
+/usr/lib/libgthread-2.0.a
+/usr/lib/pkgconfig/gio-2.0.pc
+/usr/lib/pkgconfig/gio-unix-2.0.pc
+/usr/lib/pkgconfig/glib-2.0.pc
+/usr/lib/pkgconfig/gmodule-2.0.pc
+/usr/lib/pkgconfig/gmodule-export-2.0.pc
+/usr/lib/pkgconfig/gmodule-no-export-2.0.pc
+/usr/lib/pkgconfig/gobject-2.0.pc
+/usr/lib/pkgconfig/gthread-2.0.pc

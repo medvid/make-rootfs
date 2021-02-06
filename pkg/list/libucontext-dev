@@ -1,0 +1,4 @@
+/usr/include/libucontext/
+/usr/lib/libucontext.a
+/usr/lib/libucontext_posix.a
+/usr/lib/pkgconfig/libucontext.pc

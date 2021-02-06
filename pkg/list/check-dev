@@ -1,0 +1,5 @@
+/usr/include/check.h
+/usr/include/check_stdint.h
+/usr/lib/cmake/check/
+/usr/lib/libcheck.a
+/usr/lib/pkgconfig/check.pc

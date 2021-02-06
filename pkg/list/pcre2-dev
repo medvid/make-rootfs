@@ -1,0 +1,10 @@
+/usr/include/pcre2.h
+/usr/include/pcre2posix.h
+/usr/lib/libpcre2-16.a
+/usr/lib/libpcre2-32.a
+/usr/lib/libpcre2-8.a
+/usr/lib/libpcre2-posix.a
+/usr/lib/pkgconfig/libpcre2-16.pc
+/usr/lib/pkgconfig/libpcre2-32.pc
+/usr/lib/pkgconfig/libpcre2-8.pc
+/usr/lib/pkgconfig/libpcre2-posix.pc

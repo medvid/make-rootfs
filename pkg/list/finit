@@ -1,0 +1,13 @@
+/etc/finit.conf
+/usr/bin/finit
+/usr/bin/halt
+/usr/bin/init
+/usr/bin/initctl
+/usr/bin/logit
+/usr/bin/poweroff
+/usr/bin/reboot
+/usr/bin/shutdown
+/usr/bin/suspend
+/usr/bin/telinit
+/usr/lib/finit
+/usr/libexec/finit/cgreaper.sh

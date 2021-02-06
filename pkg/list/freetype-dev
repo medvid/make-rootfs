@@ -1,0 +1,4 @@
+/usr/include/freetype2/
+/usr/lib/cmake/freetype/
+/usr/lib/libfreetype.a
+/usr/lib/pkgconfig/freetype2.pc

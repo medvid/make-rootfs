@@ -1,0 +1,3 @@
+/usr/include/uuid/uuid.h
+/usr/lib/libuuid.a
+/usr/lib/pkgconfig/uuid.pc

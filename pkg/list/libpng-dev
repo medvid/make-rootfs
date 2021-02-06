@@ -1,0 +1,10 @@
+/usr/include/libpng16/
+/usr/include/png.h
+/usr/include/pngconf.h
+/usr/include/pnglibconf.h
+/usr/lib/libpng.a
+/usr/lib/libpng/libpng16-release.cmake
+/usr/lib/libpng/libpng16.cmake
+/usr/lib/libpng16.a
+/usr/lib/pkgconfig/libpng.pc
+/usr/lib/pkgconfig/libpng16.pc

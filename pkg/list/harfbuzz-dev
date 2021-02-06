@@ -1,0 +1,6 @@
+/usr/include/harfbuzz/
+/usr/lib/cmake/harfbuzz/
+/usr/lib/libharfbuzz-subset.a
+/usr/lib/libharfbuzz.a
+/usr/lib/pkgconfig/harfbuzz-subset.pc
+/usr/lib/pkgconfig/harfbuzz.pc
