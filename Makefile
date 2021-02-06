@@ -79,6 +79,7 @@ RMRF_PATHS := /usr/lib/*.la \
 	/usr/share/bash-completion \
 	/usr/share/emacs \
 	/usr/share/doc \
+	/usr/share/gdb \
 	/usr/share/gettext \
 	/usr/share/gtk-doc \
 	/usr/share/info \
