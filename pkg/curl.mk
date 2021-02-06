@@ -48,7 +48,7 @@ pkg_configure := $(pkg_srcdir)/configure \
 	--enable-http-auth \
 	--disable-doh \
 	--disable-mime \
-	--disable-dateparse \
+	--enable-dateparse \
 	--disable-netrc \
 	--disable-dnsshuffle \
 	--disable-alt-svc \
