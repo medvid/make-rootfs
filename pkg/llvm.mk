@@ -138,7 +138,7 @@ endif
 
 ifeq ($(llvm_build_toolchain),true)
 llvm_projects := $(llvm_projects);clang;lld
-llvm_tools := ar as config lto lto2 mt nm objcopy objdump ranlib readelf readobj split strings strip tblgen
+llvm_tools := ar as bcanalyzer config lto lto2 mt nm objcopy objdump ranlib readelf readobj split strings strip tblgen
 llvm_build_targets += clang clang-resource-headers lld $(addprefix llvm-,$(llvm_tools))
 pkg_configure += -DCMAKE_TRY_COMPILE_TARGET_TYPE=EXECUTABLE
 else

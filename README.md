@@ -102,11 +102,12 @@ Supported target triples:
 * i386-linux-musl
 * armv7-linux-musleabihf
 * aarch64-linux-musl
+* riscv64-linux-musl
 
 References:
 
 * https://clang.llvm.org/docs/CrossCompilation.html#target-triple
-* https://github.com/llvm/llvm-project/blob/master/llvm/lib/Support/Triple.cpp
+* https://github.com/llvm/llvm-project/blob/main/llvm/lib/Support/Triple.cpp
 * https://github.com/rust-lang/rust/blob/master/src/tools/build-manifest/src/main.rs
 
 ## Bootstrapping process

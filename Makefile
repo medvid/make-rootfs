@@ -190,11 +190,22 @@ export LDFLAGS += -target $(TARGET)
 endif
 
 # Enable LTO when not bootstrapping
+# Note: LLVM linker emits error when LTO is enabled for riscv64:
+#  Hard-float 'd' ABI can't be used for a target that doesn't support the D instruction set extension (ignoring target-abi)
+ifneq (,$(findstring riscv,$(TARGET)))
 ifeq ($(CROSS),1)
 ifneq ($(CONFIG),Debug)
 export CFLAGS += -flto
 export CXXFLAGS += -flto
 endif
+endif
+endif
+
+# Enable RV64GC
+ifneq (,$(findstring riscv64,$(TARGET)))
+export CFLAGS += -march=rv64gc -mabi=lp64d -mno-relax
+export CXXFLAGS += -march=rv64gc -mabi=lp64d -mno-relax
+export LDFLAGS += -march=rv64gc -mabi=lp64d -mno-relax
 endif
 
 # Print diagnostic output: make V=1
@@ -265,6 +276,8 @@ else ifneq (,$(findstring x86_64,$(TARGET)))
 cmake_target_arch := x86_64
 else ifneq (,$(findstring 86,$(TARGET)))
 cmake_target_arch := x86
+else ifneq (,$(findstring riscv,$(TARGET)))
+cmake_target_arch := riscv
 else
 $(error Unsupported TARGET: $(TARGET))
 endif

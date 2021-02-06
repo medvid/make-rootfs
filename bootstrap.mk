@@ -80,5 +80,6 @@ builtins:
 	$(MAKE) chroot CHROOT_PROG="$(MAKE) install-builtins TARGET=i386-linux-musl"
 	$(MAKE) chroot CHROOT_PROG="$(MAKE) install-builtins TARGET=armv7-linux-musleabihf"
 	$(MAKE) chroot CHROOT_PROG="$(MAKE) install-builtins TARGET=aarch64-linux-musl"
+	$(MAKE) chroot CHROOT_PROG="$(MAKE) install-builtins TARGET=riscv64-linux-musl"
 
 .PHONY: stage1 stage3 stage3 stage4 bootstrap force-bootstrap builtins
