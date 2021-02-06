@@ -21,7 +21,7 @@ mkdir -p pkg/list/${TARGET} tmp/list/${TARGET}
 find -L ${OUT_DIR} -type f -printf '/%P\n' | grep -v -e '^/bin/' -e '^/lib/' -e '^/sbin/' | sort -u > tmp/list/${TARGET}/${PKG}.new
 
 # Find all files from OUT_DIR which are not present in the existing package listings
-# This trick find the new files installed by PKG as its package listing is removed at the first step
+# This trick finds the new files installed by PKG as its package listing is removed at the first step
 : | cat pkg/list/${TARGET}/* | sort -u | comm -3 - tmp/list/${TARGET}/${PKG}.new | sed -e "s/^[ \t]*//" > tmp/list/${TARGET}/${PKG}
 
 # Save the list of the development files to the pkg-dev listing
