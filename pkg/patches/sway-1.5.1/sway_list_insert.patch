@@ -1,0 +1,12 @@
+--- sway-1.5.1/include/list.h
++++ sway-1.5.1/include/list.h
+@@ -1,6 +1,9 @@
+ #ifndef _SWAY_LIST_H
+ #define _SWAY_LIST_H
+ 
++// avoid libinput symbol conflict
++#define list_insert sway_list_insert
++
+ typedef struct {
+ 	int capacity;
+ 	int length;

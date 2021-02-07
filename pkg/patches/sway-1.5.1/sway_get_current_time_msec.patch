@@ -1,0 +1,11 @@
+--- sway-1.5.1/include/util.h
++++ sway-1.5.1/include/util.h
+@@ -5,6 +5,8 @@
+ #include <stdbool.h>
+ #include <wayland-server-protocol.h>
+ 
++#define get_current_time_msec sway_get_current_time_msec
++
+ /**
+  * Get the current time, in milliseconds.
+  */
