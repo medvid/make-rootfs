@@ -1,6 +1,10 @@
 # Disable built-in rules
 .SUFFIXES:
 
+# Define common variables
+space := $(subst ,, )
+comma := ,
+
 # Customize ?= variables
 -include config.mk
 

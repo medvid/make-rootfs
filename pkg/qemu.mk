@@ -12,8 +12,23 @@ pkg_repo := https://git.qemu.org/git/qemu.git
 pkg_site := https://download.qemu.org
 pkg_deps := pixman zlib libxkbcommon libudev-zero libpng libjpeg-turbo zstd liburing libepoxy libusb spice usbredir libseccomp
 
+qemu_target_list := \
+	aarch64-softmmu \
+	aarch64-linux-user \
+	arm-softmmu \
+	arm-linux-user \
+	i386-softmmu \
+	i386-linux-user \
+	riscv32-softmmu \
+	riscv32-linux-user \
+	riscv64-softmmu \
+	riscv64-linux-user \
+	x86_64-softmmu \
+	x86_64-linux-user
+
+
 pkg_configure := $(pkg_srcdir)/configure \
-	--target-list=aarch64-softmmu,arm-softmmu,i386-softmmu,x86_64-softmmu,aarch64-linux-user,arm-linux-user,i386-linux-user,x86_64-linux-user \
+	--target-list=$(subst $(space),$(comma),$(qemu_target_list)) \
 	--cc=clang \
 	--prefix=/usr \
 	--localstatedir=/var \
