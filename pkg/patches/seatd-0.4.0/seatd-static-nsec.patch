@@ -1,0 +1,11 @@
+--- seatd-0.4.0/common/log.c
++++ seatd-0.4.0/common/log.c
+@@ -8,7 +8,7 @@
+ 
+ #include "log.h"
+ 
+-const long NSEC_PER_SEC = 1000000000;
++static const long NSEC_PER_SEC = 1000000000;
+ 
+ static void log_stderr(enum libseat_log_level level, const char *fmt, va_list args);
+ 
