@@ -1,0 +1,9 @@
+/usr/include/pango-1.0/
+/usr/lib/libpango-1.0.a
+/usr/lib/libpangocairo-1.0.a
+/usr/lib/libpangoft2-1.0.a
+/usr/lib/pkgconfig/pango.pc
+/usr/lib/pkgconfig/pangocairo.pc
+/usr/lib/pkgconfig/pangofc.pc
+/usr/lib/pkgconfig/pangoft2.pc
+/usr/lib/pkgconfig/pangoot.pc
