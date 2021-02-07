@@ -11,7 +11,6 @@ pkg_repo := https://github.com/golang/go
 pkg_url  := $(pkg_repo)/archive/go$(pkg_ver).tar.gz
 pkg_dir  := go-go$(pkg_ver)
 pkg_copy := true
-pkg_deps := go-bootstrap
 
 pkg_prepare := ln -sf $(shell which llvm-ar) ar
 
