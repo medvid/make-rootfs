@@ -201,8 +201,28 @@ endif
 endif
 endif
 
-# Enable RV64GC
-ifneq (,$(findstring riscv64,$(TARGET)))
+ifneq (,$(findstring aarch64,$(TARGET)))
+# Target Cortex-A53
+export CFLAGS += -march=armv8-a+crc -mtune=cortex-a53
+export CXXFLAGS += -march=armv8-a+crc -mtune=cortex-a53
+export LDFLAGS += -march=armv8-a+crc -mtune=cortex-a53
+else ifneq (,$(findstring arm,$(TARGET)))
+# Target ARMv7 with neon FPU
+export CFLAGS += -march=armv7-a -mfpu=neon-vfpv4
+export CXXFLAGS += -march=armv7-a -mfpu=neon-vfpv4
+export LDFLAGS += -march=armv7-a -mfpu=neon-vfpv4
+else ifneq (,$(findstring x86_64,$(TARGET)))
+# Do not leak host CPU features onto the target
+export CFLAGS += -mtune=generic
+export CXXFLAGS += -mtune=generic
+export LDFLAGS += -mtune=generic
+else ifneq (,$(findstring 86,$(TARGET)))
+# Target i686 Pentium M
+export CFLAGS += -march=pentium-m -mtune=generic -fomit-frame-pointer
+export CXXFLAGS += -march=pentium-m -mtune=generic -fomit-frame-pointer
+export LDFLAGS += -march=pentium-m -mtune=generic
+else ifneq (,$(findstring riscv64,$(TARGET)))
+# Target RV64GC
 export CFLAGS += -march=rv64gc -mabi=lp64d -mno-relax
 export CXXFLAGS += -march=rv64gc -mabi=lp64d -mno-relax
 export LDFLAGS += -march=rv64gc -mabi=lp64d -mno-relax
