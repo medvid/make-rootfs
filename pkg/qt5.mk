@@ -108,4 +108,4 @@ endif
 
 pkg_build := make AR="llvm-ar cqs"
 
-pkg_install := make install DESTDIR=$(OUT_DIR)
+pkg_install := make install DESTDIR=$(OUT_DIR) STRIP="llvm-strip"
