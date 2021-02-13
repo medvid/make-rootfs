@@ -5,7 +5,7 @@
 # https://github.com/kisslinux/repo/blob/master/core/git/build
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/git/template
 
-pkg_ver  := 2.30.0
+pkg_ver  := 2.30.1
 pkg_repo := https://github.com/git/git
 pkg_site := https://mirrors.edge.kernel.org/pub/software/scm/git
 pkg_deps := zlib curl openssl
