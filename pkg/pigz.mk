@@ -4,7 +4,7 @@
 # https://github.com/distr1/distri/blob/master/pkgs/pigz/build.textproto
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/pigz/template
 
-pkg_ver  := 2.5
+pkg_ver  := 2.6
 pkg_repo := https://github.com/madler/pigz
 pkg_site := https://zlib.net/pigz
 pkg_deps := zlib
