@@ -32,8 +32,8 @@ STAGE3_PKGS := $(STAGE2_PKGS) bash bison cmake curl diffutils \
 	meson ncurses ninja perl pkgconf python mako rsync toybox xz
 
 # Set the list of packages built during stage4 bootstrap
-STAGE4_PKGS := $(STAGE3_PKGS) bc dash git go-bootstrap go less \
-	pigz qemu qt5 qt6 tmux wget
+STAGE4_PKGS := $(STAGE3_PKGS) bc dash e2fsprogs git go-bootstrap \
+	go less pigz qemu qt5 qt6 tmux wget
 
 # Set the default list of packages built to the target rootfs
 TARGET_PKGS ?= bash toybox finit
@@ -248,7 +248,7 @@ PYTHON := $(ROOT_DIR)/out/stage3/usr/bin/python3
 else ifeq ($(STAGE),stage4)
 PYTHON := $(ROOT_DIR)/out/stage4/usr/bin/python3
 else
-PYTHON := $(shell which python)
+PYTHON := $(shell which python3)
 endif
 
 # Define standard configure args for Meson build system
