@@ -1,0 +1,7 @@
+--- wayland-1.19.0/src/wayland-client.pc.in
++++ wayland-1.19.0/src/wayland-client.pc.in
+@@ -10,3 +10,4 @@
+ Version: @WAYLAND_VERSION@
+ Cflags: -I${includedir}
+ Libs: -L${libdir} -lwayland-client
++Libs.private: -lffi
