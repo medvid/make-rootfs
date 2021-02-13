@@ -5,7 +5,7 @@
 # https://github.com/kisslinux/repo/blob/master/extra/glib/build
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/glib/template
 
-pkg_ver  := 2.66.6
+pkg_ver  := 2.66.7
 pkg_repo := https://gitlab.gnome.org/GNOME/glib
 pkg_site := https://download.gnome.org/sources/glib/$(basename $(pkg_ver))
 pkg_deps := zlib pcre libffi
