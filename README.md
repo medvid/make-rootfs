@@ -48,18 +48,23 @@ Example:
 
 * No dependency on GCC, binutils, glibc, libstdc++
 
-## Getting started
-
-This guide is tested on Ubuntu 20.04.
-Should work on any Linux distribution with Clang/LLVM >= 6, CMake >= 3.18, Meson >= 0.54.0.
-
-Install the prerequisites:
+## Install prerequisites - Ubuntu 20.04
 
     sudo apt update
     sudo apt install -y apt-transport-https ca-certificates gnupg software-properties-common
     curl -fsSL https://apt.kitware.com/keys/kitware-archive-latest.asc | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null
     sudo apt update
-    sudo apt install -y bison clang cmake curl flex gperf libarchive-tools libglib2.0-dev lld llvm m4 make meson ninja-build patch pkg-config python-is-python3 python3-distutils python3-pip rsync sudo
+    sudo apt install -y bison clang cmake curl flex git gperf libarchive-tools lld llvm m4 make meson ninja-build patch pkg-config python-is-python3 python3-distutils python3-pip rsync sudo
+
+## Install prerequisites - Alpine Linux
+
+    sudo apk add alpine-sdk bison clang compiler-rt compiler-rt-static curl cmake flex git gperf libarchive-tools linux-headers lld llvm m4 make meson musl-dev ninja patch pkgconf python3 rsync
+
+## Getting started
+
+This guide was tested on Ubuntu 20.04 and Alpine 3.13.
+Should work on any Linux distribution with Clang/LLVM >= 6, CMake >= 3.18, Meson >= 0.54.0.
+
 
 Execute the bootstrap target:
 
