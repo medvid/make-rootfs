@@ -26,6 +26,7 @@ else
 $(error Unsupported TARGET: $(TARGET))
 endif
 
+# TODO: why -Wl,-no-pie LDFLAGS creates -no-pie fixdep binary?
 pkg_build := make -C $(pkg_srcdir) \
 	O=$(pkg_objdir) \
 	LLVM=1 \
@@ -33,6 +34,7 @@ pkg_build := make -C $(pkg_srcdir) \
 	ARCH=$(linux_arch) \
 	CROSS_COMPILE=$(TARGET)- \
 	HOST_LFS_CFLAGS="$(HOST_CFLAGS)" \
+	HOST_LFS_LDFLAGS="-static -static-libgcc -fuse-ld=lld" \
 	INSTALL_HDR_PATH=$(pkg_objdir)/staged \
 	headers_install && \
 	find $(pkg_objdir)/staged/include '(' -name .install -o -name ..install.cmd ')' -exec rm {} +
