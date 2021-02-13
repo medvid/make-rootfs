@@ -5,7 +5,7 @@
 # https://github.com/kisslinux/repo/blob/master/extra/e2fsprogs/build
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/e2fsprogs/template
 
-pkg_ver  := 1.46.0
+pkg_ver  := 1.46.1
 pkg_repo := https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git
 pkg_site := https://www.kernel.org/pub/linux/kernel/people/tytso/e2fsprogs/v$(pkg_ver)
 pkg_deps := libuuid
@@ -21,7 +21,8 @@ pkg_configure := $(pkg_srcdir)/configure \
 	--disable-imager \
 	--enable-fsck \
 	--disable-uuidd \
-	--disable-nls
+	--disable-nls \
+	--disable-fuse2fs
 
 pkg_build := make static-progs V=1
 
