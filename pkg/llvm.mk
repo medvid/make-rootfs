@@ -208,6 +208,6 @@ install-toolchain: $(pkg_objdir)/.toolchain.stamp
 # Define custom target for compiler-rt builtins installation
 install-builtins:
 	$(MAKE) llvm_builtins_only=true install-llvm
-	rm -f $(OBJ_DIR)/obj_llvm/.install.stamp
+	rm -rf $(OBJ_DIR)/obj_llvm
 
 .PHONY: install-toolchain install-builtins

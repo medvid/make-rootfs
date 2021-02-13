@@ -115,7 +115,7 @@ else ifeq ($(STAGE),stage4)
 # Link against stage4 libraries
 SYSROOT := $(ROOT_DIR)/out/stage4
 # Use LLVM binaries from stage3 chroot
-HOST_LLVM_DIR :=
+HOST_LLVM_DIR := /usr/bin/
 
 else
 # Link against target cross-compiled libraries
@@ -280,9 +280,23 @@ endif
 # Define standard configure args for CMake build system
 cmake_pkg_configure := cmake \
 	-G Ninja \
+	-DCMAKE_AR=$(AR) \
+	-DCMAKE_ASM_COMPILER=$(CC) \
+	-DCMAKE_ASM_COMPILER_AR=$(AR) \
+	-DCMAKE_ASM_COMPILER_RANLIB=$(RANLIB) \
 	-DCMAKE_C_COMPILER=$(CC) \
+	-DCMAKE_C_COMPILER_AR=$(AR) \
+	-DCMAKE_C_COMPILER_RANLIB=$(RANLIB) \
 	-DCMAKE_CXX_COMPILER=$(CXX) \
+	-DCMAKE_CXX_COMPILER_AR=$(AR) \
+	-DCMAKE_CXX_COMPILER_RANLIB=$(RANLIB) \
 	-DCMAKE_LINKER=$(LD) \
+	-DCMAKE_NM=$(LD) \
+	-DCMAKE_OBJCOPY=$(OBJCOPY) \
+	-DCMAKE_OBJDUMP=$(OBJDUMP) \
+	-DCMAKE_RANLIB=$(RANLIB) \
+	-DCMAKE_READELF=$(READELF) \
+	-DCMAKE_STRIP=$(STRIP) \
 	-DCMAKE_BUILD_TYPE:STRING=$(CONFIG) \
 	-DCMAKE_INSTALL_PREFIX:PATH=/usr \
 	-DCMAKE_INSTALL_LIBDIR:STRING=lib \
