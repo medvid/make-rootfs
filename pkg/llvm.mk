@@ -94,7 +94,9 @@ pkg_configure := $(cmake_pkg_configure) \
 	-DLIBCXX_USE_COMPILER_RT:BOOL=ON \
 	-DLIBUNWIND_ENABLE_ASSERTIONS:BOOL=OFF \
 	-DLIBUNWIND_ENABLE_SHARED:BOOL=OFF \
-	-DLIBUNWIND_USE_COMPILER_RT:BOOL=ON
+	-DLIBUNWIND_USE_COMPILER_RT:BOOL=ON \
+	-DPYTHON_EXECUTABLE:STRING=python3 \
+	-DPython3_EXECUTABLE:STRING=python3
 
 # Enable stage1 bootstrapping from glibc system
 ifneq ($(STAGE),stage1)
