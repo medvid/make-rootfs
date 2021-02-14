@@ -151,6 +151,7 @@ else
 # https://gitlab.kitware.com/cmake/cmake/-/issues/18121
 pkg_configure += -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY
 pkg_configure += -DCMAKE_SIZEOF_VOID_P=$(llvm_sizeof_void)
+pkg_configure += -DLIBCXXABI_HAS_CXA_THREAD_ATEXIT_IMPL:INTERNAL=
 endif
 
 ifeq ($(STAGE),stage4)
