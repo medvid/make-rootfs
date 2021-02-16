@@ -195,6 +195,15 @@ Below section describes the bootstrapping process in details.
 
 7. The system is bootstrapped and ready to cross-compile target packages inside the interactive shell entered by "make chroot".
 
+## Development
+
+### Custom output directory with custom CONFIG - for debugging
+
+    make chroot
+    make install-builtins TARGET=i386-linux-musl CONFIG=Debug OBJ_DIR=/obj/i386-linux-musl-debug OUT_DIR=/out/i386-linux-musl-debug
+    make install TARGET=i386-linux-musl CONFIG=Debug OBJ_DIR=/obj/i386-linux-musl-debug OUT_DIR=/out/i386-linux-musl-debug
+    lldb -- /out/i386-linux-musl-debug/usr/bin/toybox ls
+
 ## Similar projects
 
 Borrowed many ideas and snippets from these projects:
