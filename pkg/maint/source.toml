@@ -76,6 +76,10 @@ strip_release = true
 source = "archpkg"
 strip_release = true
 
+[gettext-tiny]
+source = "repology"
+repo = "alpine_edge"
+
 [git]
 source = "archpkg"
 strip_release = true
