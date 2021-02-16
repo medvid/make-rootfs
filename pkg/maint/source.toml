@@ -323,6 +323,10 @@ repo = "kiss_community"
 source = "pypi"
 pypi = "setuptools"
 
+[slang]
+source = "archpkg"
+strip_release = true
+
 [six]
 source = "pypi"
 
