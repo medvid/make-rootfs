@@ -1,0 +1,11 @@
+--- dbus-1.12.20/cmake/dbus/CMakeLists.txt
++++ dbus-1.12.20/cmake/dbus/CMakeLists.txt
+@@ -260,7 +260,7 @@
+ find_library(LIBSOCKET socket)
+ 
+ ### Client library
+-add_library(dbus-1 SHARED
++add_library(dbus-1 STATIC
+ 			${libdbus_SOURCES}
+ 			${libdbus_HEADERS}
+ )
