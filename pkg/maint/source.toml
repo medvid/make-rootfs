@@ -227,6 +227,10 @@ source = "pypi"
 source = "repology"
 repo = "kiss_community"
 
+[mc]
+source = "archpkg"
+strip_release = true
+
 [mesa]
 source = "archpkg"
 strip_release = true
