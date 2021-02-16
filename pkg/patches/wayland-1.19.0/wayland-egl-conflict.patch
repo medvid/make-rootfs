@@ -1,0 +1,54 @@
+--- wayland-1.19.0/cursor/os-compatibility.c
++++ wayland-1.19.0/cursor/os-compatibility.c
+@@ -113,7 +113,7 @@
+  * XDG_RUNTIME_DIR.
+  */
+ int
+-os_create_anonymous_file(off_t size)
++wl_create_anonymous_file(off_t size)
+ {
+ 	static const char template[] = "/wayland-cursor-shared-XXXXXX";
+ 	const char *path;
+@@ -154,7 +154,7 @@
+ 			return -1;
+ 	}
+ 
+-	if (os_resize_anonymous_file(fd, size) < 0) {
++	if (wl_resize_anonymous_file(fd, size) < 0) {
+ 		close(fd);
+ 		return -1;
+ 	}
+@@ -163,7 +163,7 @@
+ }
+ 
+ int
+-os_resize_anonymous_file(int fd, off_t size)
++wl_resize_anonymous_file(int fd, off_t size)
+ {
+ #ifdef HAVE_POSIX_FALLOCATE
+ 	/* 
+--- wayland-1.19.0/cursor/os-compatibility.h
++++ wayland-1.19.0/cursor/os-compatibility.h
+@@ -29,9 +29,9 @@
+ #include <sys/types.h>
+ 
+ int
+-os_create_anonymous_file(off_t size);
++wl_create_anonymous_file(off_t size);
+ 
+ int
+-os_resize_anonymous_file(int fd, off_t size);
++wl_resize_anonymous_file(int fd, off_t size);
+ 
+ #endif /* OS_COMPATIBILITY_H */
+--- wayland-1.19.0/cursor/wayland-cursor.c
++++ wayland-1.19.0/cursor/wayland-cursor.c
+@@ -83,7 +83,7 @@
+ static int
+ shm_pool_resize(struct shm_pool *pool, int size)
+ {
+-	if (os_resize_anonymous_file(pool->fd, size) < 0)
++	if (wl_resize_anonymous_file(pool->fd, size) < 0)
+ 		return 0;
+ 
+ 	wl_shm_pool_resize(pool->pool, size);
