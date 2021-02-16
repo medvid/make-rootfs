@@ -315,6 +315,12 @@ cmake_pkg_configure += \
 	-DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE=ONLY
 endif
 
+# Define standard configure args for KDE packages
+kde_pkg_configure := \
+	$(cmake_pkg_configure) \
+	-DCMAKE_PREFIX_PATH="$(SYSROOT)/usr/lib/qt5/lib/cmake;$(SYSROOT)/usr/lib/kde5/share/ECM/cmake" \
+	-DCMAKE_INSTALL_PREFIX:PATH=/usr/lib/kde5 \
+
 # Default target: build all TARGET_PKGS to OBJ_DIR
 all: $(TARGET_PKGS)
 
