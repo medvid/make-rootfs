@@ -7,7 +7,7 @@
 pkg_ver  := 5.15.2
 pkg_site := https://download.qt.io/archive/qt/$(basename $(pkg_ver))/$(pkg_ver)/single
 pkg_base := qt-everywhere-src
-pkg_deps := openssl pcre2 zlib zstd libpng freetype harfbuzz libudev-zero libevdev mtdev libinput libxkbcommon sqlite
+pkg_deps := dbus libpng libjpeg-turbo openssl pcre2 sqlite zlib zstd freetype harfbuzz libudev-zero libevdev mtdev libinput libxkbcommon mesa wayland
 
 # https://doc.qt.io/qt-5.15/configure-options.html
 pkg_configure := $(pkg_srcdir)/configure \
@@ -30,7 +30,6 @@ pkg_configure := $(pkg_srcdir)/configure \
 	-nomake examples \
 	-skip qt3d \
 	-skip qtconnectivity \
-	-skip qtdeclarative \
 	-skip qtdoc \
 	-skip qtgamepad \
 	-skip qtgraphicaleffects \
@@ -40,28 +39,20 @@ pkg_configure := $(pkg_srcdir)/configure \
 	-skip qtmultimedia \
 	-skip qtnetworkauth \
 	-skip qtpurchasing \
-	-skip qtquick3d \
-	-skip qtquickcontrols \
-	-skip qtquickcontrols2 \
-	-skip qtquicktimeline \
 	-skip qtremoteobjects \
-	-skip qtscript \
 	-skip qtscxml \
 	-skip qtsensors \
 	-skip qtserialbus \
 	-skip qtserialport \
 	-skip qtspeech \
-	-skip qtsvg \
 	-skip qttranslations \
-	-skip qtvirtualkeyboard \
 	-skip qtwebchannel \
-	-skip qtwebengine \
 	-skip qtwebglplugin \
 	-skip qtwebsockets \
 	-skip qtwebview \
 	-skip qtwinextras \
 	-skip qtx11extras \
-	-no-dbus \
+	-dbus-linked \
 	-qt-doubleconversion \
 	-no-glib \
 	-no-icu \
@@ -75,12 +66,12 @@ pkg_configure := $(pkg_srcdir)/configure \
 	-system-freetype \
 	-system-harfbuzz \
 	-no-gtk \
-	-no-opengl \
-	-no-egl \
+	-opengl es2 \
+	-egl \
 	-qpa input \
 	-no-xcb-xlib \
 	-no-eglfs \
-	-no-gbm \
+	-gbm \
 	-no-kms \
 	-no-xcb \
 	-libudev \
@@ -92,9 +83,9 @@ pkg_configure := $(pkg_srcdir)/configure \
 	-no-gif \
 	-no-ico \
 	-system-libpng \
-	-no-libjpeg \
+	-system-libjpeg \
 	-system-sqlite \
-	-no-feature-testlib \
+	-feature-testlib \
 	-feature-dlopen \
 	-feature-library \
 	-no-feature-relocatable \
@@ -105,6 +96,9 @@ pkg_configure := $(pkg_srcdir)/configure \
 ifeq ($(CROSS),1)
 	pkg_configure += -hostprefix /usr/lib/qt5
 endif
+
+#pkg_configure := $(pkg_srcdir)/configure \
+#	-list-features -list-libraries -help
 
 pkg_build := make AR="llvm-ar cqs"
 
