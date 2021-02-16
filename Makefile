@@ -33,7 +33,7 @@ STAGE3_PKGS := $(STAGE2_PKGS) bash bison cmake curl diffutils \
 
 # Set the list of packages built during stage4 bootstrap
 STAGE4_PKGS := $(STAGE3_PKGS) bc dash e2fsprogs git go-bootstrap \
-	go less pigz qemu qt5 qt6 tmux wget
+	go less mc pigz qemu qt5 qt6 tmux wget
 
 # Set the default list of packages built to the target rootfs
 TARGET_PKGS ?= bash toybox finit
