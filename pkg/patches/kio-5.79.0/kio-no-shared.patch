@@ -1,0 +1,102 @@
+--- kio-5.79.0/src/ioslaves/file/CMakeLists.txt
++++ kio-5.79.0/src/ioslaves/file/CMakeLists.txt
+@@ -23,7 +23,7 @@
+     EXPORT KIO
+ )
+ 
+-add_library(kio_file MODULE ${kio_file_PART_SRCS})
++add_library(kio_file ${kio_file_PART_SRCS})
+ target_link_libraries(kio_file KF5::KIOCore KF5::I18n Qt5::DBus Qt5::Network)
+ 
+ if(UNIX)
+--- kio-5.79.0/src/ioslaves/ftp/CMakeLists.txt
++++ kio-5.79.0/src/ioslaves/ftp/CMakeLists.txt
+@@ -19,7 +19,7 @@
+     EXPORT KIO
+ )
+ 
+-add_library(kio_ftp MODULE ${kio_ftp_PART_SRCS})
++add_library(kio_ftp ${kio_ftp_PART_SRCS})
+ target_link_libraries(kio_ftp Qt5::Network KF5::KIOCore KF5::I18n)
+ 
+ set_target_properties(kio_ftp PROPERTIES OUTPUT_NAME "ftp")
+--- kio-5.79.0/src/ioslaves/help/CMakeLists.txt
++++ kio-5.79.0/src/ioslaves/help/CMakeLists.txt
+@@ -40,7 +40,7 @@
+ )
+ 
+ 
+-add_library(kio_help MODULE ${kio_help_PART_SRCS})
++add_library(kio_help ${kio_help_PART_SRCS})
+ 
+ target_link_libraries(kio_help
+    Qt5::Gui # QTextDocument
+@@ -64,7 +64,7 @@
+ set(kio_ghelp_PART_SRCS kio_help.cpp main_ghelp.cpp xslt_help.cpp)
+ 
+ 
+-add_library(kio_ghelp MODULE ${kio_ghelp_PART_SRCS})
++add_library(kio_ghelp ${kio_ghelp_PART_SRCS})
+ 
+ target_link_libraries(kio_ghelp
+    Qt5::Gui # QTextDocument
+--- kio-5.79.0/src/ioslaves/http/CMakeLists.txt
++++ kio-5.79.0/src/ioslaves/http/CMakeLists.txt
+@@ -87,7 +87,7 @@
+     EXPORT KIO
+ )
+ 
+-add_library(kio_http MODULE ${kio_http_PART_SRCS})
++add_library(kio_http ${kio_http_PART_SRCS})
+ 
+ target_link_libraries(kio_http
+    Qt5::DBus
+--- kio-5.79.0/src/ioslaves/remote/kdedmodule/CMakeLists.txt
++++ kio-5.79.0/src/ioslaves/remote/kdedmodule/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-add_library(remotedirnotify MODULE remotedirnotify.cpp remotedirnotifymodule.cpp ../debug.cpp)
++add_library(remotedirnotify remotedirnotify.cpp remotedirnotifymodule.cpp ../debug.cpp)
+ kcoreaddons_desktop_to_json(remotedirnotify remotedirnotify.desktop)
+ 
+ target_link_libraries(remotedirnotify KF5::DBusAddons KF5::KIOCore)
+--- kio-5.79.0/src/ioslaves/trash/CMakeLists.txt
++++ kio-5.79.0/src/ioslaves/trash/CMakeLists.txt
+@@ -37,7 +37,7 @@
+     )
+   set(kio_trash_PART_SRCS kio_trash.cpp ${trashcommon_unix_SRCS} ${kio_trash_PART_DEBUG_SRCS})
+ endif()
+-add_library(kio_trash MODULE ${kio_trash_PART_SRCS})
++add_library(kio_trash ${kio_trash_PART_SRCS})
+ 
+ target_link_libraries(kio_trash
+   KF5::Solid
+@@ -75,7 +75,7 @@
+ # currently not on win32, TODO!
+ if(NOT WIN32 AND NOT KIOCORE_ONLY)
+     set(kcm_trash_PART_SRCS kcmtrash.cpp ${trashcommon_unix_SRCS} ${kio_trash_PART_DEBUG_SRCS})
+-    add_library(kcm_trash MODULE ${kcm_trash_PART_SRCS})
++    add_library(kcm_trash ${kcm_trash_PART_SRCS})
+     target_link_libraries(kcm_trash
+        Qt5::DBus
+        KF5::I18n
+--- kio-5.79.0/src/kcms/kio/CMakeLists.txt
++++ kio-5.79.0/src/kcms/kio/CMakeLists.txt
+@@ -37,7 +37,7 @@
+     EXPORT KIO
+ )
+ 
+-add_library(kcm_kio MODULE ${kcm_kio_PART_SRCS})
++add_library(kcm_kio ${kcm_kio_PART_SRCS})
+ 
+ target_link_libraries(kcm_kio
+   PUBLIC
+--- kio-5.79.0/src/kcms/webshortcuts/CMakeLists.txt
++++ kio-5.79.0/src/kcms/webshortcuts/CMakeLists.txt
+@@ -1,6 +1,6 @@
+ set(kcm_webshortcuts_PART_SRCS main.cpp )
+ 
+-add_library(kcm_webshortcuts MODULE ${kcm_webshortcuts_PART_SRCS})
++add_library(kcm_webshortcuts ${kcm_webshortcuts_PART_SRCS})
+ 
+ target_link_libraries(kcm_webshortcuts
+   PUBLIC

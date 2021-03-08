@@ -1,0 +1,22 @@
+--- kio-5.79.0/CMakeLists.txt
++++ kio-5.79.0/CMakeLists.txt
+@@ -63,6 +63,10 @@
+ find_package(KF5Service ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF5DocTools ${KF_DEP_VERSION})
+ find_package(KF5Solid ${KF_DEP_VERSION} REQUIRED) # for kio_trash
++find_package(KF5GuiAddons ${KF_DEP_VERSION})
++find_package(KF5XmlGui ${KF_DEP_VERSION})
++find_package(KF5Attica ${KF_DEP_VERSION})
++find_package(UDev ${KF_DEP_VERSION})
+ 
+ if (NOT KIOCORE_ONLY)
+ find_package(KF5Bookmarks ${KF_DEP_VERSION} REQUIRED)
+@@ -92,7 +96,7 @@
+                       )
+ 
+ set(REQUIRED_QT_VERSION 5.14.0)
+-find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets DBus Network Concurrent Xml Test)
++find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Widgets DBus Network Concurrent Xml Test PrintSupport)
+ 
+ find_package(GSSAPI)
+ set_package_properties(GSSAPI PROPERTIES DESCRIPTION "Allows KIO to make use of certain HTTP authentication services"
