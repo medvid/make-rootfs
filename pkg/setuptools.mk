@@ -3,7 +3,7 @@
 # https://git.buildroot.net/buildroot/tree/package/python3-setuptools/python3-setuptools.mk
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/python3-setuptools/template
 
-pkg_ver  := 53.0.0
+pkg_ver  := 54.1.1
 pkg_repo := https://github.com/pypa/setuptools
 pkg_site := https://files.pythonhosted.org/packages/source/s/setuptools
 pkg_deps := python
