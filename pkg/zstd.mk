@@ -4,7 +4,7 @@
 # https://github.com/kisslinux/repo/blob/master/extra/zstd/build
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/zstd/template
 
-pkg_ver  := 1.4.8
+pkg_ver  := 1.4.9
 pkg_repo := https://github.com/facebook/zstd
 pkg_site := $(pkg_repo)/releases/download/v$(pkg_ver)
 
