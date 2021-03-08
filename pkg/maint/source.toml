@@ -358,6 +358,10 @@ strip_release = true
 [six]
 source = "pypi"
 
+[solid]
+source = "archpkg"
+strip_release = true
+
 [spice]
 source = "archpkg"
 strip_release = true

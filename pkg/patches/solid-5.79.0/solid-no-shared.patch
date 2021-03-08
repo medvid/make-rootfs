@@ -1,0 +1,11 @@
+--- solid-5.79.0/src/imports/CMakeLists.txt
++++ solid-5.79.0/src/imports/CMakeLists.txt
+@@ -18,7 +18,7 @@
+     devices.cpp
+     )
+ 
+-add_library(solidextensionplugin SHARED ${solidextensionplugin_SRCS})
++add_library(solidextensionplugin ${solidextensionplugin_SRCS})
+ 
+ target_link_libraries(
+     solidextensionplugin
