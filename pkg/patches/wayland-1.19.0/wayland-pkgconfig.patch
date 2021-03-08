@@ -1,7 +1,8 @@
 --- wayland-1.19.0/src/wayland-client.pc.in
 +++ wayland-1.19.0/src/wayland-client.pc.in
-@@ -10,3 +10,4 @@
+@@ -9,4 +9,4 @@
+ Description: Wayland client side library
  Version: @WAYLAND_VERSION@
  Cflags: -I${includedir}
- Libs: -L${libdir} -lwayland-client
-+Libs.private: -lffi
+-Libs: -L${libdir} -lwayland-client
++Libs: -L${libdir} -lwayland-client -lffi
