@@ -218,6 +218,10 @@ strip_release = true
 source = "archpkg"
 strip_release = true
 
+[kwallet]
+source = "archpkg"
+strip_release = true
+
 [kwidgetsaddons]
 source = "archpkg"
 strip_release = true
