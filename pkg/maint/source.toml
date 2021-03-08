@@ -60,6 +60,10 @@ strip_release = true
 source = "archpkg"
 strip_release = true
 
+[extra-cmake-modules]
+source = "archpkg"
+strip_release = true
+
 [expat]
 source = "archpkg"
 strip_release = true

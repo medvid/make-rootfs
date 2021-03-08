@@ -1,3 +1,8 @@
+# https://repology.org/project/extra-cmake-modules
+# https://git.alpinelinux.org/aports/tree/community/extra-cmake-modules/APKBUILD
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/extra-cmake-modules/template
+# https://code.foxkit.us/adelie/packages/blob/master/user/extra-cmake-modules/APKBUILD
+
 pkg_ver  := 5.79.0
 pkg_repo := https://invent.kde.org/frameworks/extra-cmake-modules
 pkg_site := https://download.kde.org/stable/frameworks/$(basename $(pkg_ver))
