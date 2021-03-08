@@ -210,6 +210,10 @@ strip_release = true
 source = "archpkg"
 strip_release = true
 
+[knotifyconfig]
+source = "archpkg"
+strip_release = true
+
 [kpty]
 source = "archpkg"
 strip_release = true
