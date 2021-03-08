@@ -1,3 +1,8 @@
+# https://repology.org/project/kconfig
+# https://git.alpinelinux.org/aports/tree/community/kconfig/APKBUILD
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/kconfig/template
+# https://code.foxkit.us/adelie/packages/blob/master/user/kconfig/APKBUILD
+
 pkg_ver  := 5.79.0
 pkg_repo := https://invent.kde.org/frameworks/kconfig
 pkg_site := https://download.kde.org/stable/frameworks/$(basename $(pkg_ver))
