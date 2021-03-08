@@ -1,0 +1,11 @@
+--- phonon-4.11.1/phonon/CMakeLists.txt
++++ phonon-4.11.1/phonon/CMakeLists.txt
+@@ -84,7 +84,7 @@
+     list(APPEND optional_link_libraries ${GOBJECT_LIBRARIES} ${PULSEAUDIO_LIBRARY} ${PULSEAUDIO_MAINLOOP_LIBRARY})
+ endif()
+ 
+-add_library(${PHONON_LIB_SONAME} SHARED ${phonon_LIB_SRCS})
++add_library(${PHONON_LIB_SONAME} ${phonon_LIB_SRCS})
+ add_library(Phonon::${PHONON_LIB_SONAME} ALIAS ${PHONON_LIB_SONAME})
+ 
+ target_link_libraries(${PHONON_LIB_SONAME}

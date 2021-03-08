@@ -303,6 +303,10 @@ strip_release = true
 source = "archpkg"
 strip_release = true
 
+[phonon]
+source = "repology"
+repo = "arch"
+
 [pigz]
 source = "archpkg"
 strip_release = true
