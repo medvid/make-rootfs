@@ -1,0 +1,66 @@
+--- sonnet-5.79.0/src/plugins/aspell/CMakeLists.txt
++++ sonnet-5.79.0/src/plugins/aspell/CMakeLists.txt
+@@ -14,7 +14,7 @@
+     EXPORT SONNET
+ )
+ 
+-add_library(sonnet_aspell MODULE ${sonnet_aspell_PART_SRCS})
++add_library(sonnet_aspell ${sonnet_aspell_PART_SRCS})
+ 
+ target_link_libraries(sonnet_aspell PRIVATE KF5::SonnetCore ${ASPELL_LIBRARIES})
+ 
+--- sonnet-5.79.0/src/plugins/hspell/CMakeLists.txt
++++ sonnet-5.79.0/src/plugins/hspell/CMakeLists.txt
+@@ -21,7 +21,7 @@
+     EXPORT SONNET
+ )
+ 
+-add_library(sonnet_hspell MODULE ${sonnet_hspell_PART_SRCS})
++add_library(sonnet_hspell ${sonnet_hspell_PART_SRCS})
+ 
+ target_link_libraries(sonnet_hspell PRIVATE KF5::SonnetCore ${HSPELL_LIBRARIES} ${ZLIB_LIBRARY})
+ 
+--- sonnet-5.79.0/src/plugins/hunspell/CMakeLists.txt
++++ sonnet-5.79.0/src/plugins/hunspell/CMakeLists.txt
+@@ -20,7 +20,7 @@
+ 
+ configure_file(config-hunspell.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-hunspell.h)
+ 
+-add_library(sonnet_hunspell MODULE ${sonnet_hunspell_PART_SRCS})
++add_library(sonnet_hunspell ${sonnet_hunspell_PART_SRCS})
+ target_include_directories(sonnet_hunspell SYSTEM PUBLIC ${HUNSPELL_INCLUDE_DIRS})
+ target_link_libraries(sonnet_hunspell PRIVATE KF5::SonnetCore ${HUNSPELL_LIBRARIES})
+ target_compile_definitions(sonnet_hunspell PRIVATE DEFINITIONS SONNET_INSTALL_PREFIX="${CMAKE_INSTALL_PREFIX}")
+--- sonnet-5.79.0/src/plugins/ispellchecker/CMakeLists.txt
++++ sonnet-5.79.0/src/plugins/ispellchecker/CMakeLists.txt
+@@ -14,7 +14,7 @@
+     EXPORT SONNET
+ )
+ 
+-add_library(sonnet_ispellchecker MODULE ${sonnet_ispellchecker_PART_SRCS})
++add_library(sonnet_ispellchecker ${sonnet_ispellchecker_PART_SRCS})
+ target_link_libraries(sonnet_ispellchecker PRIVATE KF5::SonnetCore)
+ target_compile_definitions(sonnet_ispellchecker PRIVATE DEFINITIONS SONNET_INSTALL_PREFIX="${CMAKE_INSTALL_PREFIX}")
+ 
+--- sonnet-5.79.0/src/plugins/nsspellchecker/CMakeLists.txt
++++ sonnet-5.79.0/src/plugins/nsspellchecker/CMakeLists.txt
+@@ -11,7 +11,7 @@
+     EXPORT SONNET
+ )
+ 
+-add_library(sonnet_nsspellchecker MODULE ${sonnet_nsspellchecker_PART_SRCS})
++add_library(sonnet_nsspellchecker ${sonnet_nsspellchecker_PART_SRCS})
+ 
+ target_link_libraries(sonnet_nsspellchecker PRIVATE KF5::SonnetCore "-framework AppKit")
+ 
+--- sonnet-5.79.0/src/plugins/voikko/CMakeLists.txt
++++ sonnet-5.79.0/src/plugins/voikko/CMakeLists.txt
+@@ -13,7 +13,7 @@
+     EXPORT SONNET
+ )
+ 
+-add_library(sonnet_voikko MODULE ${sonnet_voikko_PART_SRCS})
++add_library(sonnet_voikko ${sonnet_voikko_PART_SRCS})
+ 
+ target_link_libraries(sonnet_voikko PRIVATE KF5::SonnetCore ${VOIKKO_LIBRARIES})
+ 

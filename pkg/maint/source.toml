@@ -362,6 +362,10 @@ source = "pypi"
 source = "archpkg"
 strip_release = true
 
+[sonnet]
+source = "archpkg"
+strip_release = true
+
 [spice]
 source = "archpkg"
 strip_release = true
