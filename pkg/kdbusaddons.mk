@@ -1,7 +1,12 @@
+# https://repology.org/project/kdbusaddons
+# https://git.alpinelinux.org/aports/tree/community/kdbusaddons/APKBUILD
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/kdbusaddons/template
+# https://code.foxkit.us/adelie/packages/blob/master/user/kdbusaddons/APKBUILD
+
 pkg_ver  := 5.79.0
 pkg_repo := https://invent.kde.org/frameworks/
 pkg_site := https://download.kde.org/stable/frameworks/$(basename $(pkg_ver))
-pkg_deps := extra-cmake-modules qt5
+pkg_deps := extra-cmake-modules qt5 dbus
 
 pkg_configure := $(kde_pkg_configure) \
 	-DBUILD_SHARED_LIBS:BOOL=OFF \
