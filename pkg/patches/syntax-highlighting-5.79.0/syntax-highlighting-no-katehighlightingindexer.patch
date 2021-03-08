@@ -1,0 +1,9 @@
+--- syntax-highlighting-5.79.0/src/indexer/CMakeLists.txt
++++ syntax-highlighting-5.79.0/src/indexer/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ # when cross compiling, use either the executable offered or try to cross-compile it in place
+-
++set(CMAKE_CROSSCOMPILING FALSE)
+ if(CMAKE_CROSSCOMPILING AND KATEHIGHLIGHTINGINDEXER_EXECUTABLE)
+     add_executable(katehighlightingindexer IMPORTED GLOBAL)
+     set_target_properties(katehighlightingindexer PROPERTIES IMPORTED_LOCATION ${KATEHIGHLIGHTINGINDEXER_EXECUTABLE})

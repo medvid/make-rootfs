@@ -535,6 +535,10 @@ strip_release = true
 source = "archpkg"
 strip_release = true
 
+[syntax-highlighting]
+source = "archpkg"
+strip_release = true
+
 [sway]
 source = "archpkg"
 strip_release = true
