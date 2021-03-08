@@ -4,7 +4,7 @@
 # https://github.com/kisslinux/community/blob/master/community/libuv/build
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/libuv/template
 
-pkg_ver  := 1.40.0
+pkg_ver  := 1.41.0
 pkg_repo := https://github.com/libuv/libuv
 pkg_site := https://dist.libuv.org/dist/v$(pkg_ver)
 pkg_dir  := libuv-v$(pkg_ver)
