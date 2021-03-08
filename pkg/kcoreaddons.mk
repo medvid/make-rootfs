@@ -1,3 +1,8 @@
+# https://repology.org/project/kcoreaddons
+# https://git.alpinelinux.org/aports/tree/community/kcoreaddons/APKBUILD
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/kcoreaddons/template
+# https://code.foxkit.us/adelie/packages/blob/master/user/kcoreaddons/APKBUILD
+
 pkg_ver  := 5.79.0
 pkg_repo := https://invent.kde.org/frameworks/kcoreaddons
 pkg_site := https://download.kde.org/stable/frameworks/$(basename $(pkg_ver))

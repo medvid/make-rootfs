@@ -138,6 +138,10 @@ strip_release = true
 source = "archpkg"
 strip_release = true
 
+[kcoreaddons]
+source = "archpkg"
+strip_release = true
+
 [less]
 source = "archpkg"
 strip_release = true

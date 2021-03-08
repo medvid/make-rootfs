@@ -1,0 +1,11 @@
+--- kcoreaddons-5.79.0/KF5CoreAddonsMacros.cmake
++++ kcoreaddons-5.79.0/KF5CoreAddonsMacros.cmake
+@@ -121,7 +121,7 @@
+     endif()
+     get_filename_component(json "${KCA_ADD_PLUGIN_JSON}" REALPATH)
+ 
+-    add_library(${plugin} MODULE ${KCA_ADD_PLUGIN_SOURCES})
++    add_library(${plugin} ${KCA_ADD_PLUGIN_SOURCES})
+     set_property(TARGET ${plugin} APPEND PROPERTY AUTOGEN_TARGET_DEPENDS ${json})
+     # If find_package(ECM 5.38) or higher is called, output the plugin in a INSTALL_NAMESPACE subfolder.
+     # See https://community.kde.org/Guidelines_and_HOWTOs/Making_apps_run_uninstalled
