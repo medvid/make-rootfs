@@ -166,6 +166,10 @@ strip_release = true
 source = "archpkg"
 strip_release = true
 
+[ki18n]
+source = "archpkg"
+strip_release = true
+
 [kwidgetsaddons]
 source = "archpkg"
 strip_release = true
