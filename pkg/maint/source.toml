@@ -319,6 +319,10 @@ strip_release = true
 source = "archpkg"
 strip_release = true
 
+[plasma-wayland-protocols]
+source = "archpkg"
+strip_release = true
+
 [pyparsing]
 source = "pypi"
 
