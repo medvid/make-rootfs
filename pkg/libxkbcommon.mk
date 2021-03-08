@@ -5,9 +5,9 @@
 # https://github.com/kisslinux/repo/blob/master/xorg/libxkbcommon/build
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/libxkbcommon/template
 
-pkg_ver  := 1.0.3
+pkg_ver  := 1.1.0
 pkg_repo := https://github.com/xkbcommon/libxkbcommon
-pkg_site := https://xkbcommon.org/download
+pkg_site := $(pkg_repo)/releases/download/xkbcommon-$(pkg_ver)
 pkg_deps := wayland wayland-protocols xkeyboard-config
 
 pkg_configure := $(meson_pkg_configure) \
