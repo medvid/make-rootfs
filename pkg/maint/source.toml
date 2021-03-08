@@ -222,6 +222,10 @@ strip_release = true
 source = "archpkg"
 strip_release = true
 
+[kwayland]
+source = "archpkg"
+strip_release = true
+
 [kwidgetsaddons]
 source = "archpkg"
 strip_release = true
