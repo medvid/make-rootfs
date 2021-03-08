@@ -1,0 +1,10 @@
+--- kservice-5.79.0/CMakeLists.txt
++++ kservice-5.79.0/CMakeLists.txt
+@@ -55,6 +55,7 @@
+ endif()
+ find_package(KF5I18n ${KF_DEP_VERSION} CONFIG REQUIRED)
+ find_package(KF5DocTools ${KF_DEP_VERSION} CONFIG)
++find_package(KF5WindowSystem ${KF_DEP_VERSION} CONFIG)
+ 
+ find_package(FLEX REQUIRED)
+ set_package_properties(FLEX PROPERTIES
