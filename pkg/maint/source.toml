@@ -539,6 +539,11 @@ strip_release = true
 source = "repology"
 repo = "debian_unstable"
 
+[ubuntu-font-family]
+source = "repology"
+repology = "fonts:ubuntu"
+repo = "arch"
+
 [toybox]
 source = "repology"
 repo = "alpine_edge"
