@@ -1,7 +1,7 @@
 # https://repology.org/project/libuev
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/libuev/template
 
-pkg_ver  := 2.3.1
+pkg_ver  := 2.3.2
 pkg_repo := https://github.com/troglobit/libuev
 pkg_site := $(pkg_repo)/releases/download/v$(pkg_ver)
 
