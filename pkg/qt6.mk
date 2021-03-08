@@ -1,6 +1,6 @@
 # https://repology.org/project/qt
 
-pkg_ver  := 6.0.1
+pkg_ver  := 6.0.2
 pkg_site := https://download.qt.io/archive/qt/$(basename $(pkg_ver))/$(pkg_ver)/single
 pkg_base := qt-everywhere-src
 pkg_deps := dbus openssl pcre2 zlib zstd libjpeg-turbo libpng freetype harfbuzz libudev-zero libevdev libinput libxkbcommon mesa mtdev sqlite
