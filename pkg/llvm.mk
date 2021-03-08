@@ -4,7 +4,7 @@
 # https://github.com/kisslinux/repo/blob/master/extra/llvm/build
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/llvm11/template
 
-pkg_ver  := 11.0.1
+pkg_ver  := 11.1.0
 pkg_repo := https://github.com/llvm/llvm-project
 pkg_site := $(pkg_repo)/releases/download/llvmorg-$(pkg_ver)
 pkg_dir  := llvm-project-$(pkg_ver).src
