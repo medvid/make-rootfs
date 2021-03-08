@@ -1,3 +1,8 @@
+# https://repology.org/project/kguiaddons
+# https://git.alpinelinux.org/aports/tree/community/kguiaddons/APKBUILD
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/kguiaddons/template
+# https://code.foxkit.us/adelie/packages/blob/master/user/kguiaddons/APKBUILD
+
 pkg_ver  := 5.79.0
 pkg_repo := https://invent.kde.org/frameworks/kguiaddons
 pkg_site := https://download.kde.org/stable/frameworks/$(basename $(pkg_ver))
