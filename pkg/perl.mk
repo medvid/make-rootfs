@@ -5,7 +5,7 @@
 # https://github.com/kisslinux/repo/blob/master/extra/perl/build
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/perl/template
 
-pkg_ver  := 5.32.0
+pkg_ver  := 5.32.1
 pkg_repo := https://github.com/Perl/perl5
 pkg_site := https://www.cpan.org/src/5.0
 pkg_copy := true
