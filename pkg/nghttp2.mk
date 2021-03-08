@@ -3,7 +3,7 @@
 # https://git.buildroot.net/buildroot/tree/package/nghttp2/nghttp2.mk
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/nghttp2/template
 
-pkg_ver  := 1.42.0
+pkg_ver  := 1.43.0
 pkg_repo := https://github.com/nghttp2/nghttp2
 pkg_site := $(pkg_repo)/releases/download/v$(pkg_ver)
 
