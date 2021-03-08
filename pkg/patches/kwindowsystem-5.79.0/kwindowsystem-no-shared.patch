@@ -1,0 +1,11 @@
+--- kwindowsystem-5.79.0/src/platforms/wayland/CMakeLists.txt
++++ kwindowsystem-5.79.0/src/platforms/wayland/CMakeLists.txt
+@@ -3,7 +3,7 @@
+     plugin.cpp
+ )
+ 
+-add_library(KF5WindowSystemWaylandPlugin MODULE ${wayland_plugin_SRCS})
++add_library(KF5WindowSystemWaylandPlugin ${wayland_plugin_SRCS})
+ target_link_libraries(KF5WindowSystemWaylandPlugin
+     KF5WindowSystem
+ )
