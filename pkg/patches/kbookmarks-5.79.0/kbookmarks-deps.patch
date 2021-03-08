@@ -1,0 +1,24 @@
+--- kbookmarks-5.79.0.bak/CMakeLists.txt
++++ kbookmarks-5.79.0/CMakeLists.txt
+@@ -38,7 +38,7 @@
+ # Dependencies
+ set(REQUIRED_QT_VERSION 5.14.0)
+ 
+-find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Widgets Xml)
++find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED Widgets Xml PrintSupport)
+ if (NOT ANDROID)
+   find_package(Qt5 ${REQUIRED_QT_VERSION} NO_MODULE REQUIRED DBus)
+ endif()
+@@ -49,6 +49,12 @@
+ find_package(KF5ConfigWidgets ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF5WidgetsAddons ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF5XmlGui ${KF_DEP_VERSION} REQUIRED)
++find_package(KF5IconThemes ${KF_DEP_VERSION})
++find_package(KF5ItemViews ${KF_DEP_VERSION})
++find_package(KF5Attica ${KF_DEP_VERSION})
++find_package(KF5I18n ${KF_DEP_VERSION})
++find_package(KF5Archive ${KF_DEP_VERSION})
++find_package(KF5GuiAddons ${KF_DEP_VERSION})
+ 
+ if (IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/po")
+     ecm_install_po_files_as_qm(po)
