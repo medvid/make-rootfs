@@ -166,6 +166,10 @@ strip_release = true
 source = "archpkg"
 strip_release = true
 
+[kcrash]
+source = "archpkg"
+strip_release = true
+
 [kdbusaddons]
 source = "archpkg"
 strip_release = true
