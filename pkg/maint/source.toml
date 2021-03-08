@@ -186,6 +186,10 @@ strip_release = true
 source = "archpkg"
 strip_release = true
 
+[kiconthemes]
+source = "archpkg"
+strip_release = true
+
 [kitemviews]
 source = "archpkg"
 strip_release = true
