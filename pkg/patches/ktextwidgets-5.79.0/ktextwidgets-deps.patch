@@ -1,0 +1,10 @@
+--- ktextwidgets-5.79.0.orig/CMakeLists.txt
++++ ktextwidgets-5.79.0/CMakeLists.txt
+@@ -46,6 +46,7 @@
+ find_package(KF5I18n ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF5WidgetsAddons ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF5Sonnet ${KF_DEP_VERSION} REQUIRED)
++find_package(KF5GuiAddons ${KF_DEP_VERSION})
+ 
+ set(EXCLUDE_DEPRECATED_BEFORE_AND_AT 0 CACHE STRING "Control the range of deprecated API excluded from the build [default=0].")
+ 
