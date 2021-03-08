@@ -28,30 +28,8 @@ pkg_configure := $(pkg_srcdir)/configure \
 	-sysroot $(OUT_DIR) \
 	-no-compile-examples \
 	-nomake examples \
-	-skip qt3d \
-	-skip qtconnectivity \
-	-skip qtdoc \
-	-skip qtgamepad \
-	-skip qtgraphicaleffects \
 	-skip qtlocation \
-	-skip qtlottie \
-	-skip qtmacextras \
-	-skip qtmultimedia \
-	-skip qtnetworkauth \
-	-skip qtpurchasing \
-	-skip qtremoteobjects \
-	-skip qtscxml \
-	-skip qtsensors \
-	-skip qtserialbus \
-	-skip qtserialport \
-	-skip qtspeech \
-	-skip qttranslations \
-	-skip qtwebchannel \
-	-skip qtwebglplugin \
-	-skip qtwebsockets \
-	-skip qtwebview \
-	-skip qtwinextras \
-	-skip qtx11extras \
+	-skip qtwebengine \
 	-dbus-linked \
 	-qt-doubleconversion \
 	-no-glib \
@@ -68,7 +46,7 @@ pkg_configure := $(pkg_srcdir)/configure \
 	-no-gtk \
 	-opengl es2 \
 	-egl \
-	-qpa input \
+	-qpa wayland \
 	-no-xcb-xlib \
 	-no-eglfs \
 	-gbm \
@@ -89,7 +67,7 @@ pkg_configure := $(pkg_srcdir)/configure \
 	-feature-dlopen \
 	-feature-library \
 	-no-feature-relocatable \
-	-no-feature-pdf \
+	-feature-pdf \
 	-feature-linuxfb \
 	-no-feature-gnu-libiconv
 
@@ -97,9 +75,6 @@ ifeq ($(CROSS),1)
 	pkg_configure += -hostprefix /usr/lib/qt5
 endif
 
-#pkg_configure := $(pkg_srcdir)/configure \
-#	-list-features -list-libraries -help
-
-pkg_build := make AR="llvm-ar cqs"
+pkg_build := make
 
 pkg_install := make install DESTDIR=$(OUT_DIR) STRIP="llvm-strip"
