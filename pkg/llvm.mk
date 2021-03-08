@@ -63,6 +63,7 @@ pkg_configure := $(cmake_pkg_configure) \
 	-DLLVM_ENABLE_PLUGINS:BOOL=OFF \
 	-DLLVM_ENABLE_TERMINFO:BOOL=OFF \
 	-DLLVM_ENABLE_Z3_SOLVER:BOOL=OFF \
+	-DLLVM_INSTALL_BINUTILS_SYMLINKS:BOOL=ON \
 	-DCLANG_DEFAULT_LINKER:STRING="lld" \
 	-DCLANG_DEFAULT_OBJCOPY:STRING="llvm-objcopy" \
 	-DCLANG_DEFAULT_CXX_STDLIB:STRING="libc++" \
@@ -140,7 +141,8 @@ endif
 
 ifeq ($(llvm_build_toolchain),true)
 llvm_projects := $(llvm_projects);clang;lld
-llvm_tools := ar as bcanalyzer config lto lto2 mt nm objcopy objdump ranlib readelf readobj split strings strip tblgen
+llvm_binutils := addr2line ar nm objcopy objdump ranlib readelf size strings strip
+llvm_tools := $(llvm_binutils) as bcanalyzer config lto lto2 mt readobj split symbolizer tblgen
 llvm_build_targets += clang clang-resource-headers lld $(addprefix llvm-,$(llvm_tools))
 pkg_configure += -DCMAKE_TRY_COMPILE_TARGET_TYPE=EXECUTABLE
 else
