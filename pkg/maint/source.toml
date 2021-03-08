@@ -170,6 +170,10 @@ strip_release = true
 source = "archpkg"
 strip_release = true
 
+[kitemviews]
+source = "archpkg"
+strip_release = true
+
 [kwidgetsaddons]
 source = "archpkg"
 strip_release = true
