@@ -3,7 +3,7 @@
 # https://git.buildroot.net/buildroot/tree/package/libopenssl/libopenssl.mk
 # https://github.com/distr1/distri/blob/master/pkgs/openssl/build.textproto
 
-pkg_ver  := 1.1.1i
+pkg_ver  := 1.1.1j
 pkg_repo := https://github.com/openssl/openssl
 pkg_site := https://www.openssl.org/source
 
