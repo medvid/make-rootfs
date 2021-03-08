@@ -214,6 +214,10 @@ strip_release = true
 source = "archpkg"
 strip_release = true
 
+[kpackage]
+source = "archpkg"
+strip_release = true
+
 [kpty]
 source = "archpkg"
 strip_release = true
