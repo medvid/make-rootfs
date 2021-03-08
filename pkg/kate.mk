@@ -3,7 +3,7 @@
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/kate/template
 # https://code.foxkit.us/adelie/packages/blob/master/user/kate/APKBUILD
 
-pkg_ver  := 20.12.2
+pkg_ver  := 20.12.3
 pkg_repo := https://invent.kde.org/utilities/kate
 pkg_site := https://download.kde.org/stable/release-service/$(pkg_ver)/src
 pkg_deps := extra-cmake-modules qt5 ki18n ktexteditor kwindowsystem kdbusaddons \
