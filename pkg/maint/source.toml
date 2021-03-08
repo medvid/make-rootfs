@@ -138,6 +138,10 @@ strip_release = true
 source = "archpkg"
 strip_release = true
 
+[kate]
+source = "archpkg"
+strip_release = true
+
 [kauth]
 source = "archpkg"
 strip_release = true
