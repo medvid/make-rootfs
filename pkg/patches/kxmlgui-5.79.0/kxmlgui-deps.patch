@@ -1,0 +1,10 @@
+--- kxmlgui-5.79.0/CMakeLists.txt
++++ kxmlgui-5.79.0/CMakeLists.txt
+@@ -65,6 +65,7 @@
+ if (NOT FORCE_DISABLE_KGLOBALACCEL)
+     find_package(KF5GlobalAccel ${KF_DEP_VERSION} REQUIRED)
+ endif()
++find_package(KF5Archive ${KF_DEP_VERSION})
+ set (HAVE_GLOBALACCEL ${KF5GlobalAccel_FOUND})
+ add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050e00)
+ add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x054B00)

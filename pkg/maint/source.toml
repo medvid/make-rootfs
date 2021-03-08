@@ -182,6 +182,10 @@ strip_release = true
 source = "archpkg"
 strip_release = true
 
+[kxmlgui]
+source = "archpkg"
+strip_release = true
+
 [kwidgetsaddons]
 source = "archpkg"
 strip_release = true
