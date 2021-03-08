@@ -1,3 +1,8 @@
+# https://repology.org/project/kcodecs
+# https://git.alpinelinux.org/aports/tree/community/kcodecs/APKBUILD
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/kcodecs/template
+# https://code.foxkit.us/adelie/packages/blob/master/user/kcodecs/APKBUILD
+
 pkg_ver  := 5.79.0
 pkg_repo := https://invent.kde.org/frameworks/kcodecs
 pkg_site := https://download.kde.org/stable/frameworks/$(basename $(pkg_ver))
