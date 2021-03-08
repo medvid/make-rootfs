@@ -1,0 +1,11 @@
+--- kinit-5.79.0/KF5InitMacros.cmake
++++ kinit-5.79.0/KF5InitMacros.cmake
+@@ -33,7 +33,7 @@
+         add_library(kdeinit_${_target_NAME} STATIC ${_SRCS})
+     else()
+         # Use a shared library on UNIX so that kdeinit can dlopen() it
+-        add_library(kdeinit_${_target_NAME} SHARED ${_SRCS})
++        add_library(kdeinit_${_target_NAME} ${_SRCS})
+     endif()
+     if (APPLE)
+         set(_resourcefile ${MACOSX_BUNDLE_ICON_FILE})

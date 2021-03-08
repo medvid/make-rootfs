@@ -1,0 +1,12 @@
+--- kinit-5.79.0/CMakeLists.txt
++++ kinit-5.79.0/CMakeLists.txt
+@@ -55,6 +55,9 @@
+ find_package(KF5Crash ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF5Config ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF5DocTools ${KF_DEP_VERSION})
++find_package(KF5IconThemes ${KF_DEP_VERSION})
++find_package(KF5GuiAddons ${KF_DEP_VERSION})
++find_package(KF5Archive ${KF_DEP_VERSION})
+ 
+ if (NOT WIN32)
+ find_package(Libcap)
