@@ -5,7 +5,7 @@
 # https://github.com/kisslinux/repo/blob/master/extra/cmake/build
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/cmake/template
 
-pkg_ver  := 3.19.4
+pkg_ver  := 3.19.6
 pkg_repo := https://github.com/Kitware/CMake
 pkg_site := $(pkg_repo)/releases/download/v$(pkg_ver)
 pkg_deps := curl expat zlib bzip2 zstd xz nghttp2 jsoncpp rhash libuv openssl
