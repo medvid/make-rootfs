@@ -1,3 +1,8 @@
+# https://repology.org/project/karchive
+# https://git.alpinelinux.org/aports/tree/community/karchive/APKBUILD
+# https://github.com/void-linux/void-packages/blob/master/srcpkgs/karchive/template
+# https://code.foxkit.us/adelie/packages/blob/master/user/karchive/APKBUILD
+
 pkg_ver  := 5.79.0
 pkg_repo := https://invent.kde.org/frameworks/karchive
 pkg_site := https://download.kde.org/stable/frameworks/$(basename $(pkg_ver))
