@@ -5,7 +5,7 @@
 # https://github.com/kisslinux/repo/blob/master/extra/python/build
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/python3/template
 
-pkg_ver  := 3.9.1
+pkg_ver  := 3.9.2
 pkg_repo := https://github.com/python/cpython
 pkg_site := https://www.python.org/ftp/python/$(pkg_ver)
 pkg_base := Python
