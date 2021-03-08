@@ -5,7 +5,7 @@
 # https://github.com/kisslinux/repo/blob/master/extra/libinput/build
 # https://github.com/void-linux/void-packages/blob/master/srcpkgs/libinput/template
 
-pkg_ver  := 1.16.4
+pkg_ver  := 1.17.0
 pkg_repo := https://gitlab.freedesktop.org/libinput/libinput
 pkg_site := https://www.freedesktop.org/software/libinput
 pkg_deps := libevdev mtdev libudev-zero check
