@@ -10,9 +10,8 @@ pkg_repo := https://gitlab.freedesktop.org/mesa/mesa
 pkg_site := https://mesa.freedesktop.org/archive
 pkg_deps := libdrm libudev-zero wayland wayland-protocols zstd
 
-# TODO: figure out how to parse from NM and patch properly
 pkg_prepare := find -L $(pkg_srcdir) -name meson.build \
-	-exec sed -e "s/'nm'/'llvm-nm'/g" -e "s/shared_library/library/g" -i {} \;
+	-exec sed -e "s/shared_library/library/g" -i {} \;
 
 pkg_configure := $(meson_pkg_configure) \
 	-Dplatforms=wayland \
