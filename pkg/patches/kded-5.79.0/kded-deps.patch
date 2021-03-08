@@ -1,0 +1,11 @@
+--- kded-5.79.0/CMakeLists.txt
++++ kded-5.79.0/CMakeLists.txt
+@@ -24,6 +24,8 @@
+ find_package(KF5DBusAddons ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF5DocTools ${KF_DEP_VERSION})
+ find_package(KF5Service ${KF_DEP_VERSION} REQUIRED)
++find_package(KF5I18n ${KF_DEP_VERSION})
++find_package(KF5WindowSystem ${KF_DEP_VERSION})
+ 
+ 
+ include(CMakePackageConfigHelpers)
