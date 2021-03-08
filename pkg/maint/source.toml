@@ -3,6 +3,10 @@ oldver = "versions.json"
 newver = "versions_new.json"
 max_concurrency = 4
 
+[automake]
+source = "archpkg"
+strip_release = true
+
 [autoconf]
 source = "archpkg"
 strip_release = true
