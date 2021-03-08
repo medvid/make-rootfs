@@ -1,0 +1,13 @@
+--- ktexteditor-5.79.0/CMakeLists.txt
++++ ktexteditor-5.79.0/CMakeLists.txt
+@@ -56,6 +56,10 @@
+ find_package(KF5Sonnet ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF5SyntaxHighlighting ${KF_DEP_VERSION} REQUIRED)
+ find_package(KF5Auth ${KF_DEP_VERSION} REQUIRED)
++find_package(KF5DBusAddons ${KF_DEP_VERSION})
++find_package(KF5Crash ${KF_DEP_VERSION})
++find_package(KF5Attica ${KF_DEP_VERSION})
++find_package(KF5IconThemes ${KF_DEP_VERSION})
+ 
+ # libgit2 integration, at least 0.22 with proper git_libgit2_init()
+ find_package(LibGit2 "0.22.0")

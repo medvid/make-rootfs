@@ -250,6 +250,10 @@ strip_release = true
 #source = "archpkg"
 #strip_release = true
 
+[ktexteditor]
+source = "archpkg"
+strip_release = true
+
 [ktextwidgets]
 source = "archpkg"
 strip_release = true

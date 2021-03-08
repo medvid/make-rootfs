@@ -1,0 +1,20 @@
+--- ktexteditor-5.79.0/src/part/CMakeLists.txt
++++ ktexteditor-5.79.0/src/part/CMakeLists.txt
+@@ -1,5 +1,5 @@
+ # kate part itself just is core + the factory
+-add_library (katepart MODULE katepart.cpp)
++add_library (katepart katepart.cpp)
+ 
+ # service => json and install
+ kcoreaddons_desktop_to_json (katepart katepart.desktop SERVICE_TYPES kpart.desktop)
+--- ktexteditor-5.79.0/templates/ktexteditor-plugin/src/CMakeLists.txt
++++ ktexteditor-5.79.0/templates/ktexteditor-plugin/src/CMakeLists.txt
+@@ -5,7 +5,7 @@
+     %{APPNAMELC}view.cpp
+ )
+ 
+-add_library(%{APPNAMELC} MODULE ${%{APPNAMELC}_SRCS})
++add_library(%{APPNAMELC} ${%{APPNAMELC}_SRCS})
+ 
+ target_link_libraries(%{APPNAMELC}
+     KF5::TextEditor
