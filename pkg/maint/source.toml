@@ -206,6 +206,10 @@ strip_release = true
 source = "archpkg"
 strip_release = true
 
+[knewstuff]
+source = "archpkg"
+strip_release = true
+
 [knotifications]
 source = "archpkg"
 strip_release = true
