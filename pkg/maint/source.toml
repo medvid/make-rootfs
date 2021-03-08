@@ -226,6 +226,10 @@ strip_release = true
 source = "archpkg"
 strip_release = true
 
+[konsole]
+source = "archpkg"
+strip_release = true
+
 [kpackage]
 source = "archpkg"
 strip_release = true
